@@ -1,8 +1,15 @@
 projekt lista obecnosci
 
+Uczestnicy:
+Ariel Burlingo
+Maciej Wiszowaty
+Lukasz Stefanski
+
+O projeckcie
+
 * realizacja w JSF + EJB
 * logowanie sie studentow na zajecia przez http
-* zarzadzanie listami obecnosci przez prowadzacego
+* zarzadzanieow takich jak:
 * uproszczenie zycia prowadzacemu - mniej papieru, wszystko elektornicznie
 * duzo ficzerow taskich jak
 ** Programowanie autostartu zajec
