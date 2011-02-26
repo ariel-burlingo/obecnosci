@@ -1,0 +1,14 @@
+<testng-results>
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite">
+    <groups>
+    </groups>
+    <test name="Command line test">
+      <class name="obecnosci.ob.HelloWorldTest">
+        <test-method status="PASS" signature="testGetText()" name="testGetText" duration-ms="38" started-at="2011-02-26T17:07:01Z" finished-at="2011-02-26T17:07:02Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>
