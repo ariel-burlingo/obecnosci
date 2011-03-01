@@ -3,15 +3,18 @@ package obecnosci.ob.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
+
 @Entity
-@NamedQuery(name="obecnosci.all", query ="from Obecnosci")
 public class Obecnosci {
 	@Id
 	@GeneratedValue
 	private long id;
+	@ManyToOne
 	Student student;
+	@ManyToOne
 	Zajecia zajecia;
 	public long getId() {
 		return id;

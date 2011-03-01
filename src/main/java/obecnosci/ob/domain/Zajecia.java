@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name="zajecia.all", query ="from Zajecia")
 public class Zajecia {
 	@Id
 	@GeneratedValue

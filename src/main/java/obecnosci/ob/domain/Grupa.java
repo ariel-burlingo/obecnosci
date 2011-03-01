@@ -5,15 +5,17 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name="grupa.all", query ="from Grupa")
+
 public class Grupa {
 	
 	@Id
 	@GeneratedValue
 	private long id;
+	@ManyToMany
 	private List<Student> studenci;
 	private String informacje;
 	public long getId() {

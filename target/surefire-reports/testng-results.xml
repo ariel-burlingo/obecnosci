@@ -6,7 +6,7 @@
     </groups>
     <test name="Command line test">
       <class name="obecnosci.ob.HelloWorldTest">
-        <test-method status="PASS" signature="testGetText()" name="testGetText" duration-ms="6" started-at="2011-03-01T19:16:35Z" finished-at="2011-03-01T19:16:35Z">
+        <test-method status="PASS" signature="testGetText()" name="testGetText" duration-ms="6" started-at="2011-03-02T00:10:34Z" finished-at="2011-03-02T00:10:34Z">
         </test-method>
       </class>
     </test>

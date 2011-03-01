@@ -5,10 +5,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name="student.all", query ="from Student")
 public class Student {
 	
 @Id
@@ -17,6 +17,7 @@ private long id;
 private String imie;
 private String nazwisko;
 private String haslo;
+@ManyToMany
 private List<Grupa> grupy;
 public long getId() {
 	return id;

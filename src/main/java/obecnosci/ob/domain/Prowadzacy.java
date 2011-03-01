@@ -3,13 +3,17 @@ package obecnosci.ob.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name="prowadzacy.all", query ="from prowadzacy")
 public class Prowadzacy implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -20,7 +24,7 @@ private String imie;
 private String nazwisko;
 private String daneKontaktowe;
 private String stronaDomowa;
-//private Przedmiot przedmiot;
+@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 private List<Przedmiot> przedmioty;
 
 public List<Przedmiot> getPrzedmioty() {
