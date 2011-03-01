@@ -3,8 +3,10 @@ package obecnosci.ob.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name="przedmiot.all", query ="from Przedmiot")
 public class Przedmiot {
 	@Id
 	@GeneratedValue

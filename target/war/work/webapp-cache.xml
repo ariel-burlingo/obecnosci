@@ -16,6 +16,12 @@
           <string>WEB-INF/web.xml</string>
           <string>WEB-INF/classes/import.sql</string>
           <string>WEB-INF/classes/META-INF/persistence.xml</string>
+          <string>WEB-INF/classes/obecnosci/ob/domain/Grupa.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/domain/Obecnosci.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/domain/Prowadzacy.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/domain/Przedmiot.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/domain/Student.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/domain/Zajecia.class</string>
           <string>WEB-INF/classes/obecnosci/ob/HelloWorld.class</string>
           <string>WEB-INF/classes/obecnosci/ob/Widget.class</string>
           <string>WEB-INF/classes/obecnosci/ob/WidgetListProducer.class</string>
