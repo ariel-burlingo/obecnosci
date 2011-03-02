@@ -14,6 +14,7 @@ public class Student {
 @Id
 @GeneratedValue
 private long id;
+private int index;
 private String imie;
 private String nazwisko;
 private String haslo;
@@ -22,6 +23,18 @@ private List<Grupa> grupy;
 public long getId() {
 	return id;
 }
+
+
+public int getIndex() {
+	return index;
+}
+
+
+public void setIndex(int index) {
+	this.index = index;
+}
+
+
 public void setId(long id) {
 	this.id = id;
 }
