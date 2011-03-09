@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
 import obecnosci.ob.domain.Grupa;
 
@@ -56,5 +57,24 @@ public class StudentManager {
 		
 		// zapis
 		em.merge(student);
+	}
+	
+	public void przypiszDoGrupy(Student instancja, Grupa instGrupy){
+		Student student = em.getReference(Student.class, instancja.getId());
+		Grupa grupa = em.getReference(Grupa.class, instGrupy.getId());
+		List<Grupa> grupy = student.getGrupy();
+		grupy.add(grupa);
+		student.setGrupy(grupy);
+		em.merge(student);
+	}
+	
+	public void zapiszNaPrzedmiot(Student instancja, Przedmiot instPrzedmiotu){
+		Student student = em.getReference(Student.class, instancja.getId());
+		Przedmiot przedmiot = em.getReference(Przedmiot.class, instPrzedmiotu.getId());
+		List<Przedmiot> przedmioty = student.getPrzedmioty();
+		przedmioty.add(przedmiot);
+		student.setPrzedmioty(przedmioty);
+		em.merge(student);
+		
 	}
 }

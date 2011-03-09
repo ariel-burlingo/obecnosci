@@ -10,13 +10,23 @@ public class Przedmiot {
 	@Id
 	@GeneratedValue
 	private long id;
+	private String nazwa;
 	private String dane;
+	
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	public String getNazwa() {
+		return nazwa;
+	}
+	public void setNazwa(String nazwa) {
+		this.nazwa = nazwa;
+	}
+	
 	public String getDane() {
 		return dane;
 	}

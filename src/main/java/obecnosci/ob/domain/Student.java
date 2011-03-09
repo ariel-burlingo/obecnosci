@@ -20,6 +20,8 @@ private String nazwisko;
 private String haslo;
 @ManyToMany
 private List<Grupa> grupy;
+private List<Przedmiot> przedmioty;
+
 public long getId() {
 	return id;
 }
@@ -62,6 +64,17 @@ public List<Grupa> getGrupy() {
 public void setGrupy(List<Grupa> grupy) {
 	this.grupy = grupy;
 }
+
+
+public List<Przedmiot> getPrzedmioty() {
+	return przedmioty;
+}
+
+
+public void setPrzedmioty(List<Przedmiot> przedmioty) {
+	this.przedmioty = przedmioty;
+}
+
 
 
 }
