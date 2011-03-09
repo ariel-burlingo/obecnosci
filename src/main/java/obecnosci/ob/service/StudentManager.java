@@ -77,4 +77,10 @@ public class StudentManager {
 		em.merge(student);
 		
 	}
+	
+	// POBIERANIE SQL
+	
+	public List<Student> pobierzWszystkich(){
+		return em.createQuery("SELECT * FROM Student").getResultList();
+	}
 }
