@@ -1,5 +1,6 @@
 package obecnosci.ob.web;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -11,10 +12,12 @@ import obecnosci.ob.service.StudentManager;
 
 import obecnosci.ob.domain.Student;
 
-@Named
 @SessionScoped
-public class StudentBean {
+@Named
+public class StudentBean implements Serializable{
 	
+	private static final long serialVersionUID = -2381831113540936545L;
+
 	@Inject
 	StudentManager studentManager;
 	
@@ -22,11 +25,15 @@ public class StudentBean {
 	private String techinfo;
 	
 	// ZMIENNE
-	private long id;
-	private int index;
-	private String imie;
-	private String nazwisko;
-	private String haslo;
+	private long id =0;
+	private int index =0;
+	private String imie="";
+	private String nazwisko="";
+	private String haslo="";
+	
+	// DATATABLE BACKEDN
+	
+	
 	
 	// SETTERY i GETTERY
 	public String getTechinfo() {
@@ -68,9 +75,16 @@ public class StudentBean {
 	
 	// METODY WLASNE
 	
-	public List<Student> pobierzStudentow(){
+	public List<Student> getWszystkichStudentow(){
 		return studentManager.pobierzWszystkich();
 		
+	}
+	
+	// AKCJE
+	
+	public String dodajStudenta(){
+		studentManager.dodajStudenta(index, imie, nazwisko, haslo);
+		return "";
 	}
 	
 	

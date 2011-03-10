@@ -6,6 +6,38 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
    
+   <h:dataTable value="#{studentBean.wszystkichStudentow}" var="rec">
+			<h:column>
+				<h:outputText value="#{rec.index}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{rec.imie}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{rec.nazwisko}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{rec.haslo}" />
+			</h:column>	
+	</h:dataTable>
+	
+	<h2>add student</h2>
+	<h:form>
+	<h:panelGrid columns="2">
+     <h:outputText value="Index " />
+        <h:inputText value="#{studentBean.index}" />   
+        <h:outputText value="Imie " />
+        <h:inputText value="#{studentBean.imie}" />
+        <h:outputText value="Nazwisko " />
+        <h:inputText value="#{studentBean.nazwisko}" />
+        <h:outputText value="Hasło " />
+        <h:inputText value="#{studentBean.haslo}" />
+      </h:panelGrid>
+      <h:panelGrid columns="1">
+        <h:commandButton value="Dodaj studenta" action="#{studentBean.dodajStudenta}" />
+      </h:panelGrid>
+    </h:form>
+
    </ui:define>
 </ui:composition>
    

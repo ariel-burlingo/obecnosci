@@ -81,6 +81,6 @@ public class StudentManager {
 	// POBIERANIE SQL
 	
 	public List<Student> pobierzWszystkich(){
-		return em.createQuery("SELECT * FROM Student").getResultList();
+		return em.createQuery("from Student").getResultList();
 	}
 }
