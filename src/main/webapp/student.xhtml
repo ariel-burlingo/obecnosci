@@ -5,8 +5,7 @@
    xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
-   
-   <h:dataTable value="#{studentBean.wszystkichStudentow}" var="rec">
+   <h:dataTable binding="#{studentBean.studenci}" value="#{studentBean.wszystkichStudentow}" var="rec">
 			<h:column>
 				<h:outputText value="#{rec.index}" />
 			</h:column>
@@ -19,6 +18,24 @@
 			<h:column>
 				<h:outputText value="#{rec.haslo}" />
 			</h:column>	
+			<h:column>
+				<h:form>
+					<h:outputText value="ID_GR: " />
+        			<h:inputText value="#{studentBean.grupaID}" />   
+					<h:commandLink action="#{studentBean.przypiszDoGrupy}">
+						<h:graphicImage value="/resources/gfx/edit.png" alt="[przypisz do grupy]" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<h:form>
+					<h:outputText value="ID_GR: " />
+        			<h:inputText value="#{studentBean.przedmiotID}" />
+					<h:commandLink action="#{studentBean.zapiszNaPrzedmiot}">
+						<h:graphicImage value="/resources/gfx/edit.png" alt="[zapisz na przedmiot]" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
 	</h:dataTable>
 	
 	<h2>add student</h2>

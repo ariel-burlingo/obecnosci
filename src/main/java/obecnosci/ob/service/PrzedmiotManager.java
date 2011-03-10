@@ -37,4 +37,8 @@ public class PrzedmiotManager {
 		em.merge(prowadzacy);
 		
 	}
+	
+	public List<Przedmiot> pobierzWszystkie(){
+		return em.createQuery("from Przedmiot").getResultList();
+	}
 }

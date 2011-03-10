@@ -9,6 +9,8 @@
           <string>META-INF/context.xml</string>
           <string>resources/css/screen.css</string>
           <string>resources/gfx/banner.png</string>
+          <string>resources/gfx/edit.png</string>
+          <string>resources/gfx/usun.gif</string>
           <string>resources/gfx/weld.png</string>
           <string>student.xhtml</string>
           <string>WEB-INF/beans.xml</string>
