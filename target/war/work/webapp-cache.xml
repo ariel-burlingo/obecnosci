@@ -10,6 +10,7 @@
           <string>resources/css/screen.css</string>
           <string>resources/gfx/banner.png</string>
           <string>resources/gfx/weld.png</string>
+          <string>student.xhtml</string>
           <string>WEB-INF/beans.xml</string>
           <string>WEB-INF/faces-config.xml</string>
           <string>WEB-INF/templates/default.xhtml</string>
@@ -23,6 +24,11 @@
           <string>WEB-INF/classes/obecnosci/ob/domain/Student.class</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Zajecia.class</string>
           <string>WEB-INF/classes/obecnosci/ob/HelloWorld.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/service/GrupaManager.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/service/PrzedmiotManager.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/service/StudentManager.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/service/ZajeciaManager.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/web/StudentBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/Widget.class</string>
           <string>WEB-INF/classes/obecnosci/ob/WidgetListProducer.class</string>
           <string>WEB-INF/classes/obecnosci/ob/WidgetRepository.class</string>

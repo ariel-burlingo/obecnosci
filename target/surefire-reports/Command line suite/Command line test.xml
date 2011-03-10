@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Command line test" failures="0" tests="1" time="0.145" errors="0">
+<testsuite name="Command line test" failures="0" tests="1" time="0.078" errors="0">
   <properties/>
-  <testcase name="testGetText" time="0.017" classname="obecnosci.ob.HelloWorldTest"/>
+  <testcase name="testGetText" time="0.022" classname="obecnosci.ob.HelloWorldTest"/>
 </testsuite>

@@ -20,6 +20,7 @@ private String nazwisko;
 private String haslo;
 @ManyToMany
 private List<Grupa> grupy;
+@ManyToMany
 private List<Przedmiot> przedmioty;
 
 public long getId() {
