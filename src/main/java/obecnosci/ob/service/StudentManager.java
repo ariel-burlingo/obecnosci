@@ -62,19 +62,33 @@ public class StudentManager {
 	public void przypiszDoGrupy(Student instancja, long id){
 		Student student = em.getReference(Student.class, instancja.getId());
 		Grupa grupa = em.getReference(Grupa.class, id);
+		
 		List<Grupa> grupy = student.getGrupy();
 		grupy.add(grupa);
 		student.setGrupy(grupy);
+		
+		List<Student> studenci = grupa.getStudenci();
+		studenci.add(student);
+		grupa.setStudenci(studenci);
+		
 		em.merge(student);
+		em.merge(grupa);
 	}
 	
 	public void zapiszNaPrzedmiot(Student instancja, long id){
 		Student student = em.getReference(Student.class, instancja.getId());
 		Przedmiot przedmiot = em.getReference(Przedmiot.class, id);
+		
 		List<Przedmiot> przedmioty = student.getPrzedmioty();
 		przedmioty.add(przedmiot);
 		student.setPrzedmioty(przedmioty);
+		
+		List<Student> studenci = przedmiot.getStudenci();
+		studenci.add(student);
+		przedmiot.setStudenci(studenci);
+		
 		em.merge(student);
+		em.merge(przedmiot);
 		
 	}
 	
