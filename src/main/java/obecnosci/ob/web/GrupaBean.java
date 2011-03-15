@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.component.html.HtmlDataTable;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import obecnosci.ob.domain.Grupa;
-import obecnosci.ob.domain.Student;
+
 import obecnosci.ob.service.GrupaManager;
 import obecnosci.ob.service.StudentManager;
 

@@ -15,7 +15,7 @@ public class Przedmiot {
 	@GeneratedValue
 	private long id;
 	private String nazwa;
-	private String dane;
+	private String inneDane;
 	
 	@ManyToMany
 	private List<Student> studenci = new ArrayList<Student>();
@@ -34,11 +34,11 @@ public class Przedmiot {
 		this.nazwa = nazwa;
 	}
 	
-	public String getDane() {
-		return dane;
+	public String getinneDane() {
+		return inneDane;
 	}
-	public void setDane(String dane) {
-		this.dane = dane;
+	public void setinneDane(String inneDane) {
+		this.inneDane = inneDane;
 	}
 	public List<Student> getStudenci() {
 		return studenci;

@@ -14,10 +14,10 @@ public class PrzedmiotManager {
 	@PersistenceContext
 	EntityManager em;
 	
-	public void dodajPrzedmiot(String nazwa, String dane){
+	public void dodajPrzedmiot(String nazwa, String inneDane){
 		Przedmiot przedmiot = new Przedmiot(); 	
 		przedmiot.setNazwa(nazwa);
-		przedmiot.setDane(dane);
+		przedmiot.setinneDane(inneDane);
 		em.persist(przedmiot);
 		
 	}

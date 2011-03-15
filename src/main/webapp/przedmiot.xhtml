@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+   <h:dataTable  value="#{przedmiotBean.wszystkiePrzedmioty}" var="rec">
+			<h:column>
+				<h:outputText value="#{rec.nazwa}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{rec.inneDane}" />
+			</h:column>
+	</h:dataTable>
+	
+	<h2>Dodaj przedmiot</h2>
+	<h:form>
+	<h:panelGrid columns="2">
+     <h:outputText value="nazwa" />
+        <h:inputText value="#{przedmiotBean.nazwa}" />   
+     <h:outputText value="Inne dane" />
+        <h:inputText value="#{przedmiotBean.inneDane}" />   
+      </h:panelGrid>
+      <h:panelGrid columns="1">
+        <h:commandButton value="Dodaj przedmiot" action="#{przedmiotBean.dodajPrzedmiot}" />
+      </h:panelGrid>
+    </h:form>
+
+   </ui:define>
+</ui:composition>
+   
