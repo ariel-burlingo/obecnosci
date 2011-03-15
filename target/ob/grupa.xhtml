@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+   <h:dataTable  value="#{grupaBean.wszystkieGrupy}" var="rec">
+			<h:column>
+				<h:outputText value="#{rec.informacje}" />
+			</h:column>
+	</h:dataTable>
+	
+	<h2>Dodaj grupe</h2>
+	<h:form>
+	<h:panelGrid columns="2">
+     <h:outputText value="Informacje " />
+        <h:inputText value="#{grupaBean.informacje}" />   
+      </h:panelGrid>
+      <h:panelGrid columns="1">
+        <h:commandButton value="Dodaj grupe" action="#{grupaBean.dodajGrupe}" />
+      </h:panelGrid>
+    </h:form>
+
+   </ui:define>
+</ui:composition>
+   

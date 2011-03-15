@@ -4,6 +4,7 @@
       <string>currentBuild</string>
       <path-set>
         <pathsSet class="linked-hash-set">
+          <string>grupa.xhtml</string>
           <string>home.xhtml</string>
           <string>index.jsp</string>
           <string>META-INF/context.xml</string>
@@ -29,6 +30,7 @@
           <string>WEB-INF/classes/obecnosci/ob/service/PrzedmiotManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/StudentManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/ZajeciaManager.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/web/GrupaBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/StudentBean.class</string>
           <string>WEB-INF/lib/el-impl-2.1.2-b04.jar</string>
         </pathsSet>

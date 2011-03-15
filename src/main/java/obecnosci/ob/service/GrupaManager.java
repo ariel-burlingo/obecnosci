@@ -1,5 +1,7 @@
 package obecnosci.ob.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,5 +29,9 @@ public class GrupaManager {
 		Grupa grupa = em.getReference(Grupa.class, instancja.getId());
 		grupa.setInformacje(informacje);
 		em.merge(grupa);
+	}
+	
+	public List<Grupa> pobierzWszystkie(){
+		return em.createQuery("from Grupa").getResultList();
 	}
 }
