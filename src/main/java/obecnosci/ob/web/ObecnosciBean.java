@@ -31,13 +31,22 @@ public class ObecnosciBean implements Serializable {
 	private long id=0;
 	private Student student;
 	private Zajecia zajecia;
+	private long IdZajec;
 	// DATATABLE BACKEND
 	private HtmlDataTable obecnosci;
+	private HtmlDataTable studenci;
 	
 	//SETTERY i GETTERY
 	
+	
 	public long getId() {
 		return id;
+	}
+	public long getIdZajec() {
+		return IdZajec;
+	}
+	public void setIdZajec(long idZajec) {
+		IdZajec = idZajec;
 	}
 	public void setId(long id) {
 		this.id = id;
@@ -78,18 +87,28 @@ public class ObecnosciBean implements Serializable {
 	public void setObecnosci(HtmlDataTable obecnosci) {
 		this.obecnosci = obecnosci;
 	}
+	public HtmlDataTable getStudenci() {
+		return studenci;
+	}
+	public void setStudenci(HtmlDataTable studenci) {
+		this.studenci = studenci;
+	}
+	
 	
 	//AKCJE
 	public String zapiszObecnosc(){
 	//dodawanie obecnosci
-		obecnosciManager.zapiszObecnosc(student,id);
+		Student instancja = (Student) studenci.getRowData();
+		obecnosciManager.zapiszObecnosc(instancja.getId(),IdZajec);
 		return "";	
 	}
-//	public String zatwierdzObecnosci(){
-//	obecnosciManager.zatwierdzObecnosci;
-//		return "";	
-//	}
 	
+	public String zatwierdzObecnosc(){
+		Obecnosci instancja = (Obecnosci) obecnosci.getRowData();
+	obecnosciManager.zatwierdzObecnosci(instancja.getId());
+		return "";	
+	}
+
 	
 }
 	
