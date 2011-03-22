@@ -37,3 +37,7 @@ span.invalid {
    padding-left: 3px;
    color: red;
 }
+
+#menubar a{
+	margin-left: 10px;
+}

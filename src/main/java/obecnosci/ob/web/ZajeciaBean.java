@@ -19,6 +19,8 @@ public class ZajeciaBean implements Serializable{
 	private static final long serialVersionUID = -7102250578153538924L;
 	
 	private long prowadzacyId = 0;
+	private long przedmiotId = 0;
+	private long grupaId = 0;
 	private int ile = 0;
 	private Date pierwszeZajecia = new Date();
 	
@@ -41,12 +43,27 @@ public class ZajeciaBean implements Serializable{
 	public void setPierwszeZajecia(Date pierwszeZajecia) {
 		this.pierwszeZajecia = pierwszeZajecia;
 	}
+	public long getPrzedmiotId() {
+		return przedmiotId;
+	}
+	public void setPrzedmiotId(long przedmiotId) {
+		this.przedmiotId = przedmiotId;
+	}
+	public long getGrupaId() {
+		return grupaId;
+	}
+	public void setGrupaId(long grupaId) {
+		this.grupaId = grupaId;
+	}
 	
 	
-	// ZKCJE 
+	
+	
+	// AKCJE 
+	
 	
 	public String zaplanuj(){
-		zajeciaManager.zaplanujAutoStart(prowadzacyId, ile, pierwszeZajecia);
+		zajeciaManager.zaplanujAutoStart(prowadzacyId, przedmiotId, grupaId, ile, pierwszeZajecia);
 		return "";
 	}
 	

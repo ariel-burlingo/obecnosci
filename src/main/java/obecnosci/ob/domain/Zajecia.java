@@ -17,6 +17,11 @@ public class Zajecia {
 	private Date data;
 	@ManyToOne
 	private Prowadzacy prowadzacy;
+	@ManyToOne
+	private Przedmiot przedmiot;
+	@ManyToOne
+	private Grupa grupa;
+	
 	public long getId() {
 		return id;
 	}
@@ -41,6 +46,22 @@ public class Zajecia {
 	public void setProwadzacy(Prowadzacy prowadzacy) {
 		this.prowadzacy = prowadzacy;
 	}
+	public Przedmiot getPrzedmiot() {
+		return przedmiot;
+	}
+	public void setPrzedmiot(Przedmiot przedmiot) {
+		this.przedmiot = przedmiot;
+	}
+	public Grupa getGrupa() {
+		return grupa;
+	}
+	public void setGrupa(Grupa grupa) {
+		this.grupa = grupa;
+	}
+	
+	
+	
+	
 	
 	
 	
