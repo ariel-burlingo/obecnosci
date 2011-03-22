@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
+
 
 
 @Entity
@@ -16,6 +16,15 @@ public class Obecnosci {
 	Student student;
 	@ManyToOne
 	Zajecia zajecia;
+	private short typ;	
+	
+	
+	public short getTyp() {
+		return typ;
+	}
+	public void setTyp(short typ) {
+		this.typ = typ;
+	}
 	public long getId() {
 		return id;
 	}

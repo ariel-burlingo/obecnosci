@@ -28,6 +28,7 @@
           <string>WEB-INF/classes/obecnosci/ob/domain/Student.class</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Zajecia.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/GrupaManager.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/service/ObecnosciManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/PrzedmiotManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/StudentManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/ZajeciaManager.class</string>
