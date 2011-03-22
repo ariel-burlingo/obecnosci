@@ -21,6 +21,7 @@
           <string>WEB-INF/faces-config.xml</string>
           <string>WEB-INF/templates/default.xhtml</string>
           <string>WEB-INF/web.xml</string>
+          <string>zajecia.xhtml</string>
           <string>WEB-INF/classes/import.sql</string>
           <string>WEB-INF/classes/META-INF/persistence.xml</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Grupa.class</string>
@@ -40,6 +41,7 @@
           <string>WEB-INF/classes/obecnosci/ob/web/ProwadzacyBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/PrzedmiotBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/StudentBean.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/web/ZajeciaBean.class</string>
           <string>WEB-INF/lib/el-impl-2.1.2-b04.jar</string>
         </pathsSet>
       </path-set>
