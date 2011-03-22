@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
 @Entity
@@ -14,6 +15,7 @@ public class Zajecia {
 	private long id;
 	private String adnotacje;
 	private Date data;
+	@ManyToOne
 	private Prowadzacy prowadzacy;
 	public long getId() {
 		return id;

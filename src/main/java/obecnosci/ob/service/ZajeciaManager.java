@@ -33,14 +33,13 @@ public class ZajeciaManager {
 		//         HOUR			DAY		WEEK   
 		// 7days = 3600sec *  24hours *7 days  = 604800 seconds = 604800000 ms
 		
-		//for(int i=1; i<=ileZajec; i++){
-		int i=1;
+		for(int i=1; i<=ileZajec; i++){
 			Zajecia zajecia = new Zajecia();
 			zajecia.setProwadzacy(prowadzacy);
 			Date dataTych = new Date(pierwszeZajecia.getTime()+ ((long) 604800000 * (long) i));
 			zajecia.setData(dataTych);
 			em.persist(zajecia);
-		//}
+		}
 		
 		
 		
