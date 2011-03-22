@@ -9,6 +9,7 @@
           <string>index.jsp</string>
           <string>META-INF/context.xml</string>
           <string>obecnosci.xhtml</string>
+          <string>prowadzacy.xhtml</string>
           <string>przedmiot.xhtml</string>
           <string>resources/css/screen.css</string>
           <string>resources/gfx/banner.png</string>
@@ -30,11 +31,13 @@
           <string>WEB-INF/classes/obecnosci/ob/domain/Zajecia.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/GrupaManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/ObecnosciManager.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/service/ProwadzacyManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/PrzedmiotManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/StudentManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/ZajeciaManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/GrupaBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/ObecnosciBean.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/web/ProwadzacyBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/PrzedmiotBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/StudentBean.class</string>
           <string>WEB-INF/lib/el-impl-2.1.2-b04.jar</string>

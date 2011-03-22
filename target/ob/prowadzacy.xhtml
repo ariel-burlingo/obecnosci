@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+   <h:dataTable  value="#{prowadzacyBean.wszystkichProwadzacych}" var="rec">
+			<h:column>
+				<h:outputText value="#{rec.imie}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{rec.nazwisko}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{rec.daneKontaktowe}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{rec.stronaDomowa}" />
+			</h:column>
+	</h:dataTable>
+	
+	<h2>Dodaj prowadzacego</h2>
+	<h:form>
+	<h:panelGrid columns="2">
+     <h:outputText value="Imie " />
+        <h:inputText value="#{prowadzacyBean.imie}" />
+          <h:outputText value="Nazwisko " />
+        <h:inputText value="#{prowadzacyBean.nazwisko}" />  
+          <h:outputText value="Dane kontaktowe " />
+        <h:inputText value="#{prowadzacyBean.daneKontaktowe}" />  
+          <h:outputText value="Strona Domowa " />
+        <h:inputText value="#{prowadzacyBean.stronaDomowa}" />     
+      </h:panelGrid>
+      <h:panelGrid columns="1">
+        <h:commandButton value="Dodaj prowadzacego" action="#{prowadzacyBean.dodajProwadzacego}" />
+      </h:panelGrid>
+    </h:form>
+
+   </ui:define>
+</ui:composition>
+   
