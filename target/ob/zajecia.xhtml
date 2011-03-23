@@ -5,6 +5,8 @@
    xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
+   
+   <h2>Zaplanuj (auto) zajecia</h2>
    	<h:form>
    	<h:panelGrid columns="2">
 		<h:outputText value="Id Prowadzacego: " />
@@ -25,6 +27,43 @@
 		</h:commandLink>
 </h:panelGrid>
 	</h:form>
-   
+	
+	<h2>Zajecia - wszystkie (zmien/reczne STER/usun)</h2>
+   <h:dataTable binding="#{zajeciaBean.zajecia}" value="#{zajeciaBean.wszystkieZajecia}" var="rec">
+			<h:column>
+				<h:outputText value="#{rec.id}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{rec.data}">
+					<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<h:outputText value="#{rec.adnotacje}" />
+			</h:column>
+			<h:column>
+				<h:form>
+					<h:outputText value="Start:  " />
+        			<h:inputText value="#{zajeciaBean.nowaData}">
+        				<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
+        			</h:inputText>
+        			<h:commandLink action="#{zajeciaBean.zmienZajecia}">
+						<h:graphicImage value="/resources/gfx/edit.png" alt="[Zmien]" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+			<h:column>
+				<h:form>
+					<h:outputText value="RECZNE STER ? " />
+        			
+					<h:commandLink action="#{zajeciaBean.reczneSterowanie}">
+						<h:graphicImage value="/resources/gfx/edit.png" alt="[Reczne sterowanie - czytaj: spóźniłem się]" />
+					</h:commandLink>
+					<h:commandLink action="#{zajeciaBean.usunZajecia}">
+						<h:graphicImage value="/resources/gfx/usun.gif" alt="[x]" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+	</h:dataTable>
    </ui:define>
 </ui:composition>

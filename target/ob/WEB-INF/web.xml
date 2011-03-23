@@ -32,6 +32,11 @@
       <param-value>true</param-value>
    </context-param>
 
+   <context-param>
+    <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
+    <param-value>true</param-value>
+   </context-param>
+   
    <persistence-unit-ref>
       <persistence-unit-ref-name>widgets/pu</persistence-unit-ref-name>
       <persistence-unit-name>widgets</persistence-unit-name>
