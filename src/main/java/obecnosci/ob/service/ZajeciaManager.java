@@ -45,7 +45,7 @@ public class ZajeciaManager {
 			zajecia.setGrupa(grupa);
 			Date dataTych = new Date(pierwszeZajecia.getTime()+ ((long) 604800000 * (long) i));
 			
-			// START LETNI/ZIMOWY?
+			// Obsluga zmiany czasu letni/zimowy
 			if(startCzasDST){
 				if(!cal.getTimeZone().inDaylightTime(dataTych)){
 					dataTych = new Date(dataTych.getTime()+3600000);
