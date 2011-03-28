@@ -30,6 +30,10 @@ public class ZajeciaManager {
 		Prowadzacy prowadzacy = em.getReference(Prowadzacy.class, idProwadzacego);
 		Przedmiot przedmiot = em.getReference(Przedmiot.class, idPrzedmiotu);
 		Grupa grupa = em.getReference(Grupa.class, idGrupy);
+		
+		Calendar cal = Calendar.getInstance();
+		boolean startCzasDST = cal.getTimeZone().inDaylightTime(pierwszeZajecia);
+		
 		//         HOUR			DAY		WEEK   
 		// 7days = 3600sec *  24hours *7 days  = 604800 seconds = 604800000 ms
 		
@@ -40,6 +44,18 @@ public class ZajeciaManager {
 			zajecia.setPrzedmiot(przedmiot);
 			zajecia.setGrupa(grupa);
 			Date dataTych = new Date(pierwszeZajecia.getTime()+ ((long) 604800000 * (long) i));
+			
+			// START LETNI/ZIMOWY?
+			if(startCzasDST){
+				if(!cal.getTimeZone().inDaylightTime(dataTych)){
+					dataTych = new Date(dataTych.getTime()+3600000);
+				}
+			} else {
+				if(cal.getTimeZone().inDaylightTime(dataTych)){
+					dataTych = new Date(dataTych.getTime()-3600000);
+				}
+			}
+			
 			zajecia.setData(dataTych);
 			em.persist(zajecia);
 		}
