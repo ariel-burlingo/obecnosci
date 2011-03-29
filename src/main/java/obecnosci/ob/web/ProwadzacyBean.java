@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.component.html.HtmlDataTable;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -31,6 +32,7 @@ public class ProwadzacyBean implements Serializable {
 	private String nazwisko;
 	private String daneKontaktowe;
 	private String stronaDomowa;
+	private HtmlDataTable prowadzacy;
 
 	
 	//SETTERY I GETTERY
@@ -66,9 +68,17 @@ public class ProwadzacyBean implements Serializable {
 		this.stronaDomowa = stronaDomowa;
 	}
 	
+	public HtmlDataTable getProwadzacy() {
+		return prowadzacy;
+	}
+	
 	
 	//METODY WLASNE
 	
+
+	public void setProwadzacy(HtmlDataTable prowadzacy) {
+		this.prowadzacy = prowadzacy;
+	}
 	public List<Prowadzacy> getWszystkichProwadzacych(){
 		return prowadzacyManager.pobierzWszystkie();
 		
@@ -81,6 +91,15 @@ public class ProwadzacyBean implements Serializable {
 		prowadzacyManager.dodajProwadzacego(imie, nazwisko, daneKontaktowe, stronaDomowa);
 		return "";
 	}
-	
+	public String modyfikujProwadzacego(){
+		Prowadzacy instancja = (Prowadzacy) prowadzacy.getRowData();
+		prowadzacyManager.modyfikujProwadzacego(instancja.getId(), daneKontaktowe, stronaDomowa);
+		return "";
+	}
+	public String usunProwadzacego(){
+		Prowadzacy instancja = (Prowadzacy) prowadzacy.getRowData();
+		prowadzacyManager.usunProwadzacego(instancja);
+		return"";
+	}
 	
 }

@@ -5,7 +5,7 @@
    xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
-   <h:dataTable  value="#{prowadzacyBean.wszystkichProwadzacych}" var="rec">
+   <h:dataTable binding="#{prowadzacyBean.prowadzacy}" value="#{prowadzacyBean.wszystkichProwadzacych}" var="rec">
 			<h:column>
 				<h:outputText value="#{rec.imie}" />
 			</h:column>
@@ -17,6 +17,31 @@
 			</h:column>
 			<h:column>
 				<h:outputText value="#{rec.stronaDomowa}" />
+			</h:column>
+			
+			<h:column>
+			<h:form>
+			<h:commandLink action="#{prowadzacyBean.usunProwadzacego}">
+						<h:graphicImage value="/resources/gfx/edit.png" alt="[usun]" />
+					</h:commandLink>
+			</h:form>
+			</h:column>
+			
+			<h:column>
+			<h:form>
+			<h:outputText value="nowe dane"/>
+			<h:inputText value="#{prowadzacyBean.daneKontaktowe}"/>
+			<h:commandLink action="#{prowadzacyBean.modyfikujProwadzacego}">
+						<h:graphicImage value="/resources/gfx/edit.png" alt="[modyfikuj]" />
+					</h:commandLink>
+			</h:form>
+			<h:form>
+			<h:outputText value="nowe dane1"/>
+			<h:inputText value="#{prowadzacyBean.stronaDomowa}"/>
+			<h:commandLink action="#{prowadzacyBean.modyfikujProwadzacego}">
+						<h:graphicImage value="/resources/gfx/edit.png" alt="[modyfikuj]" />
+					</h:commandLink>
+			</h:form>
 			</h:column>
 	</h:dataTable>
 	

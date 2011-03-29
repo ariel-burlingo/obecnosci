@@ -23,6 +23,12 @@ public class ProwadzacyManager {
 		em.persist(prowadzacy);
 		
 	}
+	public void modyfikujProwadzacego ( long id, String daneKontaktowe, String stronaDomowa){
+		Prowadzacy prowadzacy = em.getReference(Prowadzacy.class, id);
+		prowadzacy.setDaneKontaktowe(daneKontaktowe);
+		prowadzacy.setStronaDomowa(stronaDomowa);
+		em.merge(prowadzacy);
+	}
 	
 	public void usunProwadzacego(Prowadzacy instancja){
 		Prowadzacy prowadzacy = em.getReference(Prowadzacy.class, instancja.getId());
