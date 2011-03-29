@@ -25,6 +25,7 @@
           <string>WEB-INF/classes/import.sql</string>
           <string>WEB-INF/classes/META-INF/persistence.xml</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Grupa.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/domain/Obecnosci$Typ_Obecnosci.class</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Obecnosci.class</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Prowadzacy.class</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Przedmiot.class</string>

@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 
 
 import obecnosci.ob.domain.Obecnosci;
+import obecnosci.ob.domain.Obecnosci.Typ_Obecnosci;
 import obecnosci.ob.domain.Student;
 import obecnosci.ob.domain.Zajecia;
 
@@ -39,7 +40,7 @@ public void zapiszObecnosc(Long IdStudenta,Long IdZajec){
 	zajecia.setId(IdZajec);
 	obecnosc.setStudent(student);
 	obecnosc.setZajecia(zajecia);
-	obecnosc.setTyp((short)-1);
+	obecnosc.setTyp(Typ_Obecnosci.NIEPOTWIERDZONA);
 	em.persist(obecnosc);
 }
 
@@ -48,13 +49,13 @@ public void zapiszObecnosc(Long IdStudenta,Long IdZajec){
 		//Obecnosci obecnosc = em.getReference(Obecnosci.class,instancjaObecnosci.getId());
 		Obecnosci obecnosc = new Obecnosci();
 		obecnosc.setId(IdObecnosci);
-		obecnosc.setTyp((short)1);
+		obecnosc.setTyp(Typ_Obecnosci.POTWIERDZONA);
 		em.merge(obecnosc);
 	}
 	
 	public void usprawedliwN(Obecnosci instancjaObecnosci){
 		Obecnosci obecnosc = em.getReference(Obecnosci.class,instancjaObecnosci.getId());
-		obecnosc.setTyp((short)0);
+		obecnosc.setTyp(Typ_Obecnosci.USPRAWIEDLIWIONA);
 		em.merge(obecnosc);
 	}
 	public List<Obecnosci> pobierzWszystkie(){

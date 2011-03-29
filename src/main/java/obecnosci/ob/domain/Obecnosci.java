@@ -16,13 +16,16 @@ public class Obecnosci {
 	Student student;
 	@ManyToOne
 	Zajecia zajecia;
-	private short typ;	
+	//private short typ;	
+public enum Typ_Obecnosci{POTWIERDZONA,USPRAWIEDLIWIONA,NIEPOTWIERDZONA}
+private Typ_Obecnosci typ;
+
+
 	
-	
-	public short getTyp() {
+	public Typ_Obecnosci getTyp() {
 		return typ;
 	}
-	public void setTyp(short typ) {
+	public void setTyp(Typ_Obecnosci typ) {
 		this.typ = typ;
 	}
 	public long getId() {
