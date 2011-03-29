@@ -5,6 +5,7 @@
    xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
+   <h1>Wpisz na lisę obecnosci:</h1>
     <h:dataTable binding="#{obecnosciBean.studenci}" value="#{obecnosciBean.wszystkichStudentow}" var="rec">
 			<h:column>
 				<h:outputText value="#{rec.index}" />
@@ -26,8 +27,30 @@
 			</h:column>
 	</h:dataTable>
 	
+	 <h1>Potwierdz/Usprawiedliw obecności:</h1>
+    <h:dataTable binding="#{obecnosciBean.obecnosci}"  value="#{obecnosciBean.wszystkieObecnosci}" var="obe">
+			<h:column>
+				<h:outputText value="#{obe.id}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{obe.typ}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{obe.student.id}" />
+			</h:column>
+			
+			<h:column>
+				<h:form>
+					<h:commandLink action="#{obecnosciBean.zatwierdzObecnosc}">
+						<h:graphicImage value="/resources/gfx/edit.png" alt="[zatwierdz obecnosc]" />
+					</h:commandLink>
+					<h:commandLink action="#{obecnosciBean.usprawiedliwObecnosc}">
+						<h:graphicImage value="/resources/gfx/edit.png" alt="[usprawiedliw nieobecnosc]" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+	</h:dataTable>
 	
-
    </ui:define>
 </ui:composition>
    

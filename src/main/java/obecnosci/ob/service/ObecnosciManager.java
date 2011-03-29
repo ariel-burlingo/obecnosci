@@ -46,9 +46,9 @@ public void zapiszObecnosc(Long IdStudenta,Long IdZajec){
 
 
 	public void zatwierdzObecnosci(Long IdObecnosci) {
-		//Obecnosci obecnosc = em.getReference(Obecnosci.class,instancjaObecnosci.getId());
-		Obecnosci obecnosc = new Obecnosci();
-		obecnosc.setId(IdObecnosci);
+		Obecnosci obecnosc = em.getReference(Obecnosci.class,IdObecnosci);
+	//	Obecnosci obecnosc = new Obecnosci();
+		//obecnosc.setId(IdObecnosci);
 		obecnosc.setTyp(Typ_Obecnosci.POTWIERDZONA);
 		em.merge(obecnosc);
 	}

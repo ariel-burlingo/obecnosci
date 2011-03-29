@@ -28,7 +28,7 @@ public class ObecnosciBean implements Serializable {
 	ZajeciaManager zajeciaManager;
 
 	//Zmienne
-	private long id=0;
+	private long Id=0;
 	private Student student;
 	private Zajecia zajecia;
 	private long IdZajec;
@@ -40,7 +40,7 @@ public class ObecnosciBean implements Serializable {
 	
 	
 	public long getId() {
-		return id;
+		return Id;
 	}
 	public long getIdZajec() {
 		return IdZajec;
@@ -49,7 +49,7 @@ public class ObecnosciBean implements Serializable {
 		IdZajec = idZajec;
 	}
 	public void setId(long id) {
-		this.id = id;
+		this.Id = id;
 	}
 	public Student getStudent() {
 		return student;
@@ -106,6 +106,12 @@ public class ObecnosciBean implements Serializable {
 	public String zatwierdzObecnosc(){
 		Obecnosci instancja = (Obecnosci) obecnosci.getRowData();
 	obecnosciManager.zatwierdzObecnosci(instancja.getId());
+		return "";	
+	}
+	
+	public String usprawiedliwObecnosc(){
+		Obecnosci instancja = (Obecnosci) obecnosci.getRowData();
+	obecnosciManager.usprawedliwN(instancja);
 		return "";	
 	}
 
