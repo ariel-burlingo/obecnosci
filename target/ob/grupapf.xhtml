@@ -8,8 +8,8 @@
 
 	<ui:define name="content">
 		<h:form>
-			<p:dataTable  value="#{grupaBean.wszystkieGrupy}" var="gru">
-				<p:column>
+			<p:dataTable value="#{grupaBean.wszystkieGrupy}"  var="gru">
+				<p:column  style="width:50px">
 					<f:facet name="header">
                     ID
             </f:facet>
@@ -23,7 +23,6 @@
 					<h:outputText value="#{gru.informacje}" />
 				</p:column>
 			</p:dataTable>
-
 		</h:form>
 		<h2>Dodaj grupe</h2>
 		<h:form>
