@@ -14,6 +14,8 @@
           <string>resources/css/screen.css</string>
           <string>resources/gfx/banner.png</string>
           <string>resources/gfx/edit.png</string>
+          <string>resources/gfx/potwierdz.gif</string>
+          <string>resources/gfx/usprawiedliw.gif</string>
           <string>resources/gfx/usun.gif</string>
           <string>resources/gfx/weld.png</string>
           <string>student.xhtml</string>

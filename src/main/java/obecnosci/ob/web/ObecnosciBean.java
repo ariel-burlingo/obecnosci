@@ -27,98 +27,98 @@ public class ObecnosciBean implements Serializable {
 	@Inject
 	ZajeciaManager zajeciaManager;
 
-	//Zmienne
-	private long Id=0;
+	// Zmienne
+	private long Id = 0;
 	private Student student;
 	private Zajecia zajecia;
 	private long IdZajec;
 	// DATATABLE BACKEND
 	private HtmlDataTable obecnosci;
 	private HtmlDataTable studenci;
-	
-	//SETTERY i GETTERY
-	
-	
+
+	// SETTERY i GETTERY
 	public long getId() {
 		return Id;
 	}
+
 	public long getIdZajec() {
 		return IdZajec;
 	}
+
 	public void setIdZajec(long idZajec) {
 		IdZajec = idZajec;
 	}
+
 	public void setId(long id) {
 		this.Id = id;
 	}
+
 	public Student getStudent() {
 		return student;
 	}
+
 	public void setStudent(Student student) {
 		this.student = student;
 	}
+
 	public Zajecia getZajecia() {
 		return zajecia;
 	}
+
 	public void setZajecia(Zajecia zajecia) {
 		this.zajecia = zajecia;
 	}
-	
-	//METODY WLASNE
-	public List<Obecnosci> getWszystkieObecnosci(){
-	return obecnosciManager.pobierzWszystkie();
+
+	// METODY WLASNE
+	public List<Obecnosci> getWszystkieObecnosci() {
+		return obecnosciManager.pobierzWszystkie();
 	}
-	public List<Student> getWszystkichStudentow(){
+
+	public List<Student> getWszystkichStudentow() {
 		return studentManager.pobierzWszystkich();
-		
+
 	}
-	public List<Zajecia> getWszystkieZajecia(){
+
+	public List<Zajecia> getWszystkieZajecia() {
 		return zajeciaManager.pobierzWszystkie();
-		
+
 	}
-	
-	
-	
-	
+
 	// DATATABLE BACKEDN
 	public HtmlDataTable getObecnosci() {
 		return obecnosci;
 	}
+
 	public void setObecnosci(HtmlDataTable obecnosci) {
 		this.obecnosci = obecnosci;
 	}
+
 	public HtmlDataTable getStudenci() {
 		return studenci;
 	}
+
 	public void setStudenci(HtmlDataTable studenci) {
 		this.studenci = studenci;
 	}
-	
-	
-	//AKCJE
-	public String zapiszObecnosc(){
-	//dodawanie obecnosci
+
+	// AKCJE
+	public String zapiszObecnosc() {
+		// dodawanie obecnosci
 		Student instancja = (Student) studenci.getRowData();
-		obecnosciManager.zapiszObecnosc(instancja.getId(),IdZajec);
-		return "";	
-	}
-	
-	public String zatwierdzObecnosc(){
-		Obecnosci instancja = (Obecnosci) obecnosci.getRowData();
-	obecnosciManager.zatwierdzObecnosci(instancja.getId());
-		return "";	
-	}
-	
-	public String usprawiedliwObecnosc(){
-		Obecnosci instancja = (Obecnosci) obecnosci.getRowData();
-	obecnosciManager.usprawedliwN(instancja);
-		return "";	
+		obecnosciManager.zapiszObecnosc(instancja.getId(), IdZajec);
+		return "";
 	}
 
-	
+	public String zatwierdzObecnosc() {
+		Obecnosci instancja = (Obecnosci) obecnosci.getRowData();
+		obecnosciManager.zatwierdzObecnosci(instancja.getId());
+		return "";
+	}
+
+	public String usprawiedliwObecnosc() {
+		Obecnosci instancja = (Obecnosci) obecnosci.getRowData();
+		obecnosciManager.usprawedliwN(instancja);
+		return "";
+	}
+
 }
-	
-	
-	
-	
-
