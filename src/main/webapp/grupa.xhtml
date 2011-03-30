@@ -5,13 +5,31 @@
    xmlns:h="http://java.sun.com/jsf/html"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
-   <h:dataTable  value="#{grupaBean.wszystkieGrupy}" var="rec">
+   <h:dataTable  binding="#{grupaBean.grupa}" value="#{grupaBean.wszystkieGrupy}" var="rec">
+			<h:column>
+				<h:outputText value="#{rec.id}" />
+			</h:column>
 			<h:column>
 				<h:outputText value="#{rec.informacje}" />
 			</h:column>
 			<h:column>
-				<h:outputText value="#{rec.id}" />
+				<h:form>
+					<h:outputText value="Informacje:  " />
+        			<h:inputText value="#{grupaBean.informacje}"/>
+						<h:commandLink action="#{grupaBean.edytujGrupe}">
+						<h:graphicImage value="/resources/gfx/edit.png" alt="[Edytuj]" />
+					</h:commandLink>
+				</h:form>
 			</h:column>
+			<h:column>
+				<h:form>
+						<h:commandLink action="#{grupaBean.usunGrupe}">
+						<h:graphicImage value="/resources/gfx/usun.gif" alt="[Usun]" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+				
+    
 	</h:dataTable>
 	
 	<h2>Dodaj grupe</h2>
