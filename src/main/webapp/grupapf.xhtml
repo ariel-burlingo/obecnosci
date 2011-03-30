@@ -24,16 +24,21 @@
 				</p:column>
 			</p:dataTable>
 		</h:form>
-		<h2>Dodaj grupe</h2>
-		<h:form>
-			<h:panelGrid columns="2">
-				<h:outputText value="Informacje " />
-				<h:inputText value="#{grupaBean.informacje}" />
-			</h:panelGrid>
-			<h:panelGrid columns="1">
-				<h:commandButton value="Dodaj grupe"
-					action="#{grupaBean.dodajGrupe}" />
-			</h:panelGrid>
-		</h:form>
+		<h:form>	
+		<p:panel id="panel" header="Nowa Grupa" style="margin-bottom:10px;">  
+        <p:messages />  
+        <h:panelGrid columns="3">  
+            <h:outputLabel for="informacje" value="Informacje: " />  
+            <p:inputText id="informacje"   
+                value="#{grupaBean.informacje}" required="true" label="Informacje">    
+            </p:inputText>  
+             <p:commandButton value="Dodaj Grupe" actionListener="#{grupaBean.dodajGrupe}" ajax="false" />              
+        </h:panelGrid>  
+    </p:panel> 
+  
+              
+    </h:form>
+    
+    
 	</ui:define>
 </ui:composition>
