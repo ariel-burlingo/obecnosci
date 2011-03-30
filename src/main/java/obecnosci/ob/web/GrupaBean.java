@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.component.html.HtmlDataTable;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import obecnosci.ob.domain.Grupa;
+import obecnosci.ob.domain.Zajecia;
 
 import obecnosci.ob.service.GrupaManager;
 import obecnosci.ob.service.StudentManager;
@@ -30,6 +32,8 @@ public class GrupaBean implements Serializable {
 	private String informacje;
 	private List<Grupa> grupy;
 	
+	//HTML BACKEND
+	private HtmlDataTable grupa;
 	
 	//SETTERY i GETTERY
 	public StudentManager getStudentManager() {
@@ -63,7 +67,15 @@ public class GrupaBean implements Serializable {
 		this.grupy = grupy;
 	}
 	
+	public HtmlDataTable getGrupa() {
+		return grupa;
+	}
+	public void setGrupa(HtmlDataTable grupa) {
+		this.grupa = grupa;
+	}
+	
 	//METODY WLASNE
+	
 	
 	public List<Grupa> getWszystkieGrupy(){
 		return grupaManager.pobierzWszystkie();
@@ -76,6 +88,24 @@ public class GrupaBean implements Serializable {
 		grupaManager.dodajGrupe(informacje);
 		return "";
 	}
+	public String edytujGrupe(){
+		Grupa instancja = (Grupa) grupa.getRowData();
+		grupaManager.edytujGrupe(instancja.getId() , informacje);
+		return "";
+	}
+	//public String usunGrupe(){
+	//	grupaManager.usunGrupe(Grupa instancja);
+	//	return "";
+	//}
+	
+	public String usunGrupe(){
+		Grupa instancja = (Grupa) grupa.getRowData();
+		grupaManager.usunGrupe(instancja.getId());
+		return "";
+	}
+	
+	
+	
 	/*
 	public String usunGrupe(){
 	grupaManager.usunGrupe(instancja);
