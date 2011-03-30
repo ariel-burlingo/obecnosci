@@ -5,6 +5,7 @@
       <path-set>
         <pathsSet class="linked-hash-set">
           <string>grupa.xhtml</string>
+          <string>grupapf.xhtml</string>
           <string>home.xhtml</string>
           <string>index.jsp</string>
           <string>META-INF/context.xml</string>
