@@ -3,6 +3,7 @@
    xmlns:ui="http://java.sun.com/jsf/facelets"
    xmlns:f="http://java.sun.com/jsf/core"
    xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
    
@@ -16,9 +17,8 @@
     	<h:outputText value="Id grupy: " />
     	<h:inputText value="#{zajeciaBean.grupaId}" />
     	<h:outputText value="Data pierwszych zajec: " />
-    	<h:inputText value="#{zajeciaBean.pierwszeZajecia}">
-    		<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
-    	</h:inputText>
+    	<p:calendar value="#{zajeciaBean.pierwszeZajecia}"  pattern="MM/dd/yyyy HH:mm" />
+
     	<h:outputText value="Ile zajęć ma się odbyć?: " />
     	<h:inputText value="#{zajeciaBean.ile}" />
     	     
