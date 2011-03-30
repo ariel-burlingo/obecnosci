@@ -55,7 +55,7 @@
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>2.2</version>
+			<version>3.0-prime-1</version>
 		</dependency>
 		<!-- CDI (JSR-299) -->
 		<dependency>

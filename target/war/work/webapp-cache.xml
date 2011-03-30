@@ -43,7 +43,7 @@
           <string>WEB-INF/classes/obecnosci/ob/web/PrzedmiotBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/StudentBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/ZajeciaBean.class</string>
-          <string>WEB-INF/lib/primefaces-2.2.jar</string>
+          <string>WEB-INF/lib/primefaces-3.0-prime-1.jar</string>
           <string>WEB-INF/lib/el-impl-2.1.2-b04.jar</string>
         </pathsSet>
       </path-set>
@@ -54,13 +54,13 @@
       <dependency>
         <groupId>org.primefaces</groupId>
         <artifactId>primefaces</artifactId>
-        <version>2.2</version>
+        <version>3.0-prime-1</version>
         <type>jar</type>
         <scope>compile</scope>
         <exclusions/>
         <optional>false</optional>
       </dependency>
-      <targetFileName>primefaces-2.2.jar</targetFileName>
+      <targetFileName>primefaces-3.0-prime-1.jar</targetFileName>
     </org.apache.maven.plugin.war.util.DependencyInfo>
     <org.apache.maven.plugin.war.util.DependencyInfo>
       <dependency>

@@ -28,6 +28,8 @@ public class ZajeciaBean implements Serializable{
 	private int ile = 0;
 	
 	private Date pierwszeZajecia = new Date();
+	private int pierwszeZajeciaGodzina = 0;
+	private int pierwszeZajeciaMinuta = 0;
 	private Date nowaData = new Date();
 	
 	// DATATABLE BACKEND
@@ -51,6 +53,22 @@ public class ZajeciaBean implements Serializable{
 	}
 	public void setPierwszeZajecia(Date pierwszeZajecia) {
 		this.pierwszeZajecia = pierwszeZajecia;
+	}
+	
+	
+	
+	public int getPierwszeZajeciaGodzina() {
+		return pierwszeZajeciaGodzina;
+	}
+	public void setPierwszeZajeciaGodzina(int pierwszeZajeciaGodzina) {
+		this.pierwszeZajeciaGodzina = pierwszeZajeciaGodzina;
+	}
+	public int getPierwszeZajeciaMinuta() {
+		return pierwszeZajeciaMinuta;
+	}
+	
+	public void setPierwszeZajeciaMinuta(int pierwszeZajeciaMinuta) {
+		this.pierwszeZajeciaMinuta = pierwszeZajeciaMinuta;
 	}
 	public long getPrzedmiotId() {
 		return przedmiotId;
