@@ -7,7 +7,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.component.html.HtmlDataTable;
 import javax.inject.Inject;
 import javax.inject.Named;
-
+import javax.faces.context.FacesContext;
 import obecnosci.ob.domain.Prowadzacy;
 import obecnosci.ob.service.ProwadzacyManager;
 import obecnosci.ob.service.PrzedmiotManager;
@@ -33,12 +33,20 @@ public class ProwadzacyBean implements Serializable {
 	private String daneKontaktowe;
 	private String stronaDomowa;
 	private HtmlDataTable prowadzacy;
-
+//
+	private List<Prowadzacy> prowadzacych;
+	//
 	
 	//SETTERY I GETTERY
 	
 	public long getId() {
 		return id;
+	}
+	public List<Prowadzacy> getProwadzacych() {
+		return prowadzacych;
+	}
+	public void setProwadzacych(List<Prowadzacy> prowadzacych) {
+		this.prowadzacych = prowadzacych;
 	}
 	public void setId(long id) {
 		this.id = id;
