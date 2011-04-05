@@ -32,6 +32,7 @@ public class ProwadzacyBean implements Serializable {
 	private String nazwisko;
 	private String daneKontaktowe;
 	private String stronaDomowa;
+	private String password;
 	private HtmlDataTable prowadzacy;
 //
 	private List<Prowadzacy> prowadzacych;
@@ -80,10 +81,16 @@ public class ProwadzacyBean implements Serializable {
 		return prowadzacy;
 	}
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	
 	//METODY WLASNE
 	
-
 	public void setProwadzacy(HtmlDataTable prowadzacy) {
 		this.prowadzacy = prowadzacy;
 	}
@@ -96,7 +103,7 @@ public class ProwadzacyBean implements Serializable {
 	//AKCJE
 	
 	public String dodajProwadzacego(){
-		prowadzacyManager.dodajProwadzacego(imie, nazwisko, daneKontaktowe, stronaDomowa);
+		prowadzacyManager.dodajProwadzacego(imie, nazwisko, daneKontaktowe, stronaDomowa, password);
 		return "";
 	}
 	public String modyfikujProwadzacego(){

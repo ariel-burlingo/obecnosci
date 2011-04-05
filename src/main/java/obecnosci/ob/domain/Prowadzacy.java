@@ -19,11 +19,12 @@ public class Prowadzacy implements Serializable{
 	
 	@Id
 	@GeneratedValue
-	private long id;
+private long id;
 private String imie;
 private String nazwisko;
 private String daneKontaktowe;
 private String stronaDomowa;
+private String password;
 @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 private List<Przedmiot> przedmioty;
 
@@ -62,6 +63,12 @@ public String getStronaDomowa() {
 }
 public void setStronaDomowa(String stronaDomowa) {
 	this.stronaDomowa = stronaDomowa;
+}
+public String getPassword() {
+	return password;
+}
+public void setPassword(String password) {
+	this.password = password;
 }
 
 

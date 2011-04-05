@@ -58,7 +58,9 @@
             </p:inputText> 
             <h:outputLabel for="stronaDomowa" value="StronaDomowa: " />  
             <p:inputText id="stronaDomowa" value="#{prowadzacyBean.stronaDomowa}" required="true" label="StronaDomowa">    
-            </p:inputText>                         
+            </p:inputText>
+             <h:outputText value="Wpisz haslo: " />
+            <p:password value="#{prowadzacyBean.password}" inline="true" />                        
              <p:commandButton value="Dodaj Prowadzacego" actionListener="#{prowadzacyBean.dodajProwadzacego}" ajax="false" />              
         </h:panelGrid>  
     </p:panel> 
@@ -66,7 +68,6 @@
               
     </h:form>
 
-				
 
    </ui:define>
 </ui:composition>

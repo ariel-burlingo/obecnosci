@@ -14,12 +14,13 @@ public class ProwadzacyManager {
 	@PersistenceContext
 	EntityManager em;
 	
-	public void dodajProwadzacego(String imie, String nazwisko, String daneKontaktowe, String stronaDomowa){
+	public void dodajProwadzacego(String imie, String nazwisko, String daneKontaktowe, String stronaDomowa, String password){
 		Prowadzacy prowadzacy = new Prowadzacy();
 		prowadzacy.setImie(imie);
 		prowadzacy.setNazwisko(nazwisko);
 		prowadzacy.setDaneKontaktowe(daneKontaktowe);
 		prowadzacy.setStronaDomowa(stronaDomowa);
+		prowadzacy.setPassword(password);
 		em.persist(prowadzacy);
 		
 	}
