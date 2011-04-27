@@ -1,6 +1,7 @@
 package obecnosci.ob.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -105,6 +106,15 @@ public class StudentManager {
 	}
 	
 	public List<Grupa> pobierzGrupy(long id){
-		return em.getReference(Student.class, id).getGrupy();
+		List<Grupa> grupy = new ArrayList<Grupa>();
+		List<Grupa> deep = new ArrayList<Grupa>();
+		// petla ktora kopiuje z referencji do stworzonego obiektu wiersz po wierszu
+		grupy = em.find(Student.class, id).getGrupy();
+		Iterator<Grupa> iter = grupy.iterator();
+		while(iter.hasNext()){
+			deep.add(iter.next());
+		}
+		return deep;
+		//return 
 	}
 }
