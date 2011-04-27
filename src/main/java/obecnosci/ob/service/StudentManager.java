@@ -27,6 +27,12 @@ public class StudentManager {
 	@PersistenceContext
 	EntityManager em;
 	
+	public Student zaloguj(int index, String haslo){
+		Student student = (Student) em.createQuery("select s from Student s where s.index = :index and s.haslo = :haslo").setParameter("index", index).setParameter("haslo", haslo).getSingleResult();
+		return student;
+	}
+	
+		
 	public void dodajStudenta(int index, String imie, String nazwisko, String haslo){
 		Student student = new Student();
 		student.setIndex(index);
@@ -48,8 +54,8 @@ public class StudentManager {
 		em.remove(student);		
 	}
 	
-	public void zmienDaneStudenta(Student instancja, String imie, String nazwisko, String haslo){
-		Student student = em.getReference(Student.class, instancja.getId());
+	public void zmienDaneStudenta(long id, String imie, String nazwisko, String haslo){
+		Student student = em.getReference(Student.class, id);
 		student.setImie(imie);
 		student.setNazwisko(nazwisko);
 		// TODO: ZHASZOWAÆ KUR.. TRZEBA. Bo inczej bêdzie pizda jak z portalem zapisów i go³ymi has³ami!		
@@ -96,5 +102,9 @@ public class StudentManager {
 	
 	public List<Student> pobierzWszystkich(){
 		return em.createQuery("from Student").getResultList();
+	}
+	
+	public List<Grupa> pobierzGrupy(long id){
+		return em.getReference(Student.class, id).getGrupy();
 	}
 }

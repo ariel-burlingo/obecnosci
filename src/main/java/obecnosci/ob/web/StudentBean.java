@@ -14,6 +14,7 @@ import obecnosci.ob.service.GrupaManager;
 import obecnosci.ob.service.PrzedmiotManager;
 import obecnosci.ob.service.StudentManager;
 
+import obecnosci.ob.domain.Grupa;
 import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
 
@@ -126,10 +127,37 @@ public class StudentBean implements Serializable{
 		return przedmiotManager.pobierzWszystkie();		
 	}
 	
+	public List<Grupa> getGrupy(){
+		return studentManager.pobierzGrupy(id);
+	}
+	
 	// AKCJE
 	
 	public String dodajStudenta(){
 		studentManager.dodajStudenta(index, imie, nazwisko, haslo);
+		return "";
+	}
+	
+	public String zapiszZmianyAjax(){
+		studentManager.zmienDaneStudenta(id, imie, nazwisko, haslo);
+		return "";
+	}
+	
+	public String zaloguj(){
+		Student student = studentManager.zaloguj(index, haslo);
+		if (student.getId()>0){
+			this.id = student.getId();
+			this.imie = student.getImie();
+			this.nazwisko = student.getNazwisko();
+			this.haslo = student.getHaslo();
+			
+		} else {
+			this.id = 0;
+			this.imie = "niezalogowany";
+			this.nazwisko = "niezalobgowany";
+			this.haslo = "STFU";
+		}
+		
 		return "";
 	}
 	
