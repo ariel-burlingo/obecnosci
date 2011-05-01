@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+   
+   <h2>Zaplanuj (auto) zajecia</h2>
+   	<h:form>
+   	<h:panelGrid columns="2">
+		<h:outputText value="Id Prowadzacego: #{zajeciaBean.prowadzacyId}" />
+    	<h:outputText value="Przedmiot: " />
+    	<p:selectOneMenu value="#{zajeciaBean.wybranyPrzedmiot}" style="width:400px">
+    		<f:selectItem itemLabel="Wybierz Przedmiot" itemValue="" />  
+            <f:selectItems value="#{zajeciaBean.mojePrzedmioty}"  
+                var="rekord" itemLabel="#{rekord.nazwa} #{rekord.inneDane}" itemValue="#{rekord}" />  
+        </p:selectOneMenu>  
+    	<h:outputText value="Id grupy: " />
+    	<h:inputText value="#{zajeciaBean.grupaId}" />
+    	<h:outputText value="Data pierwszych zajec: " />
+    	<p:calendar value="#{zajeciaBean.pierwszeZajecia}"  pattern="MM/dd/yyyy HH:mm" />
+
+    	<h:outputText value="Ile zajęć ma się odbyć?: " />
+    	<h:inputText value="#{zajeciaBean.ile}" />
+    	     
+		<h:commandLink action="#{zajeciaBean.zaplanuj}">
+			<h:graphicImage value="/resources/gfx/edit.png" alt="[przypisz do grupy]" />
+		</h:commandLink>
+</h:panelGrid>
+	</h:form>
+   </ui:define>
+</ui:composition>

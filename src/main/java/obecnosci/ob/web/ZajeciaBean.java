@@ -9,8 +9,12 @@ import javax.faces.component.html.HtmlDataTable;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import obecnosci.ob.domain.Grupa;
+import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
 import obecnosci.ob.domain.Zajecia;
+import obecnosci.ob.service.ProwadzacyManager;
+import obecnosci.ob.service.PrzedmiotManager;
 import obecnosci.ob.service.ZajeciaManager;
 
 @SessionScoped
@@ -19,11 +23,24 @@ public class ZajeciaBean implements Serializable{
 
 	@Inject
 	ZajeciaManager zajeciaManager;
+	@Inject
+	PrzedmiotManager przedmiotManager;
+	@Inject
+	ProwadzacyManager prowadzacyManager;
 	
 	private static final long serialVersionUID = -7102250578153538924L;
 	
-	private long prowadzacyId = 0;
+	private long prowadzacyId = 1; // zmienic na zero
 	private long przedmiotId = 0;
+	private Przedmiot wybranyPrzedmiot;
+	private Grupa wybranaGrupa;
+	public Grupa getWybranaGrupa() {
+		return wybranaGrupa;
+	}
+	public void setWybranaGrupa(Grupa wybranaGrupa) {
+		this.wybranaGrupa = wybranaGrupa;
+	}
+
 	private long grupaId = 0;
 	private int ile = 0;
 	
@@ -88,6 +105,12 @@ public class ZajeciaBean implements Serializable{
 	public void setNowaData(Date nowaData) {
 		this.nowaData = nowaData;
 	}
+	public void setWybranyPrzedmiot(Przedmiot wybranyPrzedmiot) {
+		this.wybranyPrzedmiot = wybranyPrzedmiot;
+	}
+	public Przedmiot getWybranyPrzedmiot() {
+		return wybranyPrzedmiot;
+	}
 	public HtmlDataTable getZajecia() {
 		return zajecia;
 	}
@@ -100,6 +123,12 @@ public class ZajeciaBean implements Serializable{
 	public List<Zajecia> getWszystkieZajecia(){
 		return zajeciaManager.pobierzWszystkie();
 	}
+	
+	public List<Przedmiot> getMojePrzedmioty(){
+		return prowadzacyManager.pobierzMoje(prowadzacyId);
+	}
+	
+	
 	
 	
 	

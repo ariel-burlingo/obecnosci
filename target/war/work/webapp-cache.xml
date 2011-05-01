@@ -28,6 +28,7 @@
           <string>WEB-INF/templates/default.xhtml</string>
           <string>WEB-INF/web.xml</string>
           <string>zajecia.xhtml</string>
+          <string>zajeciapf.xhtml</string>
           <string>zaloguj.xhtml</string>
           <string>WEB-INF/classes/import.sql</string>
           <string>WEB-INF/classes/META-INF/persistence.xml</string>

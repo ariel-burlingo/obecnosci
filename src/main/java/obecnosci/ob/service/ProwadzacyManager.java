@@ -1,12 +1,17 @@
 package obecnosci.ob.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+
 import obecnosci.ob.domain.Prowadzacy;
+import obecnosci.ob.domain.Przedmiot;
+
 
 @Stateless
 public class ProwadzacyManager {
@@ -38,6 +43,18 @@ public class ProwadzacyManager {
 	
 	public List<Prowadzacy> pobierzWszystkie(){
 		return em.createQuery("from Prowadzacy").getResultList();
+	}
+	
+	public List<Przedmiot> pobierzMoje(long id){
+		List<Przedmiot> przedmioty = new ArrayList<Przedmiot>();
+		List<Przedmiot> deep = new ArrayList<Przedmiot>();
+		// petla ktora kopiuje z referencji do stworzonego obiektu wiersz po wierszu
+		przedmioty = em.find(Prowadzacy.class, id).getPrzedmioty();
+		Iterator<Przedmiot> iter = przedmioty.iterator();
+		while(iter.hasNext()){
+			deep.add(iter.next());
+		}
+		return deep;
 	}
 	
 }

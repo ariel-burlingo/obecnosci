@@ -28,6 +28,14 @@ public class ProwadzacyBean implements Serializable {
 	//ZMIENNE
 	
 	private long   id=0;
+	private long przedmiotId=0;
+	public long getPrzedmiotId() {
+		return przedmiotId;
+	}
+	public void setPrzedmiotId(long przedmiotId) {
+		this.przedmiotId = przedmiotId;
+	}
+
 	private String imie;
 	private String nazwisko;
 	private String daneKontaktowe;
@@ -115,6 +123,12 @@ public class ProwadzacyBean implements Serializable {
 		Prowadzacy instancja = (Prowadzacy) prowadzacy.getRowData();
 		prowadzacyManager.usunProwadzacego(instancja);
 		return"";
+	}
+	
+	public String przypiszDoPrzedmiotu(){
+		Prowadzacy instancja = (Prowadzacy) prowadzacy.getRowData();
+		przedmiotManager.przypiszPrzedmiotDoProwadzacego(instancja, przedmiotId);
+		return "";
 	}
 	
 }

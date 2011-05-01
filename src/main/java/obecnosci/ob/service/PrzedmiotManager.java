@@ -28,9 +28,9 @@ public class PrzedmiotManager {
 		
 	}
 	
-	public void przypiszPrzedmiotDoProwadzacego(Prowadzacy instProwadzacy, Przedmiot instancja){
+	public void przypiszPrzedmiotDoProwadzacego(Prowadzacy instProwadzacy, long przedmiotId){
 		Prowadzacy prowadzacy = em.getReference(Prowadzacy.class, instProwadzacy.getId());
-		Przedmiot przedmiot = em.getReference(Przedmiot.class, instancja.getId());
+		Przedmiot przedmiot = em.getReference(Przedmiot.class, przedmiotId);
 		List<Przedmiot> przedmioty = prowadzacy.getPrzedmioty();
 		przedmioty.add(przedmiot);
 		prowadzacy.setPrzedmioty(przedmioty);
@@ -41,4 +41,5 @@ public class PrzedmiotManager {
 	public List<Przedmiot> pobierzWszystkie(){
 		return em.createQuery("from Przedmiot").getResultList();
 	}
+	
 }

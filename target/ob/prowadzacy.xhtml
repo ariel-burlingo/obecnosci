@@ -24,6 +24,11 @@
 			<h:commandLink action="#{prowadzacyBean.usunProwadzacego}">
 						<h:graphicImage value="/resources/gfx/edit.png" alt="[usun]" />
 					</h:commandLink>
+					<h:outputText value="ID_przedmiotu"/>
+					<h:inputText value="#{prowadzacyBean.przedmiotId}"/>
+					<h:commandLink action="#{prowadzacyBean.przypiszDoPrzedmiotu}">
+						<h:graphicImage value="/resources/gfx/potwierdz.gif" alt="[przypisz]" />
+					</h:commandLink>
 			</h:form>
 			</h:column>
 			
