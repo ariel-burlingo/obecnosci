@@ -7,30 +7,33 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
    
-   <h2>Zaplanuj (auto) zajecia</h2>
+   <h1>Planowanie Zajęć</h1>
    	<h:form>
    	<h:panelGrid columns="2">
-		<h:outputText value="Id Prowadzacego: " />
-    	<h:inputText value="#{zajeciaBean.prowadzacyId}" />
-    	<h:outputText value="Id przedmiotu: " />
-    	<h:inputText value="#{zajeciaBean.przedmiotId}" />
-    	<h:outputText value="Przedmiot: " />
-    	<p:selectOneMenu value="#{zajeciaBean.wybranyPrzedmiot}" style="width:400px">
+		<h:outputText value="Przedmiot: " />
+    	<p:selectOneMenu value="#{zajeciaBean.przedmiotId}" style="width:400px">
     		<f:selectItem itemLabel="Wybierz Przedmiot" itemValue="" />  
             <f:selectItems value="#{zajeciaBean.mojePrzedmioty}"  
-                var="rekord" itemLabel="#{rekord.nazwa} #{rekord.inneDane}" itemValue="#{rekord}" />  
-        </p:selectOneMenu>  
-    	<h:outputText value="Id grupy: " />
-    	<h:inputText value="#{zajeciaBean.grupaId}" />
-    	<h:outputText value="Data pierwszych zajec: " />
+                var="rekord" itemLabel="#{rekord.nazwa} #{rekord.inneDane}" itemValue="#{rekord.id}" />  
+        </p:selectOneMenu>
+        
+        <h:outputText value="Grupa: " />
+        <p:selectOneMenu value="#{zajeciaBean.grupaId}" style="width:400px">
+    		<f:selectItem itemLabel="Wybierz Grupę" itemValue="" />  
+            <f:selectItems value="#{zajeciaBean.wszystkieGrupy}"  
+                var="rekord" itemLabel="#{rekord.informacje}" itemValue="#{rekord.id}" />  
+        </p:selectOneMenu>    
+    	
+    	<h:outputText value="Data pierwszych zajęć: " />
     	<p:calendar value="#{zajeciaBean.pierwszeZajecia}"  pattern="MM/dd/yyyy HH:mm" />
 
     	<h:outputText value="Ile zajęć ma się odbyć?: " />
-    	<h:inputText value="#{zajeciaBean.ile}" />
+    	<p:spinner id="spinnerBasic" min="0" max="100"  
+                    value="#{zajeciaBean.ile}"/>  
     	     
-		<h:commandLink action="#{zajeciaBean.zaplanuj}">
-			<h:graphicImage value="/resources/gfx/edit.png" alt="[przypisz do grupy]" />
-		</h:commandLink>
+    	  <h:outputText value=" " />
+    	  <p:commandButton value="Zaplanuj" actionListener="#{zajeciaBean.zaplanuj}"   
+            ajax="false" />      
 </h:panelGrid>
 	</h:form>
    </ui:define>

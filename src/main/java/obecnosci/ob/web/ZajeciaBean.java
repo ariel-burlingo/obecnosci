@@ -13,6 +13,7 @@ import obecnosci.ob.domain.Grupa;
 import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
 import obecnosci.ob.domain.Zajecia;
+import obecnosci.ob.service.GrupaManager;
 import obecnosci.ob.service.ProwadzacyManager;
 import obecnosci.ob.service.PrzedmiotManager;
 import obecnosci.ob.service.ZajeciaManager;
@@ -27,6 +28,8 @@ public class ZajeciaBean implements Serializable{
 	PrzedmiotManager przedmiotManager;
 	@Inject
 	ProwadzacyManager prowadzacyManager;
+	@Inject
+	GrupaManager grupaManager;
 	
 	private static final long serialVersionUID = -7102250578153538924L;
 	
@@ -40,6 +43,8 @@ public class ZajeciaBean implements Serializable{
 	public void setWybranaGrupa(Grupa wybranaGrupa) {
 		this.wybranaGrupa = wybranaGrupa;
 	}
+	
+	
 
 	private long grupaId = 0;
 	private int ile = 0;
@@ -126,6 +131,10 @@ public class ZajeciaBean implements Serializable{
 	
 	public List<Przedmiot> getMojePrzedmioty(){
 		return prowadzacyManager.pobierzMoje(prowadzacyId);
+	}
+	
+	public List<Grupa> getWszystkieGrupy(){
+		return grupaManager.pobierzWszystkie();
 	}
 	
 	
