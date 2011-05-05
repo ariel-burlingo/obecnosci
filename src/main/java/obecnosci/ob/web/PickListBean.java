@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -31,11 +32,13 @@ public class PickListBean implements Serializable{
 	
 	private DualListModel<Przedmiot> przedmiots; 
 	
-	public PickListBean(){
+	
+	public void init(){
 		
 		List<Przedmiot> source = new ArrayList<Przedmiot>();
 		List<Przedmiot> target = new ArrayList<Przedmiot>();//prowadzacyManager.pobierzMoje(prowadzacyBean.getId());
 		List<Przedmiot> referencja = prowadzacyManager.pobierzMoje(prowadzacyBean.getId());
+		
 		if(referencja != null){
 			Przedmiot p = new Przedmiot();
 			p.setNazwa("COS WCZYTAL");
