@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.faces.context.FacesContext;
 import obecnosci.ob.domain.Prowadzacy;
+import obecnosci.ob.domain.Student;
 import obecnosci.ob.service.ProwadzacyManager;
 import obecnosci.ob.service.PrzedmiotManager;
 
@@ -38,6 +39,7 @@ public class ProwadzacyBean implements Serializable {
 
 	private String imie;
 	private String nazwisko;
+	private String login;
 	private String daneKontaktowe;
 	private String stronaDomowa;
 	private String password;
@@ -48,8 +50,16 @@ public class ProwadzacyBean implements Serializable {
 	
 	//SETTERY I GETTERY
 	
+	
+	
 	public long getId() {
 		return id;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	public List<Prowadzacy> getProwadzacych() {
 		return prowadzacych;
@@ -111,7 +121,7 @@ public class ProwadzacyBean implements Serializable {
 	//AKCJE
 	
 	public String dodajProwadzacego(){
-		prowadzacyManager.dodajProwadzacego(imie, nazwisko, daneKontaktowe, stronaDomowa, password);
+		prowadzacyManager.dodajProwadzacego(imie, nazwisko, login, daneKontaktowe, stronaDomowa, password);
 		return "";
 	}
 	public String modyfikujProwadzacego(){
@@ -128,6 +138,26 @@ public class ProwadzacyBean implements Serializable {
 	public String przypiszDoPrzedmiotu(){
 		Prowadzacy instancja = (Prowadzacy) prowadzacy.getRowData();
 		przedmiotManager.przypiszPrzedmiotDoProwadzacego(instancja, przedmiotId);
+		return "";
+	}
+	
+	public String zaloguj(){
+		Prowadzacy prowadzacy = prowadzacyManager.zaloguj(login, password);
+		if (prowadzacy.getId()>0){
+			this.id = prowadzacy.getId();
+			this.imie = prowadzacy.getImie();
+			this.login = prowadzacy.getLogin();
+			this.nazwisko = prowadzacy.getNazwisko();
+			this.password = prowadzacy.getPassword();
+			
+		} else {
+			this.id = 0;
+			this.imie = "niezalogowany";
+			this.login = "niezalogowany";
+			this.nazwisko = "niezalobgowany";
+			this.password = "STFU";
+		}
+		
 		return "";
 	}
 	

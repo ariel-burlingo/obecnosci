@@ -13,5 +13,11 @@
    <h:commandButton value="Zaloguj" action="#{studentBean.zaloguj}"/>  
    </h:form>
    
+   Logowanie jako prowadzacy:
+   <h:form>
+   <h:inputText value="#{prowadzacyBean.login}"></h:inputText>
+   <h:inputSecret value="#{prowadzacyBean.password}"/> 
+   <h:commandButton value="Zaloguj" action="#{prowadzacyBean.zaloguj}"/>  
+   </h:form>
    </ui:define>
 </ui:composition>

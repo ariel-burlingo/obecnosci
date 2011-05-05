@@ -22,6 +22,7 @@ public class Prowadzacy implements Serializable{
 private long id;
 private String imie;
 private String nazwisko;
+private String login;
 private String daneKontaktowe;
 private String stronaDomowa;
 private String password;
@@ -51,6 +52,12 @@ public String getNazwisko() {
 }
 public void setNazwisko(String nazwisko) {
 	this.nazwisko = nazwisko;
+}
+public String getLogin() {
+	return login;
+}
+public void setLogin(String login) {
+	this.login = login;
 }
 public String getDaneKontaktowe() {
 	return daneKontaktowe;

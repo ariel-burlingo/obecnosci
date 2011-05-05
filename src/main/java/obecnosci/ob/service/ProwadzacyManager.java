@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 
 import obecnosci.ob.domain.Prowadzacy;
 import obecnosci.ob.domain.Przedmiot;
+import obecnosci.ob.domain.Student;
 
 
 @Stateless
@@ -18,11 +19,18 @@ public class ProwadzacyManager {
 
 	@PersistenceContext
 	EntityManager em;
+	private Object login;
 	
-	public void dodajProwadzacego(String imie, String nazwisko, String daneKontaktowe, String stronaDomowa, String password){
+	public Prowadzacy zaloguj(String login, String haslo){
+		Prowadzacy prowadzacy = (Prowadzacy) em.createQuery("select s from Prowadzacy s where s.login = :login and s.haslo = :haslo").setParameter("login", login).setParameter("haslo", haslo).getSingleResult();
+		return prowadzacy;
+	}
+	
+	public void dodajProwadzacego(String imie, String nazwisko, String login, String daneKontaktowe, String stronaDomowa, String password){
 		Prowadzacy prowadzacy = new Prowadzacy();
 		prowadzacy.setImie(imie);
 		prowadzacy.setNazwisko(nazwisko);
+		prowadzacy.setLogin(login);
 		prowadzacy.setDaneKontaktowe(daneKontaktowe);
 		prowadzacy.setStronaDomowa(stronaDomowa);
 		prowadzacy.setPassword(password);
