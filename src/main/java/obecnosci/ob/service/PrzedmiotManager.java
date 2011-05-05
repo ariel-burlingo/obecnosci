@@ -42,4 +42,8 @@ public class PrzedmiotManager {
 		return em.createQuery("from Przedmiot").getResultList();
 	}
 	
+	public Przedmiot pobierzPoId(long id){
+		return (Przedmiot) em.createQuery("select p from Przedmiot p where p.id = :id").setParameter("id", id).getSingleResult();
+	}
+	
 }

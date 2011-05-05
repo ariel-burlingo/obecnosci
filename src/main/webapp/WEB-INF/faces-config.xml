@@ -8,5 +8,9 @@
       http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
    <!-- Write your navigation rules here. You are encouraged to use CDI for creating @Named managed beans. -->
+<converter>
+    <converter-id>przedmiotConverter</converter-id>
+    <converter-class>obecnosci.ob.web.PrzedmiotConverter</converter-class>
+</converter>
 
 </faces-config>

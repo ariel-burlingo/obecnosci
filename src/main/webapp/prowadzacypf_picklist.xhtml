@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<h3>Pojo Support with Bounce Effect, Captions and Reorder
+			Controls</h3>
+			<p:pickList value="#{pickListBean.przedmiots}" var="przedmiot"
+				iconOnly="true" effect="bounce" itemLabel="#{przedmiot.nazwa}"
+				itemValue="#{przedmiot}" converter="przedmiotConverter" showSourceControls="false"
+				showTargetControls="false">
+				<f:facet name="sourceCaption">Available</f:facet>
+				<f:facet name="targetCaption">Starting</f:facet>
+			</p:pickList>
+
+			
+
+		</h:form>
+
+
+
+
+
+	</ui:define>
+</ui:composition>

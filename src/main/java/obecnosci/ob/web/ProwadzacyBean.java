@@ -2,6 +2,7 @@ package obecnosci.ob.web;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -13,6 +14,7 @@ import javax.faces.context.FacesContext;
 import org.hibernate.validator.util.GetMethods;
 import org.primefaces.model.DualListModel;
 
+import obecnosci.ob.domain.Grupa;
 import obecnosci.ob.domain.Prowadzacy;
 import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
@@ -55,14 +57,12 @@ public class ProwadzacyBean implements Serializable {
 	
 	
 	
-	//SETTERY I GETTERY
-	
-	
 	
 	
 	public long getId() {
 		return id;
 	}
+	
 	public String getLogin() {
 		return login;
 	}

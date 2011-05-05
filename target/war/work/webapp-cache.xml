@@ -12,6 +12,7 @@
           <string>obecnosci.xhtml</string>
           <string>prowadzacy.xhtml</string>
           <string>prowadzacypf.xhtml</string>
+          <string>prowadzacypf_picklist.xhtml</string>
           <string>przedmiot.xhtml</string>
           <string>przedmiotpf.xhtml</string>
           <string>resources/css/screen.css</string>
@@ -47,8 +48,10 @@
           <string>WEB-INF/classes/obecnosci/ob/service/ZajeciaManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/GrupaBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/ObecnosciBean.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/web/PickListBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/ProwadzacyBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/PrzedmiotBean.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/web/PrzedmiotConverter.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/StudentBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/ZajeciaBean.class</string>
           <string>WEB-INF/lib/primefaces-3.0-prime-1.jar</string>

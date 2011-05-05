@@ -133,7 +133,7 @@ public class ZajeciaBean implements Serializable{
 	}
 	
 	public List<Przedmiot> getMojePrzedmioty(){
-		return prowadzacyManager.pobierzMoje(prowadzacyId);
+		return prowadzacyManager.pobierzMoje(prowadzacyBean.getId());
 	}
 	
 	public List<Grupa> getWszystkieGrupy(){
