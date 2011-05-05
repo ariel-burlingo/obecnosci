@@ -28,8 +28,8 @@ public class PrzedmiotManager {
 		
 	}
 	
-	public void przypiszPrzedmiotDoProwadzacego(Prowadzacy instProwadzacy, long przedmiotId){
-		Prowadzacy prowadzacy = em.getReference(Prowadzacy.class, instProwadzacy.getId());
+	public void przypiszPrzedmiotDoProwadzacego(long prowadzacyId, long przedmiotId){
+		Prowadzacy prowadzacy = em.getReference(Prowadzacy.class, prowadzacyId);
 		Przedmiot przedmiot = em.getReference(Przedmiot.class, przedmiotId);
 		List<Przedmiot> przedmioty = prowadzacy.getPrzedmioty();
 		przedmioty.add(przedmiot);

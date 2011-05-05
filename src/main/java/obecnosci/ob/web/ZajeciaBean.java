@@ -30,10 +30,13 @@ public class ZajeciaBean implements Serializable{
 	ProwadzacyManager prowadzacyManager;
 	@Inject
 	GrupaManager grupaManager;
+	@Inject
+	ProwadzacyBean prowadzacyBean;
 	
 	private static final long serialVersionUID = -7102250578153538924L;
 	
-	private long prowadzacyId = 1; // zmienic na zero
+	private long prowadzacyId = 0;  // zmienic na zero
+	
 	private long przedmiotId = 0;
 	private Przedmiot wybranyPrzedmiot;
 	private Grupa wybranaGrupa;
@@ -146,7 +149,7 @@ public class ZajeciaBean implements Serializable{
 	// AKCJE 
 		
 	public String zaplanuj(){
-		zajeciaManager.zaplanujAutoStart(prowadzacyId, przedmiotId, grupaId, ile, pierwszeZajecia);
+		zajeciaManager.zaplanujAutoStart(prowadzacyBean.getId(), przedmiotId, grupaId, ile, pierwszeZajecia);
 		return "";
 	}
 	

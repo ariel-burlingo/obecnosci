@@ -41,7 +41,7 @@
             </f:facet>
 					<h:outputText value="#{rec.stronaDomowa}" />
 				</p:column>
-			</p:dataTable>
+				</p:dataTable>
 		</h:form>
 		<h:form>	
 		<p:panel id="panel" header="Nowy Prowadzacy" style="margin-bottom:10px;">  
@@ -68,7 +68,14 @@
              <p:commandButton value="Dodaj Prowadzacego" actionListener="#{prowadzacyBean.dodajProwadzacego}" ajax="false" />              
         </h:panelGrid>  
     </p:panel> 
-  
+ 
+   <h2>Dopisz przedmiot</h2>
+   <p:selectOneMenu value="#{prowadzacyBean.przedmiotId}" style="width:400px">
+    		<f:selectItem itemLabel="Wybierz Przedmiot do Dopisania" itemValue="" />  
+            <f:selectItems value="#{przedmiotBean.wszystkiePrzedmioty}"  
+                var="rekord" itemLabel="#{rekord.nazwa} #{rekord.inneDane}" itemValue="#{rekord.id}" />  
+        </p:selectOneMenu>
+        <p:commandButton value="Przypisz przedmiot do mnie" actionListener="#{prowadzacyBean.przypiszDoPrzedmiotu}" ajax="false" />
               
     </h:form>
 

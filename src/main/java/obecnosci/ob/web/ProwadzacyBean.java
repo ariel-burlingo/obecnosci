@@ -1,6 +1,7 @@
 package obecnosci.ob.web;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -8,7 +9,12 @@ import javax.faces.component.html.HtmlDataTable;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.faces.context.FacesContext;
+
+import org.hibernate.validator.util.GetMethods;
+import org.primefaces.model.DualListModel;
+
 import obecnosci.ob.domain.Prowadzacy;
+import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
 import obecnosci.ob.service.ProwadzacyManager;
 import obecnosci.ob.service.PrzedmiotManager;
@@ -28,7 +34,7 @@ public class ProwadzacyBean implements Serializable {
 	
 	//ZMIENNE
 	
-	private long   id=0;
+	private long id=0;
 	private long przedmiotId=0;
 	public long getPrzedmiotId() {
 		return przedmiotId;
@@ -46,9 +52,11 @@ public class ProwadzacyBean implements Serializable {
 	private HtmlDataTable prowadzacy;
 //
 	private List<Prowadzacy> prowadzacych;
-	//
+	
+	
 	
 	//SETTERY I GETTERY
+	
 	
 	
 	
@@ -117,6 +125,10 @@ public class ProwadzacyBean implements Serializable {
 		
 	}
 	
+	public List<Przedmiot> getMojePrzedmioty(){
+		return prowadzacyManager.pobierzMoje(id);
+	}
+	
 	
 	//AKCJE
 	
@@ -136,8 +148,8 @@ public class ProwadzacyBean implements Serializable {
 	}
 	
 	public String przypiszDoPrzedmiotu(){
-		Prowadzacy instancja = (Prowadzacy) prowadzacy.getRowData();
-		przedmiotManager.przypiszPrzedmiotDoProwadzacego(instancja, przedmiotId);
+		//Prowadzacy instancja = (Prowadzacy) prowadzacy.getRowData();
+		przedmiotManager.przypiszPrzedmiotDoProwadzacego(id, przedmiotId);
 		return "";
 	}
 	

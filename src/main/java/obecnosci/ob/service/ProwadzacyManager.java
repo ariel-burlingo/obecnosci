@@ -19,10 +19,9 @@ public class ProwadzacyManager {
 
 	@PersistenceContext
 	EntityManager em;
-	private Object login;
 	
 	public Prowadzacy zaloguj(String login, String haslo){
-		Prowadzacy prowadzacy = (Prowadzacy) em.createQuery("select s from Prowadzacy s where s.login = :login and s.haslo = :haslo").setParameter("login", login).setParameter("haslo", haslo).getSingleResult();
+		Prowadzacy prowadzacy = (Prowadzacy) em.createQuery("select s from Prowadzacy s where s.login = :login and s.password = :password").setParameter("login", login).setParameter("password", haslo).getSingleResult();
 		return prowadzacy;
 	}
 	
