@@ -130,6 +130,8 @@ public class ProwadzacyBean implements Serializable {
 	}
 	
 	
+	
+	
 	//AKCJE
 	
 	public String dodajProwadzacego(){
@@ -150,6 +152,12 @@ public class ProwadzacyBean implements Serializable {
 	public String przypiszDoPrzedmiotu(){
 		//Prowadzacy instancja = (Prowadzacy) prowadzacy.getRowData();
 		przedmiotManager.przypiszPrzedmiotDoProwadzacego(id, przedmiotId);
+		return "";
+	}
+	
+	public String wypiszZPrzedmiotu(){
+		//Prowadzacy instancja = (Prowadzacy) prowadzacy.getRowData();
+		przedmiotManager.wypiszProwadzacegoZPrzedmiotu(id, przedmiotId);
 		return "";
 	}
 	

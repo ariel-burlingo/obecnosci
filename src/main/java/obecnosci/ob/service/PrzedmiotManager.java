@@ -38,6 +38,15 @@ public class PrzedmiotManager {
 		
 	}
 	
+	public void wypiszProwadzacegoZPrzedmiotu(long prowadzacyId, long przedmiotId){
+		Prowadzacy prowadzacy = em.getReference(Prowadzacy.class, prowadzacyId);
+		Przedmiot przedmiot = em.getReference(Przedmiot.class, przedmiotId);
+		List<Przedmiot> przedmioty = prowadzacy.getPrzedmioty();
+		przedmioty.remove(przedmiot);
+		prowadzacy.setPrzedmioty(przedmioty);
+		em.merge(prowadzacy);
+	}
+	
 	public List<Przedmiot> pobierzWszystkie(){
 		return em.createQuery("from Przedmiot").getResultList();
 	}
