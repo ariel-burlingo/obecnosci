@@ -17,15 +17,15 @@
 	
 		<h1>Wpisz na lisę obecnosci:</h1>
 		<h:dataTable binding="#{obecnosciBean.studenci}"
-			value="#{obecnosciBean.wszystkichStudentow}" var="rec">
+			value="#{obecnosciBean.wszystkichStudentow}" var="obspf">
 			<h:column>
-				<h:outputText value="#{rec.index}" />
+				<h:outputText value="#{obspf.index}" />
 			</h:column>
 			<h:column>
-				<h:outputText value="#{rec.imie}" />
+				<h:outputText value="#{obspf.imie}" />
 			</h:column>
 			<h:column>
-				<h:outputText value="#{rec.nazwisko}" />
+				<h:outputText value="#{obspf.nazwisko}" />
 			</h:column>
 			<h:column>
 				<h:form>
