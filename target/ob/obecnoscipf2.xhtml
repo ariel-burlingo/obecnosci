@@ -12,9 +12,11 @@
 					<f:facet name="header">
                     Data
             </f:facet>
-					<h:outputText value="#{mod.zajecia.data.toString()}" />
-				</p:column>
-
+			  	<h:outputText value="#{mob.zajecia.data}">
+					<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
+				</h:outputText> 
+				</p:column> 
+	
 				<p:column>
 					<f:facet name="header">
                     Przedmiot
