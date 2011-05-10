@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import obecnosci.ob.domain.Grupa;
 import obecnosci.ob.domain.Prowadzacy;
 import obecnosci.ob.domain.Przedmiot;
+import obecnosci.ob.domain.Student;
 import obecnosci.ob.domain.Zajecia;
 
 @Stateless
@@ -77,5 +78,11 @@ public class ZajeciaManager {
 	public List<Zajecia> pobierzWszystkie(){
 		return em.createQuery("from Zajecia").getResultList();
 	}
+	
+public List<Zajecia> pobierzDlaStudenta(long idStudenta){
+	List<String> grupy = em.createQuery("select grupy_id from student_grupa s where s.student_id=:idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	List<String> przedmioty = em.createQuery("select przedmioty_id from student_przedmiot s where s.student_id=:idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	return em.createQuery("select s from zajecia s where s.grupa_id in (:grupy) and s.przedmiot_id in (:przedmioty) ").getResultList();
+}
 	
 }
