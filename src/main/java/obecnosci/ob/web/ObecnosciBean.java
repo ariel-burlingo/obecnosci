@@ -92,6 +92,9 @@ public class ObecnosciBean implements Serializable {
 		
 	}
 	
+	public List<Zajecia> getMojeZajecia(){
+		return zajeciaManager.pobierzDlaStudenta(studentBean.getId());
+	}
 	
 	
 

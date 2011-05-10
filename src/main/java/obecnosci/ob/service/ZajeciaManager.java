@@ -80,9 +80,9 @@ public class ZajeciaManager {
 	}
 	
 public List<Zajecia> pobierzDlaStudenta(long idStudenta){
-	List<String> grupy = em.createQuery("select grupy_id from student_grupa s where s.student_id=:idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	List<String> grupy = em.createQuery("select grupy_id from grupa_student s where s.student_id=:idStudenta").setParameter("idStudenta", idStudenta).getResultList();
 	List<String> przedmioty = em.createQuery("select przedmioty_id from student_przedmiot s where s.student_id=:idStudenta").setParameter("idStudenta", idStudenta).getResultList();
-	return em.createQuery("select s from zajecia s where s.grupa_id in (:grupy) and s.przedmiot_id in (:przedmioty) ").getResultList();
+	return em.createQuery("select s from zajecia s where s.grupa_id in (:grupy) and s.przedmiot_id in (:przedmioty) ").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).getResultList();
 }
 	
 }
