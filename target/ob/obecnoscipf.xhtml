@@ -5,66 +5,19 @@
    xmlns:h="http://java.sun.com/jsf/html"
    xmlns:p="http://primefaces.prime.com.tr/ui"
    template="/WEB-INF/templates/default.xhtml">
-	<ui:define name="content">
-		<h:panelGrid columns="2">
-	<h:outputText value="Przedmiot: " />
-    	<p:selectOneMenu value="#{zajeciaBean.przedmiotId}" style="width:400px">
-    		<f:selectItem itemLabel="Wybierz Przedmiot" itemValue="" />  
-            <f:selectItems value="#{zajeciaBean.mojePrzedmioty}"  
-                var="rekord" itemLabel="#{rekord.nazwa} #{rekord.inneDane}" itemValue="#{rekord.id}" />  
-        </p:selectOneMenu>
-	</h:panelGrid>
-	
-		<h1>Wpisz na lisę obecnosci:</h1>
-		<h:dataTable binding="#{obecnosciBean.studenci}"
-			value="#{obecnosciBean.wszystkichStudentow}" var="rec">
+   <ui:define name="content">
+	Twoje obecnosci:
+	<h:dataTable value="#{obecnosciBean.mojeObecnosci}" var="mob">
 			<h:column>
-				<h:outputText value="#{rec.index}" />
+				<h:outputText value="#{mob.zajecia.data}" />
 			</h:column>
 			<h:column>
-				<h:outputText value="#{rec.imie}" />
+				<h:outputText value="#{mob.zajecia.przedmiot.nazwa}" />
 			</h:column>
 			<h:column>
-				<h:outputText value="#{rec.nazwisko}" />
+				<h:outputText value="#{mob.typ}" />
 			</h:column>
-			<h:column>
-				<h:form>
-					<h:outputText value="ID_Zajec: " />
-					<h:inputText value="#{obecnosciBean.idZajec}" />
-					<h:commandLink action="#{obecnosciBean.zapiszObecnosc}">
-						<h:graphicImage value="/resources/gfx/edit.png"
-							alt="[zapisz obecnosc]" />
-					</h:commandLink>
-				</h:form>
-			</h:column>
-		</h:dataTable>
-		<h1>Potwierdz/Usprawiedliw obecności:</h1>
-		<h:dataTable binding="#{obecnosciBean.obecnosci}"
-			value="#{obecnosciBean.wszystkieObecnosci}" var="obe">
-			<h:column>
-				<h:outputText value="#{obe.id}" />
-			</h:column>
-			<h:column>
-				<h:outputText value="#{obe.typ}" />
-			</h:column>
-			<h:column>
-				<h:outputText value="#{obe.student.id}" />
-			</h:column>
-			<h:column>
-				<h:outputText value="#{obe.zajecia.id}" />
-			</h:column>
-			<h:column>
-				<h:form>
-					<h:commandLink action="#{obecnosciBean.zatwierdzObecnosc}">
-						<h:graphicImage value="/resources/gfx/potwierdz.gif"
-							alt="[zatwierdz obecnosc]" />
-					</h:commandLink>
-					<h:commandLink action="#{obecnosciBean.usprawiedliwObecnosc}">
-						<h:graphicImage value="/resources/gfx/usprawiedliw.gif"
-							alt="[usprawiedliw nieobecnosc]" />
-					</h:commandLink>
-				</h:form>
-			</h:column>
+
 		</h:dataTable>
 	</ui:define>
 </ui:composition>

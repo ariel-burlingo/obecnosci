@@ -7,15 +7,15 @@
 	<ui:define name="content">
 		<h1>Wpisz na lisę obecnosci:</h1>
 		<h:dataTable binding="#{obecnosciBean.studenci}"
-			value="#{obecnosciBean.wszystkichStudentow}" var="rec">
+			value="#{obecnosciBean.wszystkichStudentow}" var="obs">
 			<h:column>
-				<h:outputText value="#{rec.index}" />
+				<h:outputText value="#{obs.index}" />
 			</h:column>
 			<h:column>
-				<h:outputText value="#{rec.imie}" />
+				<h:outputText value="#{obs.imie}" />
 			</h:column>
 			<h:column>
-				<h:outputText value="#{rec.nazwisko}" />
+				<h:outputText value="#{obs.nazwisko}" />
 			</h:column>
 			<h:column>
 				<h:form>

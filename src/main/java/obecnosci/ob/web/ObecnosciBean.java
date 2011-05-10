@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import obecnosci.ob.domain.Obecnosci;
+import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
 import obecnosci.ob.domain.Zajecia;
 import obecnosci.ob.service.ObecnosciManager;
@@ -26,6 +27,8 @@ public class ObecnosciBean implements Serializable {
 	StudentManager studentManager;
 	@Inject
 	ZajeciaManager zajeciaManager;
+	@Inject
+	StudentBean studentBean;
 
 	// Zmienne
 	private long Id = 0;
@@ -83,6 +86,14 @@ public class ObecnosciBean implements Serializable {
 		return zajeciaManager.pobierzWszystkie();
 
 	}
+	
+	public List<Obecnosci> getMojeObecnosci(){
+		return obecnosciManager.pobierzMoje(studentBean.getId());
+		
+	}
+	
+	
+	
 
 	// DATATABLE BACKEDN
 	public HtmlDataTable getObecnosci() {

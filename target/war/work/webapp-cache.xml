@@ -11,6 +11,7 @@
           <string>META-INF/context.xml</string>
           <string>obecnosci.xhtml</string>
           <string>obecnoscipf.xhtml</string>
+          <string>obecnoscipf2.xhtml</string>
           <string>prowadzacy.xhtml</string>
           <string>prowadzacypf.xhtml</string>
           <string>prowadzacypf_picklist.xhtml</string>

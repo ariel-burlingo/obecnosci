@@ -1,5 +1,7 @@
 package obecnosci.ob.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,6 +10,8 @@ import javax.persistence.PersistenceContext;
 
 import obecnosci.ob.domain.Obecnosci;
 import obecnosci.ob.domain.Obecnosci.Typ_Obecnosci;
+import obecnosci.ob.domain.Prowadzacy;
+import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
 import obecnosci.ob.domain.Zajecia;
 
@@ -44,5 +48,11 @@ public class ObecnosciManager {
 
 	public List<Obecnosci> pobierzWszystkie() {
 		return em.createQuery("from Obecnosci").getResultList();
+	}
+	
+	public List<Obecnosci> pobierzMoje(long id){
+		List<Obecnosci> obecnosci = new ArrayList<Obecnosci>();
+		return obecnosci =  em.createQuery("select s from Obecnosci s where s.student.id = :id").setParameter("id", id).getResultList();
+	
 	}
 }
