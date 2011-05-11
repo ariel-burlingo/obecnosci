@@ -71,14 +71,14 @@
     </h:form>
     <h:form>
  
-   <h2>Dopisz przedmiot</h2>
+   <h2>Dopisz przedmiot/Wypisz z przedmiotu</h2>
    <p:selectOneMenu value="#{prowadzacyBean.przedmiotId}" style="width:400px">
     		<f:selectItem itemLabel="Wybierz Przedmiot do Dopisania" itemValue="" />  
             <f:selectItems value="#{przedmiotBean.wszystkiePrzedmioty}"  
                 var="rekord" itemLabel="#{rekord.nazwa} #{rekord.inneDane}" itemValue="#{rekord.id}" />  
         </p:selectOneMenu>
         <p:commandButton value="Przypisz przedmiot do mnie" actionListener="#{prowadzacyBean.przypiszDoPrzedmiotu}" ajax="false" />
-              
+        <p:commandButton value="Wypisz" actionListener="#{prowadzacyBean.wypiszZPrzedmiotu}" ajax="false" />      
     </h:form>
     
 		<h:form>
@@ -93,12 +93,7 @@
 				</p:dataTable>
 		</h:form>
 		
-				<h:form>
-					<h:commandLink action="#{prowadzacyBean.wypiszZPrzedmiotu}">
-						<h:graphicImage value="/resources/gfx/usun.gif"
-							alt="[wypisz z przedmiotu]" />
-					</h:commandLink>
-					</h:form>
+				
 
    </ui:define>
 </ui:composition>

@@ -30,6 +30,7 @@
           <string>WEB-INF/faces-config.xml</string>
           <string>WEB-INF/templates/default.xhtml</string>
           <string>WEB-INF/web.xml</string>
+          <string>wycinekZprowadzacypf.temp</string>
           <string>zajecia.xhtml</string>
           <string>zajeciapf.xhtml</string>
           <string>zaloguj.xhtml</string>

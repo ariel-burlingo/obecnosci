@@ -1,0 +1,6 @@
+<h:form>
+					<h:commandLink action="#{prowadzacyBean.wypiszZPrzedmiotu}">
+						<h:graphicImage value="/resources/gfx/usun.gif"
+							alt="[wypisz z przedmiotu]" />
+					</h:commandLink>
+					</h:form>
