@@ -8,15 +8,20 @@ import javax.faces.component.html.HtmlDataTable;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.component.datatable.DataTable;
+
 
 //import org.primefaces.examples.*;
 import obecnosci.ob.service.GrupaManager;
+import obecnosci.ob.service.ObecnosciManager;
 import obecnosci.ob.service.PrzedmiotManager;
 import obecnosci.ob.service.StudentManager;
+import obecnosci.ob.service.ZajeciaManager;
 
 import obecnosci.ob.domain.Grupa;
 import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
+import obecnosci.ob.domain.Zajecia;
 
 @SessionScoped
 @Named
@@ -30,6 +35,10 @@ public class StudentBean implements Serializable{
 	PrzedmiotManager przedmiotManager;
 	@Inject
 	GrupaManager grupaManager;
+	@Inject
+	ZajeciaManager zajeciaManager;
+	@Inject
+	ObecnosciManager obecnosciManager;
 	
 	
 	// DEBUGGER
@@ -47,9 +56,25 @@ public class StudentBean implements Serializable{
 	// DATATABLE BACKEND
 	private HtmlDataTable studenci;
 	private HtmlDataTable przedmioty;
+	private DataTable zajecia;
+	
+	public DataTable getZajecia() {
+		return zajecia;
+	}
+	public void setZajecia(DataTable zajecia) {
+		this.zajecia = zajecia;
+	}
+
+	private Zajecia wybraneZajecia;
 	
 	
 	
+	public Zajecia getWybraneZajecia() {
+		return wybraneZajecia;
+	}
+	public void setWybraneZajecia(Zajecia wybraneZajecia) {
+		this.wybraneZajecia = wybraneZajecia;
+	}
 	// SETTERY i GETTERY
 	public String getTechinfo() {
 		return techinfo;
@@ -131,6 +156,11 @@ public class StudentBean implements Serializable{
 		return studentManager.pobierzGrupy(id);
 	}
 	
+	public List<Zajecia> getTerazOdbywajaceSie(){
+		return zajeciaManager.pobierzDlaStudentaTerazOdbywajaceSie(id);
+		
+	}
+	
 	// AKCJE
 	
 	public String dodajStudenta(){
@@ -140,6 +170,12 @@ public class StudentBean implements Serializable{
 	
 	public String zapiszZmianyAjax(){
 		studentManager.zmienDaneStudenta(id, imie, nazwisko, haslo);
+		return "";
+	}
+	
+	public String zapiszObecnosc(){
+		Zajecia instancja = (Zajecia)zajecia.getRowData();
+		obecnosciManager.zapiszObecnosc(id,instancja.getId());
 		return "";
 	}
 	

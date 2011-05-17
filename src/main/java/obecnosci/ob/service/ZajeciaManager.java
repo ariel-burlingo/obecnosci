@@ -82,7 +82,18 @@ public class ZajeciaManager {
 public List<Zajecia> pobierzDlaStudenta(long idStudenta){
 	List<Grupa> grupy = em.createQuery("select s.grupy from Student s where s.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
 	List<Przedmiot> przedmioty = em.createQuery("select s.przedmioty from Student s where s.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
-	return em.createQuery("select o from Obecnosci o where o.zajecia.grupa in (:grupy) and o.zajecia.przedmiot in (:przedmioty) ").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).getResultList();
+	return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty) ").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).getResultList();
+	// bylo zle zapytanie - poprawiono - wypisuje wszystkie zajecia danego studenta
+	
+}
+
+public List<Zajecia> pobierzDlaStudentaTerazOdbywajaceSie(long idStudenta){
+	List<Grupa> grupy = em.createQuery("select s.grupy from Student s where s.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	List<Przedmiot> przedmioty = em.createQuery("select s.przedmioty from Student s where s.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	Date now = new Date();
+	Date kwadrans = new Date(now.getTime()-1200);
+	return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and z.data >= :kwadrans").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("kwadrans", kwadrans).getResultList();
+	
 }
 	
 }

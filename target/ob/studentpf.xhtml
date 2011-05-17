@@ -7,7 +7,17 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
    	<p:panel id="gpnl" header="Najbliższe zajęcia, obecność" toggleable="true" toggleSpeed="500" >  
-   		<h:outputText value="Tutaj logowanie obecności na zajęcia" /> 
+ 		<h:form>
+   		<p:dataTable binding="#{studentBean.zajecia}" value="#{studentBean.terazOdbywajaceSie}" var="rec">
+   		<p:column>
+   		<h:outputText value="#{rec.przedmiot.nazwa}" />  
+   		</p:column>
+   		<p:column>
+   		 <p:commandButton value="Obecny" actionListner="{studentBean.zapiszObecnosc}" ajax="true" />  
+   		</p:column>
+   		</p:dataTable>
+   		</h:form>
+   		<h:outputText value="" />  
    		
 	</p:panel>
 	<p:panel id="gpnl2" header="Przedmioty i grupy" toggleable="true" toggleSpeed="500" >  
@@ -38,10 +48,6 @@
         </h:panelGrid>
         </h:form>   
 	</p:panel>   
-
-<p:draggable for="gpnl" grid="20,40" />
-<p:draggable for="gpnl2" grid="20,40" />
-<p:draggable for="gpnl3" grid="20,40" />
    </ui:define>
 </ui:composition>
    
