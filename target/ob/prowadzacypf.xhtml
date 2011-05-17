@@ -122,6 +122,35 @@
 				</p:dataTable>
 		</h:form>
 		
+		<h:form>
+			<p:dataTable value="#{prowadzacyBean.mojeAktualnieOdbywajaceSieZajecia}"  var="blabla">
+			<f:facet name="header">
+                    Aktualnie odbywają się
+            </f:facet>
+			<p:column  style="width:50px">
+					<f:facet name="header">
+                    Data
+            </f:facet>
+					<h:outputText value="#{blabla.data}">
+					<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
+					</h:outputText>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+                    Przedmiot
+            </f:facet>
+					<h:outputText value="#{blabla.przedmiot.nazwa}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+                    Grupa_id
+            </f:facet>
+					<h:outputText value="#{blabla.grupa.informacje}" />
+				</p:column>
+
+				</p:dataTable>
+		</h:form>
+		
 				
 
    </ui:define>

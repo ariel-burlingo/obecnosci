@@ -136,6 +136,10 @@ public class ProwadzacyBean implements Serializable {
 	}
 	//
 	
+	public List<Zajecia> getMojeAktualnieOdbywajaceSieZajecia(){
+		return prowadzacyManager.pobierzMojeAktualnieOdbywajaceSieZajecia(id);
+	}
+	
 	
 	
 	//AKCJE

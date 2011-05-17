@@ -1,6 +1,7 @@
 package obecnosci.ob.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -66,10 +67,19 @@ public class ProwadzacyManager {
 		return deep;
 	}
 	//NEW TODO:
-	public List<Zajecia> pobierzMojeZajecia(long prowadzacy_id){
+	public List<Zajecia> pobierzMojeZajecia(long prowadzacyId){
 		List<Zajecia> zajecia = new ArrayList<Zajecia>();
-		zajecia = em.createQuery("select z from Zajecia z where prowadzacy_id = :prowadzacy_id").setParameter("prowadzacy_id", prowadzacy_id).getResultList();
+		zajecia = em.createQuery("select z from Zajecia z where z.prowadzacy.id = :prowadzacyId").setParameter("prowadzacyId", prowadzacyId).getResultList();
 		return zajecia;
+	}
+	
+	public List<Zajecia> pobierzMojeAktualnieOdbywajaceSieZajecia(long prowadzacyId){
+		Date now = new Date();
+		Date aktualne = new Date(now.getTime()-7200000);
+		//List<Zajecia> zajecia = new ArrayList<Zajecia>();
+		return em.createQuery("select z from Zajecia z where z.prowadzacy.id = :prowadzacyId and z.data >= :aktualne and z.data <= :now").setParameter("aktualne", aktualne).setParameter("now", now).setParameter("prowadzacyId", prowadzacyId).getResultList();
+		//return zajecia;
+		
 	}
 	//
 }
