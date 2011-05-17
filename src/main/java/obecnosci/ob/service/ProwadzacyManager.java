@@ -13,7 +13,9 @@ import obecnosci.ob.domain.Prowadzacy;
 import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
 
-
+//NEW
+import obecnosci.ob.domain.Zajecia;
+//
 @Stateless
 public class ProwadzacyManager {
 
@@ -63,5 +65,11 @@ public class ProwadzacyManager {
 		}
 		return deep;
 	}
-	
+	//NEW TODO:
+	public List<Zajecia> pobierzMojeZajecia(long prowadzacy_id){
+		List<Zajecia> zajecia = new ArrayList<Zajecia>();
+		zajecia = em.createQuery("select z from Zajecia z where prowadzacy_id = :prowadzacy_id").setParameter("prowadzacy_id", prowadzacy_id).getResultList();
+		return zajecia;
+	}
+	//
 }

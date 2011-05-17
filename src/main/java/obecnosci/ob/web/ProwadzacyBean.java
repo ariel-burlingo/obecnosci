@@ -18,6 +18,7 @@ import obecnosci.ob.domain.Grupa;
 import obecnosci.ob.domain.Prowadzacy;
 import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
+import obecnosci.ob.domain.Zajecia;
 import obecnosci.ob.service.ProwadzacyManager;
 import obecnosci.ob.service.PrzedmiotManager;
 
@@ -128,7 +129,12 @@ public class ProwadzacyBean implements Serializable {
 	public List<Przedmiot> getMojePrzedmioty(){
 		return prowadzacyManager.pobierzMoje(id);
 	}
-	
+	//NEW
+	public List<Zajecia> getMojeZajecia(){
+		return prowadzacyManager.pobierzMojeZajecia(id); 
+		//return prowadzacyManager.pobierzMoje(id);
+	}
+	//
 	
 	
 	
