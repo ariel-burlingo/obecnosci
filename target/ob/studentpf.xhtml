@@ -6,18 +6,48 @@
    xmlns:p="http://primefaces.prime.com.tr/ui"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
-   	<p:panel id="gpnl" header="Najbliższe zajęcia, obecność" toggleable="true" toggleSpeed="500" >  
+   	<p:panel id="gpnl" header="Odbywające się zajęcia" toggleable="true" toggleSpeed="500" >  
  		<h:form>
-   		<p:dataTable binding="#{studentBean.zajecia}" value="#{studentBean.terazOdbywajaceSie}" var="rec">
+   		<p:dataTable value="#{studentBean.terazOdbywajaceSie}" var="rec">
    		<p:column>
    		<h:outputText value="#{rec.przedmiot.nazwa}" />  
    		</p:column>
    		<p:column>
-   		 <p:commandButton value="Obecny" actionListner="{studentBean.zapiszObecnosc}" ajax="true" />  
+   		 <p:commandButton value="Obecny" title="Obecny" update=":mojeOb" action="#{studentBean.zapiszObecnosc}"
+                     actionListener="#{studentBean.loadCurrentRequest}">  
+         	<f:setPropertyActionListener value="#{rec}" target="#{studentBean.wybraneZajecia}" />
+         	<p:effect type="puff" event="click" />   
+         </p:commandButton>   
    		</p:column>
    		</p:dataTable>
    		</h:form>
-   		<h:outputText value="" />  
+   		
+   		<h:outputText value="Obecności" />
+   		<h:form>
+   		<p:dataTable id="mojeOb" value="#{obecnosciBean.mojeObecnosci}"  var="mob">
+			<p:column  style="width:150px">
+					<f:facet name="header">
+                    Data
+            </f:facet>
+			  	<h:outputText value="#{mob.zajecia.data}">
+					<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
+				</h:outputText> 
+				</p:column> 
+	
+				<p:column>
+					<f:facet name="header">
+                    Przedmiot
+            </f:facet>
+					<h:outputText value="#{mob.zajecia.przedmiot.nazwa}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+                    Obecnosc
+            </f:facet>
+					<h:outputText value="#{mob.typ}" />
+				</p:column>
+				</p:dataTable>  
+				</h:form>
    		
 	</p:panel>
 	<p:panel id="gpnl2" header="Przedmioty i grupy" toggleable="true" toggleSpeed="500" >  

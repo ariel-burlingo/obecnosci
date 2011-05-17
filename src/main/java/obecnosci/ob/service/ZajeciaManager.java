@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import obecnosci.ob.domain.Grupa;
+import obecnosci.ob.domain.Obecnosci;
 import obecnosci.ob.domain.Prowadzacy;
 import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
@@ -88,12 +89,20 @@ public List<Zajecia> pobierzDlaStudenta(long idStudenta){
 }
 
 public List<Zajecia> pobierzDlaStudentaTerazOdbywajaceSie(long idStudenta){
+	// pod warunkiem ze nie zapisal juz obecnosci
 	List<Grupa> grupy = em.createQuery("select s.grupy from Student s where s.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
 	List<Przedmiot> przedmioty = em.createQuery("select s.przedmioty from Student s where s.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	List<Zajecia> ozaj = em.createQuery("select o.zajecia from Obecnosci o where o.student.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	System.out.println("Ozaj size: "+ozaj.size());
 	Date now = new Date();
-	Date kwadrans = new Date(now.getTime()-1200);
-	return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and z.data >= :kwadrans").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("kwadrans", kwadrans).getResultList();
-	
+	Date kwadrans = new Date(now.getTime()-900000);
+	System.out.println("NOW      : "+now.toString());
+	System.out.println("Kwadrans : "+kwadrans.toString());
+	if(ozaj.size() > 0){
+		return em.createQuery("from Zajecia as z where z not in (:ozaj) and z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and z.data >= :kwadrans and z.data <= :now").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("ozaj", ozaj).setParameter("now", now).setParameter("kwadrans", kwadrans).getResultList();
+	} else { // inaczej brak obecnoœci wywali b³¹d!
+		return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and z.data >= :kwadrans and z.data <= :now").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("now", now).setParameter("kwadrans", kwadrans).getResultList();
+	}
 }
 	
 }

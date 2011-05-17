@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.html.HtmlDataTable;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -173,9 +174,13 @@ public class StudentBean implements Serializable{
 		return "";
 	}
 	
+	public void loadCurrentRequest(ActionEvent event) {
+	      wybraneZajecia = (Zajecia)event.getComponent().getAttributes().get("rec");
+	   }
+	
 	public String zapiszObecnosc(){
-		Zajecia instancja = (Zajecia)zajecia.getRowData();
-		obecnosciManager.zapiszObecnosc(id,instancja.getId());
+		//Zajecia instancja = (Zajecia)zajecia.getRowData();
+		obecnosciManager.zapiszObecnosc(id,wybraneZajecia.getId());
 		return "";
 	}
 	

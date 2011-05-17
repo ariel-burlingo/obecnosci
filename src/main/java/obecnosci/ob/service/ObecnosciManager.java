@@ -23,10 +23,10 @@ public class ObecnosciManager {
 
 	public void zapiszObecnosc(Long IdStudenta, Long IdZajec) {
 		Obecnosci obecnosc = new Obecnosci();
-		Student student = new Student();
-		Zajecia zajecia = new Zajecia();
-		student.setId(IdStudenta);
-		zajecia.setId(IdZajec);
+		Student student = em.getReference(Student.class, IdStudenta);
+		Zajecia zajecia = em.getReference(Zajecia.class, IdZajec);
+		//student.setId(IdStudenta); WTF to mia³o byæ :P, referencje panowie a nie puste obiekty
+		//zajecia.setId(IdZajec);
 		obecnosc.setStudent(student);
 		obecnosc.setZajecia(zajecia);
 		obecnosc.setTyp(Typ_Obecnosci.NIEPOTWIERDZONA);
