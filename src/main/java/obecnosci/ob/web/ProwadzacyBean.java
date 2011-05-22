@@ -10,6 +10,7 @@ import javax.faces.component.html.HtmlDataTable;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import org.hibernate.validator.util.GetMethods;
 import org.primefaces.model.DualListModel;
@@ -52,6 +53,21 @@ public class ProwadzacyBean implements Serializable {
 	private String daneKontaktowe;
 	private String stronaDomowa;
 	private String password;
+	private Zajecia wybraneZajecia;
+	private boolean obecny;
+	public boolean isObecny() {
+		return obecny;
+	}
+	public void setObecny(boolean obecny) {
+		this.obecny = obecny;
+	}
+	public Zajecia getWybraneZajecia() {
+		return wybraneZajecia;
+	}
+	public void setWybraneZajecia(Zajecia wybraneZajecia) {
+		this.wybraneZajecia = wybraneZajecia;
+	}
+
 	private HtmlDataTable prowadzacy;
 //
 	private List<Prowadzacy> prowadzacych;
@@ -140,6 +156,10 @@ public class ProwadzacyBean implements Serializable {
 		return prowadzacyManager.pobierzMojeAktualnieOdbywajaceSieZajecia(id);
 	}
 	
+	
+	public void loadCurrentRequest(ActionEvent event) {
+	      wybraneZajecia = (Zajecia)event.getComponent().getAttributes().get("rec");
+	}
 	
 	
 	//AKCJE
