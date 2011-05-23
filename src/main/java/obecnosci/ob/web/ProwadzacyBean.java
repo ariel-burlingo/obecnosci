@@ -16,10 +16,12 @@ import org.hibernate.validator.util.GetMethods;
 import org.primefaces.model.DualListModel;
 
 import obecnosci.ob.domain.Grupa;
+import obecnosci.ob.domain.Obecnosci;
 import obecnosci.ob.domain.Prowadzacy;
 import obecnosci.ob.domain.Przedmiot;
 import obecnosci.ob.domain.Student;
 import obecnosci.ob.domain.Zajecia;
+import obecnosci.ob.service.ObecnosciManager;
 import obecnosci.ob.service.ProwadzacyManager;
 import obecnosci.ob.service.PrzedmiotManager;
 
@@ -34,7 +36,8 @@ public class ProwadzacyBean implements Serializable {
 	PrzedmiotManager przedmiotManager;
 	@Inject
 	ProwadzacyManager prowadzacyManager;
-	
+	@Inject
+	ObecnosciManager obecnosciManager;
 	
 	//ZMIENNE
 	
@@ -53,7 +56,7 @@ public class ProwadzacyBean implements Serializable {
 	private String daneKontaktowe;
 	private String stronaDomowa;
 	private String password;
-	private Zajecia wybraneZajecia;
+	private Zajecia wybraneZajecia = new Zajecia();
 	private boolean obecny;
 	public boolean isObecny() {
 		return obecny;
@@ -72,10 +75,18 @@ public class ProwadzacyBean implements Serializable {
 //
 	private List<Prowadzacy> prowadzacych;
 	
+	private List<Obecnosci> obecnosciNaWybranych = new ArrayList<Obecnosci>();
 	
 	
 	
 	
+	
+	public List<Obecnosci> getObecnosciNaWybranych() {
+		return obecnosciNaWybranych;
+	}
+	public void setObecnosciNaWybranych(List<Obecnosci> obecnosciNaWybranych) {
+		this.obecnosciNaWybranych = obecnosciNaWybranych;
+	}
 	public long getId() {
 		return id;
 	}
@@ -156,9 +167,20 @@ public class ProwadzacyBean implements Serializable {
 		return prowadzacyManager.pobierzMojeAktualnieOdbywajaceSieZajecia(id);
 	}
 	
+	// zajaxowane
+	/*public List<Obecnosci> getObecnosciNaTychZajeciach(){
+		return obecnosciManager.pobierzObecnosciZZajec(wybraneZajecia.getId());
+	}*/
 	
-	public void loadCurrentRequest(ActionEvent event) {
-	      wybraneZajecia = (Zajecia)event.getComponent().getAttributes().get("rec");
+	
+	public void loadAjaxObecnosci(ActionEvent event) {
+		System.out.println("cos sie dzieje");
+	      Zajecia pobrane = (Zajecia)event.getComponent().getAttributes().get("aktOdbZaj");
+	      setWybraneZajecia(pobrane);
+	      System.out.println(pobrane.toString());
+	      List <Obecnosci> obePob = obecnosciManager.pobierzObecnosciZZajec(wybraneZajecia.getId());
+	      setObecnosciNaWybranych(obePob);
+	      
 	}
 	
 	
@@ -190,6 +212,8 @@ public class ProwadzacyBean implements Serializable {
 		przedmiotManager.wypiszProwadzacegoZPrzedmiotu(id, przedmiotId);
 		return "";
 	}
+	
+	
 	
 	public String zaloguj(){
 		Prowadzacy prowadzacy = prowadzacyManager.zaloguj(login, password);

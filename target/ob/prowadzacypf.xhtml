@@ -123,7 +123,7 @@
 		</h:form>
 		
 		<h:form>
-			<p:dataTable value="#{prowadzacyBean.mojeAktualnieOdbywajaceSieZajecia}"  var="blabla">
+			<p:dataTable value="#{prowadzacyBean.mojeAktualnieOdbywajaceSieZajecia}"  var="aktOdbZaj">
 			<f:facet name="header">
                     Aktualnie odbywają się
             </f:facet>
@@ -131,7 +131,7 @@
 					<f:facet name="header">
                     Data
             </f:facet>
-					<h:outputText value="#{blabla.data}">
+					<h:outputText value="#{aktOdbZaj.data}">
 					<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
 					</h:outputText>
 				</p:column>
@@ -139,23 +139,23 @@
 					<f:facet name="header">
                     Przedmiot
             </f:facet>
-					<h:outputText value="#{blabla.przedmiot.nazwa}" />
+					<h:outputText value="#{aktOdbZaj.przedmiot.nazwa}" />
 				</p:column>
 				<p:column>
 					<f:facet name="header">
                     Grupa_id
             </f:facet>
-					<h:outputText value="#{blabla.grupa.informacje}" />
+					<h:outputText value="#{aktOdbZaj.grupa.informacje}" />
 				</p:column>
 				
 				<p:column>
 					<f:facet name="header">
                     Obecności
                     </f:facet>
-				 <p:commandButton value="Obecości" title="Obecości" onclick="dlg.show()"
-                     actionListener="#{prowadzacyBean.loadCurrentRequest}">  
-         	<f:setPropertyActionListener value="#{blabla}" target="#{prowadzacyBean.wybraneZajecia}" />  
-         </p:commandButton>  
+				 <p:commandButton update="dialog" value="Obecości" 
+                     actionListener="#{prowadzacyBean.loadAjaxObecnosci}" oncomplete="dlg.show()" >  
+         	<f:setPropertyActionListener value="#{aktOdbZaj}" target="#{prowadzacyBean.wybraneZajecia}" />  
+         </p:commandButton> 
          </p:column> 
 
 				</p:dataTable>
@@ -164,12 +164,12 @@
 <p:dialog id="dialog" header="Potwierdzanie obecności" widgetVar="dlg">  
     <h:form>  
   
-        <p:dataTable>
+        <p:dataTable id="dataOb" value="#{prowadzacyBean.obecnosciNaWybranych}" var="obecnosc">
         <p:column>
         <f:facet name="header">
              Imie Nazwisko
         </f:facet>
-        <h:outputText value="IMIE NAZWISKO" />
+        <h:outputText value="#{obecnosc.student.imie} #{obecnosc.student.nazwisko}" />
         </p:column>
         <p:column>
         <f:facet name="header">

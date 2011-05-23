@@ -175,7 +175,7 @@ public class StudentBean implements Serializable{
 	}
 	
 	public void loadCurrentRequest(ActionEvent event) {
-	      wybraneZajecia = (Zajecia)event.getComponent().getAttributes().get("rec");
+	      this.wybraneZajecia = (Zajecia)event.getComponent().getAttributes().get("rec");
 	   }
 	
 	public String zapiszObecnosc(){

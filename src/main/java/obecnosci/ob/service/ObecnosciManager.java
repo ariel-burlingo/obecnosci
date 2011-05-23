@@ -51,14 +51,14 @@ public class ObecnosciManager {
 	}
 	
 	public List<Obecnosci> pobierzMoje(long id){
-		List<Obecnosci> obecnosci = new ArrayList<Obecnosci>();
-		return obecnosci =  em.createQuery("select s from Obecnosci s where s.student.id = :id").setParameter("id", id).getResultList();
+		
+		return em.createQuery("select s from Obecnosci s where s.student.id = :id").setParameter("id", id).getResultList();
 	
 	}
 	//NEW
 	public List<Obecnosci> pobierzObecnosciZZajec(long ZAJECIA_ID){
-	List<Obecnosci> obecnosci = new ArrayList<Obecnosci>();
-	return obecnosci = em.createQuery("select o from Obecnosci o where o.ZAJECIA_ID = :ZAJECIA_ID").setParameter("ZAJECIA_ID", ZAJECIA_ID).getResultList();
+	
+	return  em.createQuery("select o from Obecnosci o where o.zajecia.id = :ZAJECIA_ID").setParameter("ZAJECIA_ID", ZAJECIA_ID).getResultList();
 	}
 	//
 }
