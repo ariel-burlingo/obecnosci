@@ -8,9 +8,13 @@
       http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
    <!-- Write your navigation rules here. You are encouraged to use CDI for creating @Named managed beans. -->
-<converter>
-    <converter-id>przedmiotConverter</converter-id>
-    <converter-class>obecnosci.ob.web.PrzedmiotConverter</converter-class>
-</converter>
+
+   <navigation-rule>  
+  <from-view-id>/prowadzacypf.jsp</from-view-id>  
+  <navigation-case>  
+    <from-outcome>potwierdzOb</from-outcome>  
+    <to-view-id>/potwierdzOb.jsp</to-view-id>  
+  </navigation-case>  
+  </navigation-rule>
 
 </faces-config>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
+   template="/WEB-INF/templates/default.xhtml">
+   
+   <ui:define name="content">
+	<h:form>
+	
+	
+	<p:dataTable id="dataOb" value="#{prowadzacyBean.obecnosciNaTychZajeciach}" var="obecnosc">
+        <p:column>
+        <f:facet name="header">
+             Imie Nazwisko
+        </f:facet>
+        <h:outputText value="#{obecnosc.student.imie} #{obecnosc.student.nazwisko}" />
+        </p:column>
+        <p:column>
+        <f:facet name="header">
+                    Obecny
+        </f:facet>
+         <p:selectBooleanCheckbox value="#{prowadzacyBean.obecny}">  
+            <p:ajax />  
+        </p:selectBooleanCheckbox>
+        </p:column>
+             
+         </p:dataTable>  
+    
+	
+	
+	</h:form>
+		
+
+				
+
+   </ui:define>
+</ui:composition>
+   

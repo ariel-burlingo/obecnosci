@@ -8,70 +8,13 @@
    
    <ui:define name="content">
 
-		<h:form>
-			<p:dataTable value="#{prowadzacyBean.wszystkichProwadzacych}"  var="rec">
-			<p:column  style="width:50px">
-					<f:facet name="header">
-                    ID
-            </f:facet>
-					<h:outputText value="#{rec.id}" />
-				</p:column>
-
-				<p:column>
-					<f:facet name="header">
-                    IMIE
-            </f:facet>
-					<h:outputText value="#{rec.imie}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-                    NAZWISKO
-            </f:facet>
-					<h:outputText value="#{rec.nazwisko}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-                    DANE KONTAKTOWE
-            </f:facet>
-					<h:outputText value="#{rec.daneKontaktowe}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-                    STRONA DOMOWA
-            </f:facet>
-					<h:outputText value="#{rec.stronaDomowa}" />
-				</p:column>
-				</p:dataTable>
-		</h:form>
-		<h:form>	
-		<p:panel id="panel" header="Nowy Prowadzacy" style="margin-bottom:10px;">  
-        <p:messages />  
-        <h:panelGrid columns="2">  
-            <h:outputLabel for="imie" value="Imie: " />  
-            <p:inputText id="imie" value="#{prowadzacyBean.imie}" required="true" label="Imie">    
-            </p:inputText>  
-            <h:outputLabel for="nazwisko" value="Nazwisko: " />  
-            <p:inputText id="nazwisko" value="#{prowadzacyBean.nazwisko}" required="true" label="Nazwisko">    
-            </p:inputText>
-             <h:outputLabel for="login" value="Login: " />  
-            <p:inputText id="login" value="#{prowadzacyBean.login}" required="true" label="Login">    
-            </p:inputText>
-            
-             <h:outputLabel for="daneKontaktowe" value="DaneKontaktowe: " />  
-            <p:inputText id="daneKontaktowe" value="#{prowadzacyBean.daneKontaktowe}" required="true" label="DaneKontaktowe">    
-            </p:inputText> 
-            <h:outputLabel for="stronaDomowa" value="StronaDomowa: " />  
-            <p:inputText id="stronaDomowa" value="#{prowadzacyBean.stronaDomowa}" required="true" label="StronaDomowa">    
-            </p:inputText>
-             <h:outputText value="Wpisz haslo: " />
-            <p:password value="#{prowadzacyBean.password}" inline="true" />                        
-             <p:commandButton value="Dodaj Prowadzacego" actionListener="#{prowadzacyBean.dodajProwadzacego}" ajax="false" />              
-        </h:panelGrid>  
-    </p:panel> 
-    </h:form>
-    <h:form>
+		
+		
+    
  
-   <h2>Dopisz przedmiot/Wypisz z przedmiotu</h2>
+  
+  <p:panel id="dopiszPanel" header="Dopisz przedmiot/Wypisz z przedmiotu" toggleable="true" toggleSpeed="500" >
+  <h:form>
    <p:selectOneMenu value="#{prowadzacyBean.przedmiotId}" style="width:400px">
     		<f:selectItem itemLabel="Wybierz Przedmiot do Dopisania" itemValue="" />  
             <f:selectItems value="#{przedmiotBean.wszystkiePrzedmioty}"  
@@ -92,12 +35,16 @@
 
 				</p:dataTable>
 		</h:form>
+		</p:panel>
 		
+		
+		
+		
+		
+		<p:panel id="mojeZajecia" header="Moje Przedmioty" toggleable="true" toggleSpeed="500" >
 		<h:form>
+		
 			<p:dataTable value="#{prowadzacyBean.mojeZajecia}"  var="blabla">
-			<f:facet name="header">
-                    Zajecia prowadzacego
-            </f:facet>
 			<p:column  style="width:50px">
 					<f:facet name="header">
                     Data
@@ -121,7 +68,9 @@
 
 				</p:dataTable>
 		</h:form>
+		</p:panel>
 		
+		<p:panel id="mojeZajeciaPanel" header="Moje Zajęcia" toggleable="true" toggleSpeed="500" >
 		<h:form>
 			<p:dataTable value="#{prowadzacyBean.mojeAktualnieOdbywajaceSieZajecia}"  var="aktOdbZaj">
 			<f:facet name="header">
@@ -152,41 +101,15 @@
 					<f:facet name="header">
                     Obecności
                     </f:facet>
-				 <p:commandButton value="Obecości" onclick="lazyload()"
-                     actionListener="#{prowadzacyBean.loadAjaxObecnosci}">  
+				 <p:commandButton value="Obecości" actionListener="#{prowadzacyBean.potwierdzajObecnosci}" ajax="false">  
          	<f:setPropertyActionListener value="#{aktOdbZaj}" target="#{prowadzacyBean.wybraneZajecia}" />  
          </p:commandButton> 
          </p:column> 
 
 				</p:dataTable>
 			</h:form>
-				<h:form> 
-				<p:remoteCommand name="lazyload" update="dataOb" oncomplete="dlg.show()" actionListener="#{prowadzacyBean.canILoad}" />
-<p:dialog id="dialog" header="Potwierdzanie obecności" widgetVar="dlg">  
-     
-  
-        <p:dataTable id="dataOb" value="#{prowadzacyBean.obecnosciNaWybranych}" var="obecnosc"  render="#{prowadzacyBean.shouldRender == true}">
-        <p:column>
-        <f:facet name="header">
-             Imie Nazwisko
-        </f:facet>
-        <h:outputText value="#{obecnosc.student.imie} #{obecnosc.student.nazwisko}" />
-        </p:column>
-        <p:column>
-        <f:facet name="header">
-                    Obecny
-        </f:facet>
-         <p:selectBooleanCheckbox value="#{prowadzacyBean.obecny}">  
-            <p:ajax />  
-        </p:selectBooleanCheckbox>
-        </p:column>
-             
-         </p:dataTable>  
-    
-    
-    
-</p:dialog>  
-		</h:form> 
+			</p:panel>
+		
 		
 				
 

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.NavigationHandler;
 import javax.faces.component.html.HtmlDataTable;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -178,25 +179,12 @@ public class ProwadzacyBean implements Serializable {
 		return prowadzacyManager.pobierzMojeAktualnieOdbywajaceSieZajecia(id);
 	}
 	
-	// zajaxowane
-	/*public List<Obecnosci> getObecnosciNaTychZajeciach(){
+	public List<Obecnosci> getObecnosciNaTychZajeciach(){
 		return obecnosciManager.pobierzObecnosciZZajec(wybraneZajecia.getId());
-	}*/
-	
-	
-	public void loadAjaxObecnosci(ActionEvent event) {
-		System.out.println("cos sie dzieje");
-	    this.setWybraneZajecia((Zajecia)event.getComponent().getAttributes().get("aktOdbZaj"));
-	    Student stu1 = new Student();
-	    stu1.setImie("Testowy");
-	    Obecnosci ob1 = new Obecnosci();
-	    ob1.setStudent(stu1);
-	    List<Obecnosci> tobl = new ArrayList<Obecnosci>();
-	    tobl.add(ob1);
-	    // obecnosciManager.pobierzObecnosciZZajec(wybraneZajecia.getId())
-	    this.setObecnosciNaWybranych(tobl);
-	    
 	}
+	
+	
+	
 	
 	public void canILoad(ActionEvent event) {
 		this.shouldRender = true;		
@@ -230,6 +218,15 @@ public class ProwadzacyBean implements Serializable {
 		//Prowadzacy instancja = (Prowadzacy) prowadzacy.getRowData();
 		przedmiotManager.wypiszProwadzacegoZPrzedmiotu(id, przedmiotId);
 		return "";
+	}
+	
+	public String potwierdzajObecnosci(ActionEvent event) {
+		System.out.println("cos sie dzieje");
+	    this.setWybraneZajecia((Zajecia)event.getComponent().getAttributes().get("aktOdbZaj"));
+	    FacesContext context = FacesContext.getCurrentInstance();
+	    NavigationHandler navHandler = context.getApplication().getNavigationHandler();
+	    navHandler.handleNavigation(context, null, "potwierdzOb");
+	    return "";	    
 	}
 	
 	

@@ -4,6 +4,7 @@
       <string>currentBuild</string>
       <path-set>
         <pathsSet class="linked-hash-set">
+          <string>adminpf.xhtml</string>
           <string>grupa.xhtml</string>
           <string>grupapf.xhtml</string>
           <string>home.xhtml</string>
@@ -12,6 +13,7 @@
           <string>obecnosci.xhtml</string>
           <string>obecnoscipf.xhtml</string>
           <string>obecnoscipf2.xhtml</string>
+          <string>potwierdzOb.xhtml</string>
           <string>prowadzacy.xhtml</string>
           <string>prowadzacypf.xhtml</string>
           <string>prowadzacypf_picklist.xhtml</string>
