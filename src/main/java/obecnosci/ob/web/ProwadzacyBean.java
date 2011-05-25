@@ -14,6 +14,7 @@ import javax.faces.event.ActionEvent;
 
 import org.hibernate.validator.util.GetMethods;
 import org.primefaces.model.DualListModel;
+import org.primefaces.model.LazyDataModel;
 
 import obecnosci.ob.domain.Grupa;
 import obecnosci.ob.domain.Obecnosci;
@@ -39,8 +40,11 @@ public class ProwadzacyBean implements Serializable {
 	@Inject
 	ObecnosciManager obecnosciManager;
 	
-	//ZMIENNE
 	
+	
+	
+	//ZMIENNE
+		
 	private long id=0;
 	private long przedmiotId=0;
 	public long getPrzedmiotId() {
@@ -57,7 +61,25 @@ public class ProwadzacyBean implements Serializable {
 	private String stronaDomowa;
 	private String password;
 	private Zajecia wybraneZajecia = new Zajecia();
+	private List<Obecnosci> obecnosciNaWybranych;
+	private boolean shouldRender = false;
+	
+	
+	public boolean getShouldRender() {
+		return shouldRender;
+	}
+	public void setShouldRender(boolean shouldRender) {
+		this.shouldRender = shouldRender;
+	}
+	public List<Obecnosci> getObecnosciNaWybranych() {
+		return obecnosciNaWybranych;
+	}
+	public void setObecnosciNaWybranych(List<Obecnosci> obecnosciNaWybranych) {
+		this.obecnosciNaWybranych = obecnosciNaWybranych;
+	}
+
 	private boolean obecny;
+	
 	public boolean isObecny() {
 		return obecny;
 	}
@@ -75,18 +97,7 @@ public class ProwadzacyBean implements Serializable {
 //
 	private List<Prowadzacy> prowadzacych;
 	
-	private List<Obecnosci> obecnosciNaWybranych = new ArrayList<Obecnosci>();
-	
-	
-	
-	
-	
-	public List<Obecnosci> getObecnosciNaWybranych() {
-		return obecnosciNaWybranych;
-	}
-	public void setObecnosciNaWybranych(List<Obecnosci> obecnosciNaWybranych) {
-		this.obecnosciNaWybranych = obecnosciNaWybranych;
-	}
+
 	public long getId() {
 		return id;
 	}
@@ -175,12 +186,20 @@ public class ProwadzacyBean implements Serializable {
 	
 	public void loadAjaxObecnosci(ActionEvent event) {
 		System.out.println("cos sie dzieje");
-	      Zajecia pobrane = (Zajecia)event.getComponent().getAttributes().get("aktOdbZaj");
-	      setWybraneZajecia(pobrane);
-	      System.out.println(pobrane.toString());
-	      List <Obecnosci> obePob = obecnosciManager.pobierzObecnosciZZajec(wybraneZajecia.getId());
-	      setObecnosciNaWybranych(obePob);
-	      
+	    this.setWybraneZajecia((Zajecia)event.getComponent().getAttributes().get("aktOdbZaj"));
+	    Student stu1 = new Student();
+	    stu1.setImie("Testowy");
+	    Obecnosci ob1 = new Obecnosci();
+	    ob1.setStudent(stu1);
+	    List<Obecnosci> tobl = new ArrayList<Obecnosci>();
+	    tobl.add(ob1);
+	    // obecnosciManager.pobierzObecnosciZZajec(wybraneZajecia.getId())
+	    this.setObecnosciNaWybranych(tobl);
+	    
+	}
+	
+	public void canILoad(ActionEvent event) {
+		this.shouldRender = true;		
 	}
 	
 	
