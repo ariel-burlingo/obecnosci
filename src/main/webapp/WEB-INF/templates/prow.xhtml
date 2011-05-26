@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:ui="http://java.sun.com/jsf/facelets">
+   <h:head>
+      <title>Java EE 6 Starter Application</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <h:outputStylesheet name="css/screen.css"/>
+   </h:head>
+   <h:body>
+      <div id="container">
+         <div id="content">
+         <div id="menubar">
+           	<h:outputLink value="obecnosci.jsf"><h:outputText value="OBECNO" /></h:outputLink>
+         	<h:outputLink value="grupa.jsf"><h:outputText value="GRUPA" /></h:outputLink>
+         	<h:outputLink value="grupapf.jsf"><h:outputText value="GRUPA PF" /></h:outputLink>
+       	    <h:outputLink value="prowadzacypf.jsf"><h:outputText value="PROW PF" /></h:outputLink>
+            <h:outputLink value="przedmiotpf.jsf"><h:outputText value="PRZED PF" /></h:outputLink>
+         	<h:outputLink value="zajecia.jsf"><h:outputText value="ZAJECI" /></h:outputLink>
+         	<h:outputLink value="zajeciapf.jsf"><h:outputText value="ZAJECI PF" /></h:outputLink>
+         	<h:outputLink value="zaloguj.jsf"><h:outputText value="LOG" /></h:outputLink>
+         	
+         </div>
+            <ui:insert name="content">
+               [Template content will be inserted here]
+            </ui:insert>
+         </div>
+         <div id="footer">
+            <h:graphicImage value="/resources/gfx/weld.png" alt="Weld logo"/>
+            <p>
+               This project was generated from a Maven archetype maintained by the Weld team.<br/>
+               Weld is the reference implementation of CDI, released under the Apache License, Version 2.0.<br/>
+            </p>
+         </div>
+      </div>
+   </h:body>
+</html>
