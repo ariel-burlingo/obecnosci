@@ -1,118 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-   xmlns:ui="http://java.sun.com/jsf/facelets"
-   xmlns:f="http://java.sun.com/jsf/core"
-   xmlns:h="http://java.sun.com/jsf/html"
-   xmlns:p="http://primefaces.prime.com.tr/ui"
-   template="/WEB-INF/templates/default.xhtml">
-   
-   <ui:define name="content">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/WEB-INF/templates/default.xhtml">
 
-		
-		
-    
- 
-  
-  <p:panel id="dopiszPanel" header="Dopisz przedmiot/Wypisz z przedmiotu" toggleable="true" toggleSpeed="500" >
-  <h:form>
-   <p:selectOneMenu value="#{prowadzacyBean.przedmiotId}" style="width:400px">
-    		<f:selectItem itemLabel="Wybierz Przedmiot do Dopisania" itemValue="" />  
-            <f:selectItems value="#{przedmiotBean.wszystkiePrzedmioty}"  
-                var="rekord" itemLabel="#{rekord.nazwa} #{rekord.inneDane}" itemValue="#{rekord.id}" />  
-        </p:selectOneMenu>
-        <p:commandButton value="Przypisz przedmiot do mnie" actionListener="#{prowadzacyBean.przypiszDoPrzedmiotu}" ajax="false" />
-        <p:commandButton value="Wypisz" actionListener="#{prowadzacyBean.wypiszZPrzedmiotu}" ajax="false" />      
-    </h:form>
-    
-		<h:form>
-			<p:dataTable value="#{prowadzacyBean.mojePrzedmioty}"  var="wyp">
-			<p:column  style="width:50px">
-					<f:facet name="header">
-                    Przedmioty Prowadzacego
-            </f:facet>
-					<h:outputText value="#{wyp.nazwa}" />
-				</p:column>
+	<ui:define name="content">
 
-				</p:dataTable>
-		</h:form>
-		</p:panel>
-		
-		
-		
-		
-		
-		<p:panel id="mojeZajecia" header="Moje Przedmioty" toggleable="true" toggleSpeed="500" >
-		<h:form>
-		
-			<p:dataTable value="#{prowadzacyBean.mojeZajecia}"  var="blabla">
-			<p:column  style="width:50px">
-					<f:facet name="header">
-                    Data
-            </f:facet>
-					<h:outputText value="#{blabla.data}">
-					<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
-					</h:outputText>
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-                    Przedmiot
-            </f:facet>
-					<h:outputText value="#{blabla.przedmiot.nazwa}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-                    Grupa_id
-            </f:facet>
-					<h:outputText value="#{blabla.grupa.informacje}" />
-				</p:column>
 
-				</p:dataTable>
-		</h:form>
-		</p:panel>
-		
-		<p:panel id="mojeZajeciaPanel" header="Moje Zajęcia" toggleable="true" toggleSpeed="500" >
-		<h:form>
-			<p:dataTable value="#{prowadzacyBean.mojeAktualnieOdbywajaceSieZajecia}"  var="aktOdbZaj">
-			<f:facet name="header">
-                    Aktualnie odbywają się
+
+<p:spacer width="100%" height="50" />
+
+
+		<p:panel id="dopiszPanel"
+			header="Dopisz przedmiot/Wypisz z przedmiotu" toggleable="true"
+			toggleSpeed="500">
+			<h:form>
+				<p:selectOneMenu value="#{prowadzacyBean.przedmiotId}"
+					style="width:400px">
+					<f:selectItem itemLabel="Wybierz Przedmiot do Dopisania"
+						itemValue="" />
+					<f:selectItems value="#{przedmiotBean.wszystkiePrzedmioty}"
+						var="rekord" itemLabel="#{rekord.nazwa} #{rekord.inneDane}"
+						itemValue="#{rekord.id}" />
+				</p:selectOneMenu>
+				<p:commandButton value="Przypisz przedmiot do mnie"
+					actionListener="#{prowadzacyBean.przypiszDoPrzedmiotu}"
+					ajax="false" />
+				<p:commandButton value="Wypisz"
+					actionListener="#{prowadzacyBean.wypiszZPrzedmiotu}" ajax="false" />
+			</h:form>
+
+			<h:form>
+				<p:dataTable value="#{prowadzacyBean.mojePrzedmioty}" var="wyp">
+					<p:column style="width:50px">
+						<f:facet name="header">
+                    Moje Przedmioty
             </f:facet>
-			<p:column  style="width:50px">
-					<f:facet name="header">
-                    Data
-            </f:facet>
-					<h:outputText value="#{aktOdbZaj.data}">
-					<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
-					</h:outputText>
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-                    Przedmiot
-            </f:facet>
-					<h:outputText value="#{aktOdbZaj.przedmiot.nazwa}" />
-				</p:column>
-				<p:column>
-					<f:facet name="header">
-                    Grupa_id
-            </f:facet>
-					<h:outputText value="#{aktOdbZaj.grupa.informacje}" />
-				</p:column>
-				
-				<p:column>
-					<f:facet name="header">
-                    Obecności
-                    </f:facet>
-				 <p:commandButton value="Obecości" actionListener="#{prowadzacyBean.potwierdzajObecnosci}" ajax="false">  
-         	<f:setPropertyActionListener value="#{aktOdbZaj}" target="#{prowadzacyBean.wybraneZajecia}" />  
-         </p:commandButton> 
-         </p:column> 
+						<h:outputText value="#{wyp.nazwa}" />
+					</p:column>
 
 				</p:dataTable>
 			</h:form>
-			</p:panel>
-		
-		
-				
+		</p:panel>
 
-   </ui:define>
+
+<p:spacer width="100%" height="50" />
+
+
+		<p:panel id="mojeZajeciaPanel" header="Aktualnie odbywają się"
+			toggleable="true" toggleSpeed="500">
+			<h:form>
+				<p:dataTable
+					value="#{prowadzacyBean.mojeAktualnieOdbywajaceSieZajecia}"
+					var="aktOdbZaj">
+
+					<p:column style="width:50px">
+						<f:facet name="header">
+                    Data
+            </f:facet>
+						<h:outputText value="#{aktOdbZaj.data}">
+							<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+                    Przedmiot
+            </f:facet>
+						<h:outputText value="#{aktOdbZaj.przedmiot.nazwa}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+                    Grupa_id
+            </f:facet>
+						<h:outputText value="#{aktOdbZaj.grupa.informacje}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+                    Obecności
+                    </f:facet>
+						<p:commandButton value="Obecości"
+							actionListener="#{prowadzacyBean.potwierdzajObecnosci}"
+							ajax="false">
+							<f:setPropertyActionListener value="#{aktOdbZaj}"
+								target="#{prowadzacyBean.wybraneZajecia}" />
+						</p:commandButton>
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+		</p:panel>
+
+
+<p:spacer width="100%" height="50" />
+
+
+		<p:panel id="mojeZajecia" header="Wszystkie moje zajęcia" toggleable="true"
+			toggleSpeed="500">
+			<h:form>
+
+				<p:dataTable value="#{prowadzacyBean.mojeZajecia}" var="blabla"
+					paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column style="width:50px">
+						<f:facet name="header">
+                    Data
+            </f:facet>
+						<h:outputText value="#{blabla.data}">
+							<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
+						</h:outputText>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+                    Przedmiot
+            </f:facet>
+						<h:outputText value="#{blabla.przedmiot.nazwa}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+                    Grupa_id
+            </f:facet>
+						<h:outputText value="#{blabla.grupa.informacje}" />
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+		</p:panel>
+
+
+
+
+
+
+	</ui:define>
 </ui:composition>
-   

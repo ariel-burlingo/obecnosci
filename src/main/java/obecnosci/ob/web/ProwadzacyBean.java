@@ -232,7 +232,7 @@ public class ProwadzacyBean implements Serializable {
 	    Obecnosci ob = (Obecnosci)event.getObject();
 	    obecnosciManager.zatwierdzObecnosci(ob.getId());
 	    FacesContext context = FacesContext.getCurrentInstance();  
-        context.addMessage(null, new FacesMessage("Zatwierdzono", "Indeks: "+ob.getStudent().getIndex()+"<br />"+ob.getStudent().getImie()+ob.getStudent().getNazwisko()));  
+        context.addMessage(null, new FacesMessage("Zatwierdzono", "Indeks: "+ob.getStudent().getIndex()+"<br />"+ob.getStudent().getImie()+" "+ob.getStudent().getNazwisko()));  
 	}
 	
 	
