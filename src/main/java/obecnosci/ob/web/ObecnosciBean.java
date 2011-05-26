@@ -129,10 +129,11 @@ public class ObecnosciBean implements Serializable {
 		return "";
 	}
 
-	public String usprawiedliwObecnosc() {
+	// Porzucona 
+	/*public String usprawiedliwObecnosc() {
 		Obecnosci instancja = (Obecnosci) obecnosci.getRowData();
 		obecnosciManager.usprawedliwN(instancja);
 		return "";
-	}
+	}*/
 
 }

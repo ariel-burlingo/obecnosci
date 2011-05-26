@@ -28,6 +28,7 @@ import obecnosci.ob.domain.Zajecia;
 import obecnosci.ob.service.ObecnosciManager;
 import obecnosci.ob.service.ProwadzacyManager;
 import obecnosci.ob.service.PrzedmiotManager;
+import obecnosci.ob.service.ZajeciaManager;
 
 
 @SessionScoped
@@ -42,6 +43,8 @@ public class ProwadzacyBean implements Serializable {
 	ProwadzacyManager prowadzacyManager;
 	@Inject
 	ObecnosciManager obecnosciManager;
+	@Inject
+	ZajeciaManager zajeciaManager;
 	
 	
 	
@@ -65,10 +68,17 @@ public class ProwadzacyBean implements Serializable {
 	private String password;
 	private Zajecia wybraneZajecia = new Zajecia();
 	private Obecnosci wybranaObecnosc = new Obecnosci();
+	private Student wybranyStudent = new Student();
 	private List<Obecnosci> obecnosciNaWybranych;
 	
 	
 
+	public Student getWybranyStudent() {
+		return wybranyStudent;
+	}
+	public void setWybranyStudent(Student wybranyStudent) {
+		this.wybranyStudent = wybranyStudent;
+	}
 	public Obecnosci getWybranaObecnosc() {
 		return wybranaObecnosc;
 	}
@@ -186,6 +196,13 @@ public class ProwadzacyBean implements Serializable {
 		return obecnosciManager.pobierzObecnosciZZajec(wybraneZajecia.getId());
 	}
 	
+	public List<Zajecia> getZajeciaNaKtorychStudentBylNieObecny(){
+		return zajeciaManager.pobierzDlaStudentaZajeciaNaKtorychBylNieObecny(wybranyStudent.getId(), prowadzacyManager.pobierzMoje(id));
+	}
+	
+	public List<Student> getMoiStudenci(){
+		return prowadzacyManager.pobierzMoichStudentow(id);		
+	}
 	
 	
 	//AKCJE
@@ -226,6 +243,15 @@ public class ProwadzacyBean implements Serializable {
 	    return "";	    
 	}
 	
+	public String usprawiedliwiajNieObecnosci(ActionEvent event) {
+		System.out.println("cos sie dzieje - selecty  przejscie do usprawiedliwiania nieobecnosci");
+	    this.setWybranyStudent((Student)event.getComponent().getAttributes().get("aktOdbZaj"));
+	    FacesContext context = FacesContext.getCurrentInstance();
+	    NavigationHandler navHandler = context.getApplication().getNavigationHandler();
+	    navHandler.handleNavigation(context, null, "usprawiedliwOb");
+	    return "";	    
+	}
+	
 	// AJAX
 	public void potwierdzWybranaObecnosc(SelectEvent event) {
 		System.out.println("cos sie dzieje - probuje potwierdzac");
@@ -233,6 +259,15 @@ public class ProwadzacyBean implements Serializable {
 	    obecnosciManager.zatwierdzObecnosci(ob.getId());
 	    FacesContext context = FacesContext.getCurrentInstance();  
         context.addMessage(null, new FacesMessage("Zatwierdzono", "Indeks: "+ob.getStudent().getIndex()+"<br />"+ob.getStudent().getImie()+" "+ob.getStudent().getNazwisko()));  
+	}
+	
+	// AJAX
+	public void usprawiedliwWybranaNieObecnosc(SelectEvent event) {
+		System.out.println("cos sie dzieje - probuje usprawiedliwiac");
+	    Zajecia zaj = (Zajecia)event.getObject();
+	    obecnosciManager.usprawiedliwNieObecnosc(wybranyStudent.getId(), zaj.getId());
+	    FacesContext context = FacesContext.getCurrentInstance();  
+        context.addMessage(null, new FacesMessage("Usprawiedliwiono",zaj.getData().toString()+ "<br />Indeks: "+wybranyStudent.getIndex()+"<br />"+wybranyStudent.getImie()+" "+wybranyStudent.getNazwisko()));  
 	}
 	
 	

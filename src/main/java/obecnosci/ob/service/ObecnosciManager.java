@@ -25,8 +25,6 @@ public class ObecnosciManager {
 		Obecnosci obecnosc = new Obecnosci();
 		Student student = em.getReference(Student.class, IdStudenta);
 		Zajecia zajecia = em.getReference(Zajecia.class, IdZajec);
-		//student.setId(IdStudenta); WTF to mia³o byæ :P, referencje panowie a nie puste obiekty
-		//zajecia.setId(IdZajec);
 		obecnosc.setStudent(student);
 		obecnosc.setZajecia(zajecia);
 		obecnosc.setTyp(Typ_Obecnosci.NIEPOTWIERDZONA);
@@ -39,10 +37,14 @@ public class ObecnosciManager {
 		em.merge(obecnosc);
 	}
 
-	public void usprawedliwN(Obecnosci instancjaObecnosci) {
-		Obecnosci obecnosc = em.getReference(Obecnosci.class,
-				instancjaObecnosci.getId());
+	public void usprawiedliwNieObecnosc(long IdStudenta, long IdZajec) {		
+		Obecnosci obecnosc = new Obecnosci();
+		Student student = em.getReference(Student.class, IdStudenta);
+		Zajecia zajecia = em.getReference(Zajecia.class, IdZajec);
+		obecnosc.setStudent(student);
+		obecnosc.setZajecia(zajecia);
 		obecnosc.setTyp(Typ_Obecnosci.USPRAWIEDLIWIONA);
+		em.persist(obecnosc);
 		em.merge(obecnosc);
 	}
 

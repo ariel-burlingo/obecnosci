@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
+   template="/WEB-INF/templates/default.xhtml">
+   
+   <ui:define name="content">
+	<h:form>
+	<p:growl id="growl" showDetail="true" sticky="false" />
+	
+	<p:dataTable id="dOb" value="#{prowadzacyBean.zajeciaNaKtorychStudentBylNieObecny}" var="zajecia"
+				 selection="#{prowadzacyBean.wybraneZajecia}"
+				 selectionMode="single"  
+                 rowSelectListener="#{prowadzacyBean.usprawiedliwWybranaNieObecnosc}"  
+                 onRowSelectUpdate="dOb growl" 
+                 onRowUnselectUpdate="dOB growl">  
+                 
+                 
+          <p:column>
+        <f:facet name="header">
+             Data
+        </f:facet>
+        <h:outputText value="#{zajecia.data}">
+        	<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
+        </h:outputText>
+        </p:column>
+        <p:column>
+        <f:facet name="header">
+             Przedmiot
+        </f:facet>
+        <h:outputText value="#{zajecia.przedmiot.nazwa}" />
+        </p:column>
+        <p:column>
+        <f:facet name="header">
+                    Grupa
+        </f:facet>
+         <h:outputText value="#{zajecia.grupa.informacje}" />
+        </p:column>
+             
+         </p:dataTable>  
+    
+	
+	
+	</h:form>
+		
+
+				
+
+   </ui:define>
+</ui:composition>
+   

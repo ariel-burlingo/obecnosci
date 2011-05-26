@@ -16,5 +16,12 @@
     <to-view-id>/potwierdzOb.jsp</to-view-id>  
   </navigation-case>  
   </navigation-rule>
+ <navigation-rule>  
+  <from-view-id>/prowadzacypf.jsp</from-view-id>  
+  <navigation-case>  
+    <from-outcome>usprawiedliwOb</from-outcome>  
+    <to-view-id>/usprawiedliwOb.jsp</to-view-id>  
+  </navigation-case>  
+  </navigation-rule>
 
 </faces-config>

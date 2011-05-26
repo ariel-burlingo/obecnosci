@@ -28,6 +28,7 @@
           <string>resources/gfx/weld.png</string>
           <string>student.xhtml</string>
           <string>studentpf.xhtml</string>
+          <string>usprawiedliwOb.xhtml</string>
           <string>WEB-INF/beans.xml</string>
           <string>WEB-INF/faces-config.xml</string>
           <string>WEB-INF/templates/default.xhtml</string>
@@ -36,6 +37,7 @@
           <string>zajecia.xhtml</string>
           <string>zajeciapf.xhtml</string>
           <string>zaloguj.xhtml</string>
+          <string>zarzadzanieStud.xhtml</string>
           <string>WEB-INF/classes/import.sql</string>
           <string>WEB-INF/classes/META-INF/persistence.xml</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Grupa.class</string>

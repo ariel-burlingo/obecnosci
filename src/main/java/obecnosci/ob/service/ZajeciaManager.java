@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -21,6 +22,7 @@ public class ZajeciaManager {
 	
 	@PersistenceContext
 	EntityManager em;
+	
 	
 	/*public void zaplanujZajecia(Prowadzacy instProwadzacego, ){
 		
@@ -86,6 +88,31 @@ public List<Zajecia> pobierzDlaStudenta(long idStudenta){
 	return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty) ").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).getResultList();
 	// bylo zle zapytanie - poprawiono - wypisuje wszystkie zajecia danego studenta
 	
+}
+
+public List<Zajecia> pobierzDlaStudentaZajeciaNaKtorychBylNieObecny(long idStudenta, List<Przedmiot> przedmiotyProwadzacego){
+	/*
+	List<Grupa> grupy = em.createQuery("select s.grupy from Student s where s.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	List<Przedmiot> przedmiotyStud = em.createQuery("select s.przedmioty from Student s where s.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	if(przedmiotyStud.size()>0 && przedmiotyProwadzacego.size() > 0){
+		return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and (:przedmiotyStud) in (:moje) ").setParameter("grupy", grupy).setParameter("przedmiotyStud",przedmiotyStud).setParameter("moje", przedmiotyProwadzacego).getResultList();
+	} else {
+		return new ArrayList<Zajecia>();
+	}*/
+	
+	List<Grupa> grupy = em.createQuery("select s.grupy from Student s where s.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	List<Przedmiot> przedmioty = em.createQuery("select s.przedmioty from Student s where s.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	List<Zajecia> obecnosci = em.createQuery("select o.zajecia from Obecnosci o where o.student.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	// escape from null pointers code
+	if(grupy.size() > 0 && przedmioty.size() > 0 ){
+		if(obecnosci.size() > 0){
+			return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and not z in (:obecnosci) ").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("obecnosci", obecnosci).getResultList();
+		} else {
+			return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty)").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).getResultList();
+		}
+	} else {
+		return new ArrayList<Zajecia>();
+	}
 }
 
 public List<Zajecia> pobierzDlaStudentaTerazOdbywajaceSie(long idStudenta){

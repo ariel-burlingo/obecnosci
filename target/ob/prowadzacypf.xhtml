@@ -10,7 +10,7 @@
 
 
 
-<p:spacer width="100%" height="50" />
+<p:spacer width="100%" height="20" />
 
 
 		<p:panel id="dopiszPanel"
@@ -46,7 +46,7 @@
 		</p:panel>
 
 
-<p:spacer width="100%" height="50" />
+<p:spacer width="100%" height="20" />
 
 
 		<p:panel id="mojeZajeciaPanel" header="Aktualnie odbywają się"
@@ -93,8 +93,50 @@
 			</h:form>
 		</p:panel>
 
+<p:spacer width="100%" height="20" />
 
-<p:spacer width="100%" height="50" />
+
+		<p:panel id="studenci" header="Studenci z moich zajęć (usprawiedliwianie)" toggleable="true"
+			toggleSpeed="500">
+			<h:form>
+
+				<p:dataTable id="stud" value="#{prowadzacyBean.moiStudenci}" var="student" emptyMessage="No cars found with given criteria">            >  
+					
+					<p:column style="width:100px" filterBy="#{student.index}">
+						<f:facet name="header">
+                    Indeks
+            </f:facet>
+						<h:outputText value="#{student.index}"/>
+					</p:column>
+					<p:column filterBy="#{student.imie}" filterMatchMode="contains">
+						<f:facet name="header">
+                    Imie
+            </f:facet>
+						<h:outputText value="#{student.imie}" />
+					</p:column>
+					<p:column filterBy="#{student.nazwisko}" filterMatchMode="contains">
+						<f:facet name="header">
+                    Nazwisko
+            </f:facet>
+						<h:outputText value="#{student.nazwisko}" />
+					</p:column>
+					<p:column>
+					<f:facet name="header">
+					Zarządzaj
+					</f:facet>
+					<p:commandButton value="U"
+							actionListener="#{prowadzacyBean.usprawiedliwiajNieObecnosci}"
+							ajax="false">
+							<f:setPropertyActionListener value="#{student}"
+								target="#{prowadzacyBean.wybranyStudent}" />
+						</p:commandButton>
+					
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+		</p:panel>
+<p:spacer width="100%" height="20" />
 
 
 		<p:panel id="mojeZajecia" header="Wszystkie moje zajęcia" toggleable="true"
@@ -129,6 +171,8 @@
 				</p:dataTable>
 			</h:form>
 		</p:panel>
+		
+		
 
 
 

@@ -81,5 +81,14 @@ public class ProwadzacyManager {
 		//return zajecia;
 		
 	}
+	
+	public List<Student> pobierzMoichStudentow(long idProwadzacego){
+		//List<Przedmiot> mojePrzedmioty = pobierzMoje(idProwadzacego);
+		//if(mojePrzedmioty.size() > 0){
+			return em.createQuery("select s from Student s").getResultList();
+		//} else { // empty list
+		//	return new ArrayList<Student>();
+		//}
+	}
 	//
 }
