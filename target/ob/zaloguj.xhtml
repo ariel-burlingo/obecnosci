@@ -19,5 +19,13 @@
    <h:inputSecret value="#{prowadzacyBean.password}"/> 
    <h:commandButton value="Zaloguj" action="#{prowadzacyBean.zaloguj}"/>  
    </h:form>
+   
+   Logowanie jako admin:
+   <h:form>
+   <h:inputText value="#{adminBean.login}"></h:inputText>
+   <h:inputSecret value="#{adminBean.haslo}"/> 
+   <h:commandButton value="Zaloguj" action="#{adminBean.zaloguj}"/>  
+   <h:commandLink action="#{radioBean.showOneDj}" value=" Pokaż " />
+   </h:form>
    </ui:define>
 </ui:composition>

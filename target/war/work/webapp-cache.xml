@@ -40,6 +40,7 @@
           <string>zarzadzanieStud.xhtml</string>
           <string>WEB-INF/classes/import.sql</string>
           <string>WEB-INF/classes/META-INF/persistence.xml</string>
+          <string>WEB-INF/classes/obecnosci/ob/domain/Admin.class</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Grupa.class</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Obecnosci$Typ_Obecnosci.class</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Obecnosci.class</string>
@@ -47,12 +48,14 @@
           <string>WEB-INF/classes/obecnosci/ob/domain/Przedmiot.class</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Student.class</string>
           <string>WEB-INF/classes/obecnosci/ob/domain/Zajecia.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/service/AdminManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/GrupaManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/ObecnosciManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/ProwadzacyManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/PrzedmiotManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/StudentManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/ZajeciaManager.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/web/AdminBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/GrupaBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/ObecnosciBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/PickListBean.class</string>
