@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.application.NavigationHandler;
 import javax.faces.component.html.HtmlDataTable;
 import javax.inject.Inject;
@@ -14,6 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import org.hibernate.validator.util.GetMethods;
+import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DualListModel;
 import org.primefaces.model.LazyDataModel;
 
@@ -62,15 +64,16 @@ public class ProwadzacyBean implements Serializable {
 	private String stronaDomowa;
 	private String password;
 	private Zajecia wybraneZajecia = new Zajecia();
+	private Obecnosci wybranaObecnosc = new Obecnosci();
 	private List<Obecnosci> obecnosciNaWybranych;
-	private boolean shouldRender = false;
 	
 	
-	public boolean getShouldRender() {
-		return shouldRender;
+
+	public Obecnosci getWybranaObecnosc() {
+		return wybranaObecnosc;
 	}
-	public void setShouldRender(boolean shouldRender) {
-		this.shouldRender = shouldRender;
+	public void setWybranaObecnosc(Obecnosci wybranaObecnosc) {
+		this.wybranaObecnosc = wybranaObecnosc;
 	}
 	public List<Obecnosci> getObecnosciNaWybranych() {
 		return obecnosciNaWybranych;
@@ -81,7 +84,7 @@ public class ProwadzacyBean implements Serializable {
 
 	private boolean obecny;
 	
-	public boolean isObecny() {
+	public boolean getObecny() {
 		return obecny;
 	}
 	public void setObecny(boolean obecny) {
@@ -185,12 +188,6 @@ public class ProwadzacyBean implements Serializable {
 	
 	
 	
-	
-	public void canILoad(ActionEvent event) {
-		this.shouldRender = true;		
-	}
-	
-	
 	//AKCJE
 	
 	public String dodajProwadzacego(){
@@ -227,6 +224,15 @@ public class ProwadzacyBean implements Serializable {
 	    NavigationHandler navHandler = context.getApplication().getNavigationHandler();
 	    navHandler.handleNavigation(context, null, "potwierdzOb");
 	    return "";	    
+	}
+	
+	// AJAX
+	public void potwierdzWybranaObecnosc(SelectEvent event) {
+		System.out.println("cos sie dzieje - probuje potwierdzac");
+	    Obecnosci ob = (Obecnosci)event.getObject();
+	    obecnosciManager.zatwierdzObecnosci(ob.getId());
+	    FacesContext context = FacesContext.getCurrentInstance();  
+        context.addMessage(null, new FacesMessage("Zatwierdzono", "Indeks: "+ob.getStudent().getIndex()+"<br />"+ob.getStudent().getImie()+ob.getStudent().getNazwisko()));  
 	}
 	
 	

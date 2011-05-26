@@ -8,9 +8,15 @@
    
    <ui:define name="content">
 	<h:form>
+	<p:growl id="growl" showDetail="true" sticky="false" />
 	
-	
-	<p:dataTable id="dataOb" value="#{prowadzacyBean.obecnosciNaTychZajeciach}" var="obecnosc">
+	<p:dataTable id="dOb" value="#{prowadzacyBean.obecnosciNaTychZajeciach}" var="obecnosc"
+				 selection="#{prowadzacyBean.wybranaObecnosc}"
+				 selectionMode="single"  
+                 rowSelectListener="#{prowadzacyBean.potwierdzWybranaObecnosc}"  
+                 onRowSelectUpdate="dOb growl" 
+                 onRowUnselectUpdate="dOB growl">  
+                 >
         <p:column>
         <f:facet name="header">
              Imie Nazwisko
@@ -19,11 +25,9 @@
         </p:column>
         <p:column>
         <f:facet name="header">
-                    Obecny
+                    Obecność
         </f:facet>
-         <p:selectBooleanCheckbox value="#{prowadzacyBean.obecny}">  
-            <p:ajax />  
-        </p:selectBooleanCheckbox>
+         <h:outputText value="#{obecnosc.typ}" />
         </p:column>
              
          </p:dataTable>  
