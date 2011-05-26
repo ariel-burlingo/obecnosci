@@ -7,16 +7,13 @@ import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.omg.CORBA.Request;
 
-import obecnosci.ob.domain.Admin;
-import obecnosci.ob.domain.Prowadzacy;
-import obecnosci.ob.domain.Student;
 import obecnosci.ob.service.AdminManager;
 import obecnosci.ob.service.ProwadzacyManager;
 import obecnosci.ob.service.StudentManager;
 @SessionScoped
 @Named
+@ManagedBean
 public class LoginBean implements Serializable{
 
 	private static final long serialVersionUID = -6360756516892427468L;
@@ -37,8 +34,6 @@ ProwadzacyBean prowadzacyBean;
 @Inject
 AdminBean adminBean;
 
-@SessionScoped
-@Named
 public String zaloguj(){
 	
 	if (typ=="0"){

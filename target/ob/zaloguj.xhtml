@@ -6,37 +6,17 @@
    xmlns:p="http://primefaces.prime.com.tr/ui"
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
-   Logowanie jako student:
+
    <h:form>
-   <h:inputText value="#{studentBean.index}"></h:inputText>
-   <h:inputSecret value="#{studentBean.haslo}"/> 
-   <h:commandButton value="Zaloguj" action="#{studentBean.zaloguj}"/>  
-   </h:form>
+   <h:selectOneMenu id="typ" value="#{loginBean.typ}">
+  <f:selectItem id="Prowadzacy" itemLabel="Prowadzący" itemValue="1" />
+  <f:selectItem id="Student" itemLabel="Student" itemValue="2" />
+  <f:selectItem id="Admin" itemLabel="Admin" itemValue="0" />
+</h:selectOneMenu>
    
-   Logowanie jako prowadzacy:
-   <h:form>
-   <h:inputText value="#{prowadzacyBean.login}"></h:inputText>
-   <h:inputSecret value="#{prowadzacyBean.password}"/> 
-   <h:commandButton value="Zaloguj" action="#{prowadzacyBean.zaloguj}"/>  
-   </h:form>
-   
-   Logowanie jako admin:
-   <h:form>
-   <h:inputText value="#{adminBean.login}"></h:inputText>
-   <h:inputSecret value="#{adminBean.haslo}"/> 
-   <h:commandButton value="Zaloguj" action="#{adminBean.zaloguj}"/>  
-   <h:commandLink action="#{radioBean.showOneDj}" value=" Pokaż " />
-   </h:form>
-   
-   Wspolne logowanie;
-   0-admin
-   1- prowadzacy
-   2- student
-   <h:form>
-   <h:inputText value="#{loginBean.typ}"></h:inputText>
    <h:inputText value="#{loginBean.pole1}"></h:inputText>
    <h:inputSecret value="#{loginBean.pole2}"/>   
-   <h:commandLink action="#{loginBean.zaloguj}" value=" Logowanie " />
+   <h:commandLink ajax="false" action="#{loginBean.zaloguj}" value=" Logowanie " />
    </h:form>
    
    </ui:define>
