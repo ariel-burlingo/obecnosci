@@ -128,6 +128,7 @@ public List<Zajecia> pobierzDlaStudentaTerazOdbywajaceSie(long idStudenta){
 	if(ozaj.size() > 0){
 		return em.createQuery("from Zajecia as z where z not in (:ozaj) and z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and z.data >= :kwadrans and z.data <= :now").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("ozaj", ozaj).setParameter("now", now).setParameter("kwadrans", kwadrans).getResultList();
 	} else { // inaczej brak obecnoœci wywali b³¹d!
+		//return new ArrayList<Zajecia>();
 		return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and z.data >= :kwadrans and z.data <= :now").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("now", now).setParameter("kwadrans", kwadrans).getResultList();
 	}
 }

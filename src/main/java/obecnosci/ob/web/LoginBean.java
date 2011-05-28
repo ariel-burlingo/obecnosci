@@ -48,7 +48,7 @@ public String zaloguj(){
 		prowadzacyBean.zaloguj();
 		return "ProwadzacyHome";
 	}
-	if (typ=="2"){
+	if (typ.equalsIgnoreCase("2")){
 		studentBean.setIndex(Integer.parseInt(pole1));
 		studentBean.setHaslo(pole2);
 		studentBean.zaloguj();
