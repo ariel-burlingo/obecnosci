@@ -2,6 +2,7 @@ package obecnosci.ob.web;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -269,7 +270,23 @@ public class ProwadzacyBean implements Serializable {
 	    FacesContext context = FacesContext.getCurrentInstance();  
         context.addMessage(null, new FacesMessage("Usprawiedliwiono",zaj.getData().toString()+ "<br />Indeks: "+wybranyStudent.getIndex()+"<br />"+wybranyStudent.getImie()+" "+wybranyStudent.getNazwisko()));  
 	}
+	// AJAX
+	public void reczneSterowanieZajeciami(){
+		System.out.println("cos sie dzieje - proba recznego sterowania");
+	    zajeciaManager.zmienCzasRozpoczecia(id, wybraneZajecia.getId() , new Date());
+	    FacesContext context = FacesContext.getCurrentInstance();  
+        context.addMessage(null, new FacesMessage("[!] Rêczne Sterowanie","Zajêcia z "+wybraneZajecia.getPrzedmiot().getNazwa()+ "<br />Gr: "+wybraneZajecia.getGrupa().getInformacje()+"<br />Zosta³y rozpoczête"));  
 	
+	}
+	
+	// AJAX
+	public void zmienCzasRozpoczecia(){
+		System.out.println("cos sie dzieje - proba zmiany czasu rozpoczecia");
+	    zajeciaManager.zmienCzasRozpoczecia(id, wybraneZajecia.getId() , wybraneZajecia.getData());
+	    FacesContext context = FacesContext.getCurrentInstance();  
+        context.addMessage(null, new FacesMessage("Pomyœlnie zmieniono","Czas rozpoczecia zajêæ: "+wybraneZajecia.getData().toString()));  
+	
+	}
 	
 	
 	public String zaloguj(){

@@ -8,7 +8,7 @@
 
 	<ui:define name="content">
 
-
+<p:growl id="growl" showDetail="true" sticky="false" />
 
 <p:spacer width="100%" height="20" />
 
@@ -140,7 +140,7 @@
 
 
 		<p:panel id="mojeZajecia" header="Wszystkie moje zajęcia" toggleable="true"
-			toggleSpeed="500">
+			toggleSpeed="500" Collapsed="true">
 			<h:form>
 
 				<p:dataTable value="#{prowadzacyBean.mojeZajecia}" var="blabla"
@@ -167,8 +167,41 @@
             </f:facet>
 						<h:outputText value="#{blabla.grupa.informacje}" />
 					</p:column>
+					<p:column style="width: 40px;">
+					<f:facet name="header">
+                    
+            		</f:facet>
+            		
+            		<p:commandButton update=":form:display dialogPrzedmiot" oncomplete="zajeciaDialog.show()" image="ui-icon ui-icon-search" title="Egzaminuj">  
+                     <f:setPropertyActionListener value="#{blabla}"	target="#{prowadzacyBean.wybraneZajecia}" />
+            		</p:commandButton>
+   
+					</p:column>
 
 				</p:dataTable>
+				
+				<p:dialog header="Akcje" widgetVar="zajeciaDialog" resizable="true" id="zajDlg"  
+              width="600" showEffect="fade" hideEffect="explode" modal="true">  
+              <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
+              
+              <h:outputText value="Nowa data:" />
+              <p:calendar value="#{prowadzacyBean.wybraneZajecia.data}"  pattern="MM/dd/yyyy HH:mm" />
+              
+                         
+               <p:commandButton value="(RS) Zacznij Teraz" update="mojeZajecia mojeZajeciaPanel growl" actionListener="#{prowadzacyBean.reczneSterowanieZajeciami}"   
+                                    oncomplete="zajeciaDialog.hide()" image="ui-icon ui-icon-check"/>
+                  
+                  <p:commandButton value="Zmień datę" update="mojeZajecia mojeZajeciaPanel growl" actionListener="#{prowadzacyBean.zmienCzasRozpoczecia}"   
+                                    oncomplete="zajeciaDialog.hide()" image="ui-icon ui-icon-check"/>
+                           
+               <h:panelGroup>                     
+                    <p:commandButton value="Zabierz mnie stąd! (Anuluj)" onclick="zajeciaDialog.hide()" type="button" image="ui-icon ui-icon-close"/>  
+  
+				</h:panelGroup>
+				</h:panelGrid>
+				</p:dialog>
+				
+				
 			</h:form>
 		</p:panel>
 		

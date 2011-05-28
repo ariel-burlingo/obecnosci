@@ -36,7 +36,7 @@ AdminBean adminBean;
 
 public String zaloguj(){
 	
-	if (typ=="0"){
+	if (typ.equalsIgnoreCase("0")){
 		adminBean.setLogin(pole1);
 		adminBean.setHaslo(pole2);
 		adminBean.zaloguj();
