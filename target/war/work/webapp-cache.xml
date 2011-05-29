@@ -32,6 +32,7 @@
           <string>resources/gfx/weld.png</string>
           <string>student.xhtml</string>
           <string>studentpf.xhtml</string>
+          <string>test.xhtml</string>
           <string>usprawiedliwOb.xhtml</string>
           <string>WEB-INF/beans.xml</string>
           <string>WEB-INF/faces-config.xml</string>

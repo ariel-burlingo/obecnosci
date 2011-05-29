@@ -8,11 +8,11 @@
    <ui:define name="content">
 
    <h:form>
-   <h:selectOneMenu id="typ" value="#{loginBean.typ}">
+   	<h:selectOneMenu id="typ" value="#{loginBean.typ}">
   <f:selectItem id="Prowadzacy" itemLabel="Prowadzący" itemValue="1" />
   <f:selectItem id="Student" itemLabel="Student" itemValue="2" />
   <f:selectItem id="Admin" itemLabel="Admin" itemValue="0" />
-</h:selectOneMenu>
+	</h:selectOneMenu>
    
    <h:inputText value="#{loginBean.pole1}"></h:inputText>
    <h:inputSecret value="#{loginBean.pole2}"/>   

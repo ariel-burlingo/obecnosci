@@ -35,23 +35,28 @@ ProwadzacyBean prowadzacyBean;
 AdminBean adminBean;
 
 public String zaloguj(){
-	
+	menu1=false;
 	if (typ.equalsIgnoreCase("0")){
 		adminBean.setLogin(pole1);
 		adminBean.setHaslo(pole2);
 		adminBean.zaloguj();
+		menu1=true;
 		return "AdminHome";
 	}
 	if (typ.equalsIgnoreCase("1")){
+	menu2=false;
 		prowadzacyBean.setLogin(pole1);
 		prowadzacyBean.setPassword(pole2);
 		prowadzacyBean.zaloguj();
+		menu2=true;
 		return "ProwadzacyHome";
 	}
 	if (typ.equalsIgnoreCase("2")){
+	menu3=false;
 		studentBean.setIndex(Integer.parseInt(pole1));
 		studentBean.setHaslo(pole2);
 		studentBean.zaloguj();
+		menu3=true;
 		return "StudentHome";
 	}
 	return "Bledne";
@@ -82,5 +87,23 @@ public String getTyp() {
 public void setTyp(String typ) {
 	this.typ = typ;
 }
+
+public boolean ismenu1(){
+	return menu1;
+}
+
+private boolean menu1;
+
+public boolean ismenu2(){
+	return menu2;
+}
+
+private boolean menu2;
+
+public boolean ismenu3(){
+	return menu3;
+}
+private boolean menu3;
+
 
 }

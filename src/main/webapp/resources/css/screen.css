@@ -39,5 +39,6 @@ span.invalid {
 }
 
 #menubar a{
+	display: inline;
 	margin-left: 10px;
 }
