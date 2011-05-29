@@ -23,5 +23,25 @@
     <to-view-id>/usprawiedliwOb.jsp</to-view-id>  
   </navigation-case>  
   </navigation-rule>
+  
+  <navigation-rule>  
+  <from-view-id>/zaloguj.jsf</from-view-id>  
+  <navigation-case>  
+    <from-outcome>adminHome</from-outcome>  
+    <to-view-id>/adminHome.jsp</to-view-id>  
+  </navigation-case>
+  <navigation-case>  
+    <from-outcome>studentHome</from-outcome>  
+    <to-view-id>/studentHome.jsp</to-view-id>  
+  </navigation-case>
+  <navigation-case>  
+    <from-outcome>prowadzacyHome</from-outcome>  
+    <to-view-id>/prowadzacyHome.jsp</to-view-id>  
+  </navigation-case>
+  <navigation-case>  
+    <from-outcome>home</from-outcome>  
+    <to-view-id>/zaloguj.jsp</to-view-id>  
+  </navigation-case>  
+  </navigation-rule>
 
 </faces-config>

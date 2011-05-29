@@ -40,21 +40,21 @@ public String zaloguj(){
 		adminBean.setLogin(pole1);
 		adminBean.setHaslo(pole2);
 		adminBean.zaloguj();
-		return "AdminHome";
+		return "adminHome";
 	}
 	if (typ.equalsIgnoreCase("1")){
 		prowadzacyBean.setLogin(pole1);
 		prowadzacyBean.setPassword(pole2);
 		prowadzacyBean.zaloguj();
-		return "ProwadzacyHome";
+		return "prowadzacyHome";
 	}
 	if (typ.equalsIgnoreCase("2")){
 		studentBean.setIndex(Integer.parseInt(pole1));
 		studentBean.setHaslo(pole2);
 		studentBean.zaloguj();
-		return "StudentHome";
+		return "studentHome";
 	}
-	return "Bledne";
+	return "home";
 	
 	
 }

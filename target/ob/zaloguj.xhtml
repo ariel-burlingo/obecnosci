@@ -7,16 +7,19 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
 
+
    <h:form>
+   <h:outputLabel for="typ" value="Rola: " />
    <h:selectOneMenu id="typ" value="#{loginBean.typ}">
   <f:selectItem id="Prowadzacy" itemLabel="Prowadzący" itemValue="1" />
   <f:selectItem id="Student" itemLabel="Student" itemValue="2" />
   <f:selectItem id="Admin" itemLabel="Admin" itemValue="0" />
 </h:selectOneMenu>
-   
-   <h:inputText value="#{loginBean.pole1}"></h:inputText>
-   <h:inputSecret value="#{loginBean.pole2}"/>   
-   <h:commandLink ajax="false" action="#{loginBean.zaloguj}" value=" Logowanie " />
+   <h:outputLabel for="pole1" value="Login: " />
+   <h:inputText id ="pole1" value="#{loginBean.pole1}"></h:inputText>
+   <h:outputLabel for="pole2" value="Hasło: " />
+   <h:inputSecret id="pole2" value="#{loginBean.pole2}"/>   
+   <h:commandButton id="submit" action="#{loginBean.zaloguj}" value=" Zaloguj " /> 
    </h:form>
    
    </ui:define>
