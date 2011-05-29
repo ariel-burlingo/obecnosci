@@ -83,12 +83,30 @@ public class ProwadzacyManager {
 	}
 	
 	public List<Student> pobierzMoichStudentow(long idProwadzacego){
-		//List<Przedmiot> mojePrzedmioty = pobierzMoje(idProwadzacego);
-		//if(mojePrzedmioty.size() > 0){
-			return em.createQuery("select s from Student s").getResultList();
-		//} else { // empty list
-		//	return new ArrayList<Student>();
-		//}
+		List<Przedmiot> mojePrzedmioty = pobierzMoje(idProwadzacego);
+		List<Long> idMP = new ArrayList<Long>();
+		List<Student> studenty = em.createQuery("from Student").getResultList();
+		List<Student> wybrancy = new ArrayList<Student>();
+		Iterator<Student> iter = studenty.iterator();
+		
+		Iterator<Przedmiot> piter = mojePrzedmioty.iterator();
+		while(piter.hasNext()){
+			idMP.add(piter.next().getId());
+		}
+		
+		while(iter.hasNext()){
+			System.out.println("wszedlem do while");
+			Student stud = iter.next();
+			Iterator<Przedmiot> p2iter = stud.getPrzedmioty().iterator();
+			while(p2iter.hasNext()){
+				if(idMP.contains(p2iter.next().getId())){
+					wybrancy.add(stud);
+					System.out.println("zapisalem gnojka");
+					break;
+				}
+			}
+		}
+		return wybrancy;
 	}
 	//
 }

@@ -32,11 +32,19 @@
 					actionListener="#{prowadzacyBean.wypiszZPrzedmiotu}" ajax="false" />
 			</h:form>
 
+
 			<h:form>
-				<p:dataTable value="#{prowadzacyBean.mojePrzedmioty}" var="wyp">
+				<p:dataTable id="mojePrzedmioty" value="#{prowadzacyBean.mojePrzedmioty}" var="wyp"
+					selection="#{prowadzacyBean.wybranyPrzedmiot}"
+				 selectionMode="single"  
+                 rowSelectListener="#{prowadzacyBean.przejdzDoListyObecnosci}"  
+                 onRowSelectUpdate="mojePrzedmioty growl" 
+                 onRowUnselectUpdate="mojePrzedmioty growl"> 
+				
+				>
 					<p:column style="width:50px">
 						<f:facet name="header">
-                    Moje Przedmioty
+                    Moje Przedmioty (kliknij dla list obecności)
             </f:facet>
 						<h:outputText value="#{wyp.nazwa}" />
 					</p:column>
@@ -56,7 +64,7 @@
 					value="#{prowadzacyBean.mojeAktualnieOdbywajaceSieZajecia}"
 					var="aktOdbZaj">
 
-					<p:column style="width:50px">
+					<p:column style="width:200px">
 						<f:facet name="header">
                     Data
             </f:facet>

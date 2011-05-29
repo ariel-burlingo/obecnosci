@@ -70,6 +70,14 @@ public class ProwadzacyBean implements Serializable {
 	private Zajecia wybraneZajecia = new Zajecia();
 	private Obecnosci wybranaObecnosc = new Obecnosci();
 	private Student wybranyStudent = new Student();
+	private Przedmiot wybranyPrzedmiot = new Przedmiot();
+	public Przedmiot getWybranyPrzedmiot() {
+		return wybranyPrzedmiot;
+	}
+	public void setWybranyPrzedmiot(Przedmiot wybranyPrzedmiot) {
+		this.wybranyPrzedmiot = wybranyPrzedmiot;
+	}
+
 	private List<Obecnosci> obecnosciNaWybranych;
 	
 	
