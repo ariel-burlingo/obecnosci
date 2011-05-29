@@ -125,11 +125,16 @@ public List<Zajecia> pobierzDlaStudentaTerazOdbywajaceSie(long idStudenta){
 	Date kwadrans = new Date(now.getTime()-900000);
 	System.out.println("NOW      : "+now.toString());
 	System.out.println("Kwadrans : "+kwadrans.toString());
-	if(ozaj.size() > 0){
-		return em.createQuery("from Zajecia as z where z not in (:ozaj) and z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and z.data >= :kwadrans and z.data <= :now").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("ozaj", ozaj).setParameter("now", now).setParameter("kwadrans", kwadrans).getResultList();
-	} else { // inaczej brak obecnoœci wywali b³¹d!
-		//return new ArrayList<Zajecia>();
-		return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and z.data >= :kwadrans and z.data <= :now").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("now", now).setParameter("kwadrans", kwadrans).getResultList();
+	if(grupy.size() > 0 && przedmioty.size() > 0){
+		if(ozaj.size() > 0){
+			return em.createQuery("from Zajecia as z where z not in (:ozaj) and z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and z.data >= :kwadrans and z.data <= :now").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("ozaj", ozaj).setParameter("now", now).setParameter("kwadrans", kwadrans).getResultList();
+		} else { // inaczej brak obecnoœci wywali b³¹d!
+			//return new ArrayList<Zajecia>();
+			return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and z.data >= :kwadrans and z.data <= :now").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("now", now).setParameter("kwadrans", kwadrans).getResultList();
+		}
+	} else {
+		
+		return new ArrayList<Zajecia>();
 	}
 }
 	
