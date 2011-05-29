@@ -41,7 +41,7 @@ public String zaloguj(){
 		adminBean.setHaslo(pole2);
 		adminBean.zaloguj();
 		menu1=true;
-		return "AdminHome";
+		return "adminHome";
 	}
 	if (typ.equalsIgnoreCase("1")){
 	menu2=false;
@@ -49,7 +49,7 @@ public String zaloguj(){
 		prowadzacyBean.setPassword(pole2);
 		prowadzacyBean.zaloguj();
 		menu2=true;
-		return "ProwadzacyHome";
+		return "prowadzacyHome";
 	}
 	if (typ.equalsIgnoreCase("2")){
 	menu3=false;
@@ -57,7 +57,7 @@ public String zaloguj(){
 		studentBean.setHaslo(pole2);
 		studentBean.zaloguj();
 		menu3=true;
-		return "StudentHome";
+		return "studentHome";
 	}
 	return "Bledne";
 	
