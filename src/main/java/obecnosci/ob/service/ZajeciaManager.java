@@ -104,9 +104,9 @@ public List<Zajecia> pobierzDlaStudentaZajeciaNaKtorychBylNieObecny(long idStude
 	List<Przedmiot> przedmioty = em.createQuery("select s.przedmioty from Student s where s.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
 	List<Zajecia> obecnosci = em.createQuery("select o.zajecia from Obecnosci o where o.student.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
 	// escape from null pointers code
-	if(grupy.size() > 0 && przedmioty.size() > 0 ){
+	if(grupy.size() > 0 && przedmioty.size() > 0 && przedmiotyProwadzacego.size() >0){
 		if(obecnosci.size() > 0){
-			return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and not z in (:obecnosci) ").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("obecnosci", obecnosci).getResultList();
+			return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty) and z.przedmiot in (:przedmiotyProw) and not z in (:obecnosci) ").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).setParameter("przedmiotyProw", przedmiotyProwadzacego).setParameter("obecnosci", obecnosci).getResultList();
 		} else {
 			return em.createQuery("from Zajecia as z where z.grupa in (:grupy) and z.przedmiot in (:przedmioty)").setParameter("grupy", grupy).setParameter("przedmioty", przedmioty).getResultList();
 		}
