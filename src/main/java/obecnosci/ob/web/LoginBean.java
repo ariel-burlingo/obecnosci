@@ -40,38 +40,26 @@ public String zaloguj(){
 		adminBean.setLogin(pole1);
 		adminBean.setHaslo(pole2);
 		adminBean.zaloguj();
-<<<<<<< HEAD
 		menu1=true;
 		return "AdminHome";
-=======
-		return "adminHome";
->>>>>>> 1f629037571d7756465b844703c9582365bb0d1e
 	}
 	if (typ.equalsIgnoreCase("1")){
 	menu2=false;
 		prowadzacyBean.setLogin(pole1);
 		prowadzacyBean.setPassword(pole2);
 		prowadzacyBean.zaloguj();
-<<<<<<< HEAD
 		menu2=true;
 		return "ProwadzacyHome";
-=======
-		return "prowadzacyHome";
->>>>>>> 1f629037571d7756465b844703c9582365bb0d1e
 	}
 	if (typ.equalsIgnoreCase("2")){
 	menu3=false;
 		studentBean.setIndex(Integer.parseInt(pole1));
 		studentBean.setHaslo(pole2);
 		studentBean.zaloguj();
-<<<<<<< HEAD
 		menu3=true;
 		return "StudentHome";
-=======
-		return "studentHome";
->>>>>>> 1f629037571d7756465b844703c9582365bb0d1e
 	}
-	return "home";
+	return "Bledne";
 	
 	
 }
