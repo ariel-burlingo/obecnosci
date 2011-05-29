@@ -4,6 +4,7 @@
       <string>currentBuild</string>
       <path-set>
         <pathsSet class="linked-hash-set">
+          <string>adminHome.xhtml</string>
           <string>adminpf.xhtml</string>
           <string>grupa.xhtml</string>
           <string>grupapf.xhtml</string>

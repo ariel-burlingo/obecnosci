@@ -1,6 +1,12 @@
-
-
-// ADMIN - prowadzacy add
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
+   template="/WEB-INF/templates/default.xhtml">   
+   <ui:define name="content">
+Dodawanie nowego prowadzacego:
 
 <h:form>	
 		<p:panel id="panel" header="Nowy Prowadzacy" style="margin-bottom:10px;">  
@@ -29,64 +35,64 @@
     </p:panel> 
     </h:form>
     
-    
-    // wszyscy prowadzacy
+    Wyswietlanie prowadzacych:
     <h:form>
-			<p:dataTable value="#{prowadzacyBean.wszystkichProwadzacych}"  var="rec">
+			<p:dataTable value="#{prowadzacyBean.wszystkichProwadzacych}"  var="prow">
 			<p:column  style="width:50px">
 					<f:facet name="header">
                     ID
             </f:facet>
-					<h:outputText value="#{rec.id}" />
+					<h:outputText value="#{prow.id}" />
 				</p:column>
 
 				<p:column>
 					<f:facet name="header">
                     IMIE
             </f:facet>
-					<h:outputText value="#{rec.imie}" />
+					<h:outputText value="#{prow.imie}" />
 				</p:column>
 				<p:column>
 					<f:facet name="header">
                     NAZWISKO
             </f:facet>
-					<h:outputText value="#{rec.nazwisko}" />
+					<h:outputText value="#{prow.nazwisko}" />
 				</p:column>
 				<p:column>
 					<f:facet name="header">
                     DANE KONTAKTOWE
             </f:facet>
-					<h:outputText value="#{rec.daneKontaktowe}" />
+					<h:outputText value="#{prow.daneKontaktowe}" />
 				</p:column>
 				<p:column>
 					<f:facet name="header">
                     STRONA DOMOWA
             </f:facet>
-					<h:outputText value="#{rec.stronaDomowa}" />
+					<h:outputText value="#{prow.stronaDomowa}" />
 				</p:column>
 				</p:dataTable>
 		</h:form>
 		
-		// przedmioty
+		Lista przedmiotow:
 		
 		<h:form>
-			<p:dataTable value="#{przedmiotBean.wszystkiePrzedmioty}"  var="rec">
+			<p:dataTable value="#{przedmiotBean.wszystkiePrzedmioty}"  var="przedm">
 
 				<p:column>
 					<f:facet name="header">
                     NAZWA
             </f:facet>
-					<h:outputText value="#{rec.nazwa}" />
+					<h:outputText value="#{przedm.nazwa}" />
 				</p:column>
 				<p:column>
 					<f:facet name="header">
                     INNE DANE
             </f:facet>
-					<h:outputText value="#{rec.inneDane}" />
+					<h:outputText value="#{przedm.inneDane}" />
 				</p:column>
 
 			</p:dataTable>
 		</h:form>
+		Dodawanie nowego przedmiotu:
 		<h:form>	
 		<p:panel id="panel" header="Nowy Przedmiot" style="margin-bottom:10px;">  
         <p:messages />  
@@ -103,3 +109,6 @@
   
               
     </h:form>
+    
+      </ui:define>
+</ui:composition>
