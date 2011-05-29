@@ -4,6 +4,7 @@
       <string>currentBuild</string>
       <path-set>
         <pathsSet class="linked-hash-set">
+          <string>adminHome.xhtml</string>
           <string>adminpf.xhtml</string>
           <string>grupa.xhtml</string>
           <string>grupapf.xhtml</string>
@@ -19,6 +20,7 @@
           <string>obecnoscipf2.xhtml</string>
           <string>potwierdzOb.xhtml</string>
           <string>prowadzacy.xhtml</string>
+          <string>prowadzacyHome.xhtml</string>
           <string>prowadzacypf.xhtml</string>
           <string>prowadzacypf_picklist.xhtml</string>
           <string>przedmiot.xhtml</string>
@@ -31,6 +33,7 @@
           <string>resources/gfx/usun.gif</string>
           <string>resources/gfx/weld.png</string>
           <string>student.xhtml</string>
+          <string>studentHome.xhtml</string>
           <string>studentpf.xhtml</string>
           <string>test.xhtml</string>
           <string>usprawiedliwOb.xhtml</string>
