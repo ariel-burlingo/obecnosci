@@ -7,7 +7,6 @@
    template="/WEB-INF/templates/default.xhtml">   
    <ui:define name="content">
 Dodawanie nowego prowadzacego:
-
 <h:form>	
 		<p:panel id="panel" header="Nowy Prowadzacy" style="margin-bottom:10px;">  
         <p:messages />  
@@ -34,7 +33,38 @@ Dodawanie nowego prowadzacego:
         </h:panelGrid>  
     </p:panel> 
     </h:form>
-    
+		Dodawanie nowego przedmiotu:
+		<h:form>	
+		<p:panel id="panel" header="Nowy Przedmiot" style="margin-bottom:10px;">  
+        <p:messages />  
+        <h:panelGrid columns="2">  
+            <h:outputLabel for="nazwa" value="Nazwa: " />  
+            <p:inputText id="nazwa" value="#{przedmiotBean.nazwa}" required="true" label="Nazwa">    
+            </p:inputText>  
+            <h:outputLabel for="inneDane" value="InneDane: " />  
+            <p:inputText id="inneDane" value="#{przedmiotBean.inneDane}" required="true" label="InneDane">    
+            </p:inputText>                 
+             <p:commandButton value="Dodaj Przedmiot" actionListener="#{przedmiotBean.dodajPrzedmiot}" ajax="false" />              
+        </h:panelGrid>  
+    </p:panel>         
+    </h:form>
+    <h:form>	
+		<p:panel id="panel" header="Nowy Student" style="margin-bottom:10px;">  
+        <p:messages />  
+        <h:panelGrid columns="2">  
+             <h:outputLabel for="index" value="Index: " />  
+            <p:inputText id="index" value="#{studentBean.index}" required="true" label="Index"/>    
+			<h:outputLabel for="imie" value="Imie: " />  
+            <p:inputText id="imie" value="#{studentBean.imie}" required="true" label="Imie">    
+            </p:inputText>  
+            <h:outputLabel for="nazwisko" value="Nazwisko: " />  
+            <p:inputText id="nazwisko" value="#{studentBean.nazwisko}" required="true" label="Nazwisko"/>    
+			<h:outputLabel for="haslo" value="Haslo: " />  
+            <p:password id="haslo" value="#{studentBean.haslo}" inline="true" />            
+             <p:commandButton value="Dodaj Studenta" actionListener="#{studentBean.dodajStudenta}" ajax="false" />              
+        </h:panelGrid>  
+    </p:panel> 
+    </h:form>
     Wyswietlanie prowadzacych:
     <h:form>
 			<p:dataTable value="#{prowadzacyBean.wszystkichProwadzacych}"  var="prow">
@@ -71,12 +101,9 @@ Dodawanie nowego prowadzacego:
 				</p:column>
 				</p:dataTable>
 		</h:form>
-		
-		Lista przedmiotow:
-		
+				Lista przedmiotow:
 		<h:form>
 			<p:dataTable value="#{przedmiotBean.wszystkiePrzedmioty}"  var="przedm">
-
 				<p:column>
 					<f:facet name="header">
                     NAZWA
@@ -92,23 +119,5 @@ Dodawanie nowego prowadzacego:
 
 			</p:dataTable>
 		</h:form>
-		Dodawanie nowego przedmiotu:
-		<h:form>	
-		<p:panel id="panel" header="Nowy Przedmiot" style="margin-bottom:10px;">  
-        <p:messages />  
-        <h:panelGrid columns="2">  
-            <h:outputLabel for="nazwa" value="Nazwa: " />  
-            <p:inputText id="nazwa" value="#{przedmiotBean.nazwa}" required="true" label="Nazwa">    
-            </p:inputText>  
-            <h:outputLabel for="inneDane" value="InneDane: " />  
-            <p:inputText id="inneDane" value="#{przedmiotBean.inneDane}" required="true" label="InneDane">    
-            </p:inputText>                 
-             <p:commandButton value="Dodaj Przedmiot" actionListener="#{przedmiotBean.dodajPrzedmiot}" ajax="false" />              
-        </h:panelGrid>  
-    </p:panel> 
-  
-              
-    </h:form>
-    
       </ui:define>
 </ui:composition>

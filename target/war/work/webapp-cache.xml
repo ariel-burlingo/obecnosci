@@ -9,6 +9,9 @@
           <string>grupa.xhtml</string>
           <string>grupapf.xhtml</string>
           <string>home.xhtml</string>
+          <string>home1.xhtml</string>
+          <string>home2.xhtml</string>
+          <string>home3.xhtml</string>
           <string>index.jsp</string>
           <string>listaObecnosci.xhtml</string>
           <string>META-INF/context.xml</string>
@@ -32,10 +35,14 @@
           <string>student.xhtml</string>
           <string>studentHome.xhtml</string>
           <string>studentpf.xhtml</string>
+          <string>test.xhtml</string>
           <string>usprawiedliwOb.xhtml</string>
           <string>WEB-INF/beans.xml</string>
           <string>WEB-INF/faces-config.xml</string>
+          <string>WEB-INF/templates/admin.xhtml</string>
           <string>WEB-INF/templates/default.xhtml</string>
+          <string>WEB-INF/templates/prow.xhtml</string>
+          <string>WEB-INF/templates/stud.xhtml</string>
           <string>WEB-INF/web.xml</string>
           <string>wycinekZprowadzacypf.temp</string>
           <string>zajecia.xhtml</string>
