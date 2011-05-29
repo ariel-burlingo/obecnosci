@@ -31,12 +31,12 @@
     <to-view-id>/adminHome.jsp</to-view-id>  
   </navigation-case>
   <navigation-case>  
-    <from-outcome>studentHome</from-outcome>  
-    <to-view-id>/studentHome.jsp</to-view-id>  
+    <from-outcome>studentpf</from-outcome>  
+    <to-view-id>/studentpf.jsp</to-view-id>  
   </navigation-case>
   <navigation-case>  
-    <from-outcome>prowadzacyHome</from-outcome>  
-    <to-view-id>/prowadzacyHome.jsp</to-view-id>  
+    <from-outcome>prowadzacypf</from-outcome>  
+    <to-view-id>/prowadzacypf.jsp</to-view-id>  
   </navigation-case>
   <navigation-case>  
     <from-outcome>home</from-outcome>  
