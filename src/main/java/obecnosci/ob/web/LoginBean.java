@@ -1,5 +1,6 @@
 package obecnosci.ob.web;
 
+import java.awt.Event;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
@@ -29,8 +30,17 @@ ProwadzacyBean prowadzacyBean;
 @Inject
 AdminBean adminBean;
 
+public boolean iswyloguj(){
+	menu1=false;
+	menu2=false;
+	menu3=false;
+	return false;
+
+}
 public String zaloguj(){
 	menu1=false;
+	menu2=false;
+	menu3=false;
 	if (typ.equalsIgnoreCase("0")){
 		adminBean.setLogin(pole1);
 		adminBean.setHaslo(pole2);
@@ -39,7 +49,7 @@ public String zaloguj(){
 		return "adminHome";
 	}
 	if (typ.equalsIgnoreCase("1")){
-	menu2=false;
+	
 		prowadzacyBean.setLogin(pole1);
 		prowadzacyBean.setPassword(pole2);
 		prowadzacyBean.zaloguj();
@@ -47,7 +57,6 @@ public String zaloguj(){
 		return "prowadzacypf";
 	}
 	if (typ.equalsIgnoreCase("2")){
-	menu3=false;
 		studentBean.setIndex(Integer.parseInt(pole1));
 		studentBean.setHaslo(pole2);
 		studentBean.zaloguj();
@@ -55,9 +64,10 @@ public String zaloguj(){
 		return "studentpf";
 	}
 	return "Bledne";
-	
-	
+
+
 }
+
 
 public String getPole1() {
 	return pole1;

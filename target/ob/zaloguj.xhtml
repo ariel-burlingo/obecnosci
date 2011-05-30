@@ -7,7 +7,7 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
    <h:form>
-   
+   <h:outputLink value="" rendered="#{loginBean.wyloguj}"></h:outputLink>
    <h:outputLabel for="typ" value="Rola: " />
    <h:selectOneMenu id="typ" value="#{loginBean.typ}">
   <f:selectItem id="Prowadzacy" itemLabel="Prowadzący" itemValue="1" />
