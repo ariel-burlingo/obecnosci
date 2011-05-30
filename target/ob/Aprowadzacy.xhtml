@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
+   template="/WEB-INF/templates/default.xhtml">   
+   <ui:define name="content">
+   
+   <h:form>	
+		<p:panel id="panel" header="Nowy Prowadzacy" style="margin-bottom:10px;">  
+        <p:messages />  
+        <h:panelGrid columns="2">  
+            <h:outputLabel for="imie" value="Imie: " />  
+            <p:inputText id="imie" value="#{prowadzacyBean.imie}" required="true" label="Imie">    
+            </p:inputText>  
+            <h:outputLabel for="nazwisko" value="Nazwisko: " />  
+            <p:inputText id="nazwisko" value="#{prowadzacyBean.nazwisko}" required="true" label="Nazwisko">    
+            </p:inputText>
+             <h:outputLabel for="login" value="Login: " />  
+            <p:inputText id="login" value="#{prowadzacyBean.login}" required="true" label="Login">    
+            </p:inputText>
+            
+             <h:outputLabel for="daneKontaktowe" value="DaneKontaktowe: " />  
+            <p:inputText id="daneKontaktowe" value="#{prowadzacyBean.daneKontaktowe}" required="true" label="DaneKontaktowe">    
+            </p:inputText> 
+            <h:outputLabel for="stronaDomowa" value="StronaDomowa: " />  
+            <p:inputText id="stronaDomowa" value="#{prowadzacyBean.stronaDomowa}" required="true" label="StronaDomowa">    
+            </p:inputText>
+             <h:outputText value="Wpisz haslo: " />
+            <p:password value="#{prowadzacyBean.password}" inline="true" />                        
+             <p:commandButton value="Dodaj Prowadzacego" actionListener="#{prowadzacyBean.dodajProwadzacego}" ajax="false" />              
+        </h:panelGrid>  
+    </p:panel> 
+    </h:form>
+    
+    <h:form>
+			<p:dataTable value="#{prowadzacyBean.wszystkichProwadzacych}"  var="prow">
+			<p:column  style="width:50px">
+					<f:facet name="header">
+                    ID
+            </f:facet>
+					<h:outputText value="#{prow.id}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+                    IMIE
+            </f:facet>
+					<h:outputText value="#{prow.imie}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+                    NAZWISKO
+            </f:facet>
+					<h:outputText value="#{prow.nazwisko}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+                    DANE KONTAKTOWE
+            </f:facet>
+					<h:outputText value="#{prow.daneKontaktowe}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+                    STRONA DOMOWA
+            </f:facet>
+					<h:outputText value="#{prow.stronaDomowa}" />
+				</p:column>
+				</p:dataTable>
+		</h:form>
+   
+   </ui:define>
+</ui:composition>

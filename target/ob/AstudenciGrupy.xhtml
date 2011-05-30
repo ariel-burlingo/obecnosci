@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
+   template="/WEB-INF/templates/default.xhtml">   
+   <ui:define name="content">
+   
+   <h:form>	
+		<p:panel id="panel" header="Nowy Student" style="margin-bottom:10px;">  
+        <p:messages />  
+        <h:panelGrid columns="2">  
+             <h:outputLabel for="index" value="Index: " />  
+            <p:inputText id="index" value="#{studentBean.index}" required="true" label="Index"/>    
+			<h:outputLabel for="imie" value="Imie: " />  
+            <p:inputText id="imie" value="#{studentBean.imie}" required="true" label="Imie">    
+            </p:inputText>  
+            <h:outputLabel for="nazwisko" value="Nazwisko: " />  
+            <p:inputText id="nazwisko" value="#{studentBean.nazwisko}" required="true" label="Nazwisko"/>    
+			<h:outputLabel for="haslo" value="Haslo: " />  
+            <p:password id="haslo" value="#{studentBean.haslo}" inline="true" />            
+             <p:commandButton value="Dodaj Studenta" actionListener="#{studentBean.dodajStudenta}" ajax="false" />              
+        </h:panelGrid>  
+    </p:panel> 
+    </h:form>
+    
+    <p:growl id="growl" showDetail="true" sticky="false" />
+
+<h:form id="form">  
+  
+    <p:dataTable var="student" value="#{grupaBean.wszyscyStudenci}"  
+                 selection="#{grupaBean.wybraneStudenty}" selectionMode="multiple">
+                 <p:column>
+                  <f:facet name="header">  
+                	<h:outputText value="Index" />  
+            		</f:facet>  
+                 <h:outputText value="#{student.index}" />  
+                 </p:column>
+                 
+                 <p:column>
+                  <f:facet name="header">  
+                	<h:outputText value="Imie" />  
+            		</f:facet>  
+                 <h:outputText value="#{student.imie}" />  
+                 </p:column>
+                 
+                 <p:column>
+                  <f:facet name="header">  
+                	<h:outputText value="Nazwisko" />  
+            		</f:facet>  
+                 <h:outputText value="#{student.nazwisko}" />  
+                 </p:column>
+                 
+                 <f:facet name="footer">  
+            <p:commandButton value="Przypisz wybranych do grupy" image="ui-icon ui-icon-search"  
+                        update="form:display" oncomplete="studDialog.show()"/>  
+        </f:facet>
+                 
+                 
+                 </p:dataTable>
+                 
+                 <p:dialog header="Szczegóły wyboru" widgetVar="studDialog"  
+              width="250" showEffect="explode" hideEffect="explode">  
+  
+        <p:dataList id="display"  
+            value="#{tableBean.wybraneStudenty}"  
+            var="selectedStud" type="definition">  
+  
+            Model: #{selectedStud.imie}, Year: #{selectedStud.nazwisko}    
+        </p:dataList>  
+        <p:selectOneMenu value="#{grupaBean.wybranaGrupaId}"
+					style="width:500px">
+					 <f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{grupaBean.wszystkieGrupy}"
+						var="rekord" itemLabel="#{rekord.informacje}"
+						itemValue="#{rekord.id}" />
+				</p:selectOneMenu>
+   				<p:commandButton value="Przypisz do grupy" update="mojeZajecia mojeZajeciaPanel growl" actionListener="#{grupaBean.przypiszListeDoGrupy}"   
+                                    oncomplete="studDialog.hide()" image="ui-icon ui-icon-check"/>
+                           
+                                   
+                    <p:commandButton value="Zabierz mnie stąd! (Anuluj)" onclick="studDialog.hide()" type="button" image="ui-icon ui-icon-close"/>  
+  
+				
+    </p:dialog>  
+                 
+                 </h:form>
+
+    
+    	<h:form>
+			<p:dataTable value="#{grupaBean.wszystkieGrupy}"  var="gru">
+				<p:column  style="width:50px">
+					<f:facet name="header">
+                    ID
+            </f:facet>
+					<h:outputText value="#{gru.id}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+                    INFORMACJE
+            </f:facet>
+					<h:outputText value="#{gru.informacje}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		<h:form>	
+		<p:panel id="panel" header="Nowa Grupa" style="margin-bottom:10px;">  
+        <p:messages />  
+        <h:panelGrid columns="3">  
+            <h:outputLabel for="informacje" value="Informacje: " />  
+            <p:inputText id="informacje"   
+                value="#{grupaBean.informacje}" required="true" label="Informacje">    
+            </p:inputText>  
+             <p:commandButton value="Dodaj Grupe" actionListener="#{grupaBean.dodajGrupe}" ajax="false" />              
+        </h:panelGrid>  
+    </p:panel> 
+  
+              
+    </h:form>
+    
+   </ui:define>
+</ui:composition>

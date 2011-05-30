@@ -12,20 +12,26 @@
       <div id="container">
          <div id="content">
          <div id="menubar">
-           	<h:outputLink value="obecnosci.jsf" rendered="#{loginBean.menu2}"><h:outputText value="OBECNO" /></h:outputLink>
+<!--   ADMIN MENU -->
+         <h:outputLink value="Aprowadzacy.jsf" rendered="#{loginBean.menu1}"><h:outputText value="Zarządzaj prowadzącymi" /></h:outputLink>
+         <h:outputLink value="AstudenciGrupy.jsf" rendered="#{loginBean.menu1}"><h:outputText value="Zarządzaj studentami i grupami" /></h:outputLink>
+         <h:outputLink value="Aprzedmioty.jsf" rendered="#{loginBean.menu1}"><h:outputText value="Zarządzaj przedmiotami" /></h:outputLink>
+<!-- /ADMIN MENU  --> 
+
+          	<h:outputLink value="obecnosci.jsf" rendered="#{loginBean.menu2}"><h:outputText value="OBECNO" /></h:outputLink>
            	<h:outputLink value="obecnoscipf2.jsf" rendered="#{loginBean.menu3}"><h:outputText value="OBECNO PF" /></h:outputLink>
-         	<h:outputLink value="student.jsf" rendered="#{loginBean.menu1}"><h:outputText value="STUDEN" /></h:outputLink>
+<!--         	<h:outputLink value="student.jsf" rendered="#{loginBean.menu1}"><h:outputText value="STUDEN" /></h:outputLink>--> 
          	<h:outputLink value="studentpf.jsf" rendered="#{loginBean.menu3}"><h:outputText value="STUDEN PF" /></h:outputLink>
-         	<h:outputLink value="grupa.jsf" rendered="#{loginBean.menu1}"><h:outputText value="GRUPA" /></h:outputLink>
-         	<h:outputLink value="grupapf.jsf" rendered="#{loginBean.menu1}"><h:outputText value="GRUPA PF" /></h:outputLink>
-         	<h:outputLink value="prowadzacy.jsf" rendered="#{loginBean.menu1}"><h:outputText value="PROWAD" /></h:outputLink>
+    <!--     	<h:outputLink value="grupa.jsf" rendered="#{loginBean.menu1}"><h:outputText value="GRUPA" /></h:outputLink>--> 
+        <!-- 	<h:outputLink value="grupapf.jsf" rendered="#{loginBean.menu1}"><h:outputText value="GRUPA PF" /></h:outputLink>--> 
+       <!--  	<h:outputLink value="prowadzacy.jsf" rendered="#{loginBean.menu1}"><h:outputText value="PROWAD" /></h:outputLink>-->
        	    <h:outputLink value="prowadzacypf.jsf" rendered="#{loginBean.menu2}"><h:outputText value="PROWAD PF" /></h:outputLink>
-         	<h:outputLink value="przedmiot.jsf" rendered="#{loginBean.menu1}"><h:outputText value="PRZEDM" /></h:outputLink>
-            <h:outputLink value="przedmiotpf.jsf" rendered="#{loginBean.menu1 or loginBean.menu2}"><h:outputText value="PRZEDM PF" /></h:outputLink>
+    <!--     	<h:outputLink value="przedmiot.jsf" rendered="#{loginBean.menu1}"><h:outputText value="PRZEDM" /></h:outputLink>--> 
+            <h:outputLink value="przedmiotpf.jsf" rendered="#{loginBean.menu2}"><h:outputText value="PRZEDM PF" /></h:outputLink>
          	<h:outputLink value="zajecia.jsf" rendered="#{loginBean.menu2}"><h:outputText value="ZAJECI" /></h:outputLink>
          	<h:outputLink value="zajeciapf.jsf" rendered="#{loginBean.menu2}"><h:outputText value="ZAJECI PF" /></h:outputLink>
          	<h:outputLink value="zaloguj.jsf"><h:outputText value="LOG"/></h:outputLink>
-         	
+
          </div>
             <ui:insert name="content">
                [Template content will be inserted here]

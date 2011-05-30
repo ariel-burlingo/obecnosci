@@ -6,6 +6,9 @@
         <pathsSet class="linked-hash-set">
           <string>adminHome.xhtml</string>
           <string>adminpf.xhtml</string>
+          <string>Aprowadzacy.xhtml</string>
+          <string>Aprzedmioty.xhtml</string>
+          <string>AstudenciGrupy.xhtml</string>
           <string>grupa.xhtml</string>
           <string>grupapf.xhtml</string>
           <string>home.xhtml</string>
@@ -47,6 +50,7 @@
           <string>WEB-INF/templates/stud.xhtml</string>
           <string>WEB-INF/web.xml</string>
           <string>wycinekZprowadzacypf.temp</string>
+          <string>XwycinekAdminHome</string>
           <string>zajecia.xhtml</string>
           <string>zajeciapf.xhtml</string>
           <string>zaloguj.xhtml</string>
@@ -74,6 +78,7 @@
           <string>WEB-INF/classes/obecnosci/ob/web/GrupaBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/LoginBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/ObecnosciBean.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/web/PickListBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/ProwadzacyBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/PrzedmiotBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/PrzedmiotConverter.class</string>
