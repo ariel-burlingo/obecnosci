@@ -25,6 +25,7 @@
           <string>prowadzacypf_picklist.xhtml</string>
           <string>przedmiot.xhtml</string>
           <string>przedmiotpf.xhtml</string>
+          <string>przypiszDoGrupy.xhtml</string>
           <string>resources/css/screen.css</string>
           <string>resources/gfx/banner.png</string>
           <string>resources/gfx/edit.png</string>
@@ -70,7 +71,6 @@
           <string>WEB-INF/classes/obecnosci/ob/web/GrupaBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/LoginBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/ObecnosciBean.class</string>
-          <string>WEB-INF/classes/obecnosci/ob/web/PickListBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/ProwadzacyBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/PrzedmiotBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/PrzedmiotConverter.class</string>

@@ -1,6 +1,9 @@
 package obecnosci.ob.web;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -10,6 +13,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import obecnosci.ob.domain.Grupa;
+import obecnosci.ob.domain.Student;
 import obecnosci.ob.domain.Zajecia;
 
 import obecnosci.ob.service.GrupaManager;
@@ -29,7 +33,31 @@ public class GrupaBean implements Serializable {
 	// ZMIENNE
 	private long id = 0;
 	private String informacje;
+	
+	
+	private long wybranaGrupaId = 1;
+
+	public long getWybranaGrupaId() {
+		return wybranaGrupaId;
+	}
+
+	public void setWybranaGrupaId(long wybranaGrupaId) {
+		this.wybranaGrupaId = wybranaGrupaId;
+	}
+
 	private List<Grupa> grupy;
+	
+	private Student[] wybraneStudenty;
+
+	
+
+	public Student[] getWybraneStudenty() {
+		return wybraneStudenty;
+	}
+
+	public void setWybraneStudenty(Student[] wybraneStudenty) {
+		this.wybraneStudenty = wybraneStudenty;
+	}
 
 	// HTML BACKEND
 	private HtmlDataTable grupa;
@@ -88,6 +116,11 @@ public class GrupaBean implements Serializable {
 		return grupaManager.pobierzWszystkie();
 
 	}
+	
+	public List<Student> getWszyscyStudenci(){
+		return studentManager.pobierzWszystkich();
+		
+	}
 
 	// AKCJE
 	public String dodajGrupe() {
@@ -105,5 +138,10 @@ public class GrupaBean implements Serializable {
 		Grupa instancja = (Grupa) grupa.getRowData();
 		grupaManager.usunGrupe(instancja.getId());
 		return "";
+	}
+	
+	public void przypiszListeDoGrupy(){
+		List<Student> lista = Arrays.asList(wybraneStudenty);
+		grupaManager.przypiszListeDoGrupy(wybranaGrupaId, lista);		
 	}
 }

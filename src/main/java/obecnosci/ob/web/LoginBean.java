@@ -7,10 +7,10 @@ import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import obecnosci.ob.web.AdminBean;
+import obecnosci.ob.web.StudentBean;
+import obecnosci.ob.web.ProwadzacyBean;
 
-import obecnosci.ob.service.AdminManager;
-import obecnosci.ob.service.ProwadzacyManager;
-import obecnosci.ob.service.StudentManager;
 @SessionScoped
 @Named
 @ManagedBean
@@ -21,12 +21,7 @@ private String typ;
 private String pole1;
 private String pole2;
 
-@Inject
-AdminManager adminManager;
-@Inject
-StudentManager studentManager;
-@Inject
-ProwadzacyManager prowadzacyManager;
+
 @Inject
 StudentBean studentBean;
 @Inject
