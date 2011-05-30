@@ -26,6 +26,7 @@
           <string>przedmiot.xhtml</string>
           <string>przedmiotpf.xhtml</string>
           <string>przypiszDoGrupy.xhtml</string>
+          <string>raport.xhtml</string>
           <string>resources/css/screen.css</string>
           <string>resources/gfx/banner.png</string>
           <string>resources/gfx/edit.png</string>
@@ -67,7 +68,9 @@
           <string>WEB-INF/classes/obecnosci/ob/service/PrzedmiotManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/StudentManager.class</string>
           <string>WEB-INF/classes/obecnosci/ob/service/ZajeciaManager.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/utils/StudentZajecia.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/AdminBean.class</string>
+          <string>WEB-INF/classes/obecnosci/ob/web/ExportBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/GrupaBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/LoginBean.class</string>
           <string>WEB-INF/classes/obecnosci/ob/web/ObecnosciBean.class</string>

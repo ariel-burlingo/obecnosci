@@ -30,6 +30,7 @@ import obecnosci.ob.service.ObecnosciManager;
 import obecnosci.ob.service.ProwadzacyManager;
 import obecnosci.ob.service.PrzedmiotManager;
 import obecnosci.ob.service.ZajeciaManager;
+import obecnosci.ob.utils.StudentZajecia;
 
 
 @SessionScoped
@@ -54,13 +55,16 @@ public class ProwadzacyBean implements Serializable {
 		
 	private long id=0;
 	private long przedmiotId=0;
+	private long grupaId=0;
 	public long getPrzedmiotId() {
 		return przedmiotId;
 	}
 	public void setPrzedmiotId(long przedmiotId) {
 		this.przedmiotId = przedmiotId;
 	}
-
+	
+	
+	
 	private String imie;
 	private String nazwisko;
 	private String login;
@@ -212,6 +216,10 @@ public class ProwadzacyBean implements Serializable {
 	public List<Student> getMoiStudenci(){
 		return prowadzacyManager.pobierzMoichStudentow(id);		
 	}
+	
+	
+	
+	
 	
 	
 	//AKCJE

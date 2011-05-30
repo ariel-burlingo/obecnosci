@@ -115,6 +115,26 @@ public List<Zajecia> pobierzDlaStudentaZajeciaNaKtorychBylNieObecny(long idStude
 	}
 }
 
+public List<Zajecia> pobierzObecnosciDoRaportu(long idStudenta,long idGrupy, long idPrzedmiotu){
+	List<Zajecia> obecnosci = em.createQuery("select o.zajecia from Obecnosci o where o.student.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	return obecnosci;
+}
+
+public List<Zajecia> pobierzNieObecnosciDoRaportu(long idStudenta,long idGrupy, long idPrzedmiotu){
+	List<Zajecia> obecnosci = em.createQuery("select o.zajecia from Obecnosci o where o.student.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
+	List<Zajecia> nieobecnosci = new ArrayList<Zajecia>();
+	if(obecnosci.size() > 0){
+		nieobecnosci = em.createQuery("from Zajecia as z where z.grupa = :grupaId and z.przedmiot = :przedmiotId and not z in (:obecnosci) ")
+		.setParameter("grupaId", idGrupy).setParameter("przedmiotId", idPrzedmiotu).setParameter("obecnosci", obecnosci).getResultList();
+	} else {
+		nieobecnosci = em.createQuery("from Zajecia as z where z.grupa = :grupaId and z.przedmiot = :przedmiotId")
+		.setParameter("grupaId", idGrupy).setParameter("przedmiotId", idPrzedmiotu).getResultList();
+	
+	} 
+	return nieobecnosci;
+	
+}
+
 public List<Zajecia> pobierzDlaStudentaTerazOdbywajaceSie(long idStudenta){
 	// pod warunkiem ze nie zapisal juz obecnosci
 	List<Grupa> grupy = em.createQuery("select s.grupy from Student s where s.id = :idStudenta").setParameter("idStudenta", idStudenta).getResultList();
@@ -137,5 +157,8 @@ public List<Zajecia> pobierzDlaStudentaTerazOdbywajaceSie(long idStudenta){
 		return new ArrayList<Zajecia>();
 	}
 }
-	
+
+public List<Zajecia> pobierzZajeciaUnikalne(long prowadzacyId, long przedmiotId, long grupaId){
+	return em.createQuery("select z from Zajecia z where z.prowadzacy.id = :prowadzacyId and z.grupa.id = :grupaId and z.przedmiot.id = :przedmiotId").setParameter("prowadzacyId", prowadzacyId).setParameter("grupaId", grupaId).setParameter("przedmiotId", przedmiotId).getResultList();
+}
 }
