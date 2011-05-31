@@ -1,5 +1,6 @@
 package obecnosci.ob.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import obecnosci.ob.domain.Prowadzacy;
 import obecnosci.ob.domain.Przedmiot;
+import obecnosci.ob.domain.Student;
 
 @Stateless
 public class PrzedmiotManager {
@@ -53,6 +55,26 @@ public class PrzedmiotManager {
 	
 	public Przedmiot pobierzPoId(long id){
 		return (Przedmiot) em.createQuery("select p from Przedmiot p where p.id = :id").setParameter("id", id).getSingleResult();
+	}
+	
+	public void zapiszListeNaPrzedmiot(List<Student> studenty, long id){
+		Przedmiot przedmiot = em.getReference(Przedmiot.class, id);
+		
+		Iterator<Student> istud = studenty.iterator();
+		while(istud.hasNext()){
+			Student student = em.getReference(Student.class, istud.next().getId());
+					
+			List<Przedmiot> przedmioty = student.getPrzedmioty();
+			przedmioty.add(przedmiot);
+			student.setPrzedmioty(przedmioty);
+			
+			List<Student> studenci = przedmiot.getStudenci();
+			studenci.add(student);
+			przedmiot.setStudenci(studenci);
+			
+			em.merge(student);
+			em.merge(przedmiot);
+		}
 	}
 	
 }

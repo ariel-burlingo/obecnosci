@@ -175,7 +175,7 @@ public class ObecnosciManager {
 			nieobecnosci = em.createQuery("from Zajecia as z where z.grupa.id = :grupaId and z.przedmiot.id = :przedmiotId and not z in (:obecnosci) ")
 			.setParameter("grupaId", idGrupy).setParameter("przedmiotId", idPrzedmiotu).setParameter("obecnosci", obecnosci).getResultList();
 		} else {
-			nieobecnosci = em.createQuery("from Zajecia as z where z.grupa = :grupaId and z.przedmiot = :przedmiotId")
+			nieobecnosci = em.createQuery("from Zajecia as z where z.grupa.id = :grupaId and z.przedmiot.id = :przedmiotId")
 			.setParameter("grupaId", idGrupy).setParameter("przedmiotId", idPrzedmiotu).getResultList();
 		
 		} 

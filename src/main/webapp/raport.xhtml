@@ -3,14 +3,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="/WEB-INF/templates/default.xhtml">
 
 	<ui:define name="content">
 
-<p:dataList value="#{exportBean.pobierz}" var="studZ" type="ordered">  
-    #{studZ} 
-</p:dataList>  
+<ui:repeat value="#{exportBean.pobierz}" var="studentZaj">
+#{studentZaj.student.imie} #{studentZaj.student.nazwisko}
+<ui:repeat value="#{studentZaj.obecnosci}" var="obecnosc" >
+#{obecnosc}
+</ui:repeat>
+<br />
+</ui:repeat>
 
 
 

@@ -36,20 +36,40 @@
 			<h:form>
 				<p:dataTable id="mojePrzedmioty" value="#{prowadzacyBean.mojePrzedmioty}" var="wyp"
 					selection="#{prowadzacyBean.wybranyPrzedmiot}"
-				 selectionMode="single"  
-                 rowSelectListener="#{prowadzacyBean.przejdzDoListyObecnosci}"  
-                 onRowSelectUpdate="mojePrzedmioty growl" 
-                 onRowUnselectUpdate="mojePrzedmioty growl"> 
+				 selectionMode="single"> 
 				
-				>
 					<p:column style="width:50px">
 						<f:facet name="header">
-                    Moje Przedmioty (kliknij dla list obecności)
+                    Moje Przedmioty
             </f:facet>
 						<h:outputText value="#{wyp.nazwa}" />
 					</p:column>
-
+					 <f:facet name="footer">  
+            <p:commandButton value="Raport Obecności dla wybranego" image="ui-icon ui-icon-search"  
+                        update="form:display" oncomplete="RDialog.show()"/>
+</f:facet>
 				</p:dataTable>
+				
+				
+				 <p:dialog header="Szczegóły wyboru" widgetVar="RDialog"  
+              width="650" showEffect="explode" hideEffect="explode">  
+  
+        <p:selectOneMenu value="#{prowadzacyBean.wybranaGrupaId}"
+					style="width:500px">
+					 <f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{grupaBean.wszystkieGrupy}"
+						var="rekord" itemLabel="#{rekord.informacje}"
+						itemValue="#{rekord.id}" />
+				</p:selectOneMenu>
+   				<p:commandButton value="Pokaż raport" actionListener="#{prowadzacyBean.przejdzDoRaportu}"   
+                                   ajax="false"/>
+                           
+                                   
+                <p:commandButton value="Zabierz mnie stąd! (Anuluj)" onclick="RDialog.hide()" type="button" image="ui-icon ui-icon-close"/>  
+  
+				
+    </p:dialog> 
+				
 			</h:form>
 		</p:panel>
 

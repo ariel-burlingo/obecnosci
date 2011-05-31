@@ -1,6 +1,7 @@
 package obecnosci.ob.web;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import obecnosci.ob.domain.Przedmiot;
+import obecnosci.ob.domain.Student;
 import obecnosci.ob.service.PrzedmiotManager;
 
 @SessionScoped
@@ -20,6 +22,8 @@ public class PrzedmiotBean implements Serializable {
 	@Inject
 	PrzedmiotManager przedmiotManager;
 	
+	@Inject
+	GrupaBean grupaBean;
 	
 	//ZMIENNE
 	
@@ -27,10 +31,20 @@ public class PrzedmiotBean implements Serializable {
 	private String nazwa;
 	private String inneDane;
 	private List<Przedmiot> przedmioty;
-
+	private long wybranyPrzedmiotId; 
+	
 	
 	//GETTERY I SETTERY
 	
+	
+	public long getWybranyPrzedmiotId() {
+		return wybranyPrzedmiotId;
+	}
+
+	public void setWybranyPrzedmiotId(long wybranyPrzedmiotId) {
+		this.wybranyPrzedmiotId = wybranyPrzedmiotId;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -78,4 +92,10 @@ public class PrzedmiotBean implements Serializable {
 		przedmiotManager.dodajPrzedmiot(nazwa,inneDane);
 		return "";
 	}
+	
+	public void zapiszListeNaPrzedmiot(){
+		List<Student> lista = Arrays.asList(grupaBean.getWybraneStudenty());
+		przedmiotManager.zapiszListeNaPrzedmiot(lista,wybranyPrzedmiotId);
+	}
+	
 }

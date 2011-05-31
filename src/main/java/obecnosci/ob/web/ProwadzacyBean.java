@@ -71,6 +71,16 @@ public class ProwadzacyBean implements Serializable {
 	private String daneKontaktowe;
 	private String stronaDomowa;
 	private String password;
+	private long wybranaGrupaId;
+	public long getWybranaGrupaId() {
+		return wybranaGrupaId;
+	}
+	public void setWybranaGrupaId(long wybranaGrupaId) {
+		this.wybranaGrupaId = wybranaGrupaId;
+	}
+
+
+
 	private Zajecia wybraneZajecia = new Zajecia();
 	private Obecnosci wybranaObecnosc = new Obecnosci();
 	private Student wybranyStudent = new Student();
@@ -278,6 +288,8 @@ public class ProwadzacyBean implements Serializable {
         context.addMessage(null, new FacesMessage("Zatwierdzono", "Indeks: "+ob.getStudent().getIndex()+"<br />"+ob.getStudent().getImie()+" "+ob.getStudent().getNazwisko()));  
 	}
 	
+	
+	
 	// AJAX
 	public void usprawiedliwWybranaNieObecnosc(SelectEvent event) {
 		System.out.println("cos sie dzieje - probuje usprawiedliwiac");
@@ -303,6 +315,15 @@ public class ProwadzacyBean implements Serializable {
         context.addMessage(null, new FacesMessage("Pomyœlnie zmieniono","Czas rozpoczecia zajêæ: "+wybraneZajecia.getData().toString()));  
 	
 	}
+	
+	
+	public String przejdzDoRaportu() {
+		System.out.println("cos sie dzieje - zapisalem ktora grupa");
+		FacesContext context = FacesContext.getCurrentInstance();
+	    NavigationHandler navHandler = context.getApplication().getNavigationHandler();
+	    navHandler.handleNavigation(context, null, "raport");
+	    return "";
+	    }
 	
 	
 	public String zaloguj(){

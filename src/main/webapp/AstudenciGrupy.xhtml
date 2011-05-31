@@ -54,21 +54,17 @@
                  
                  <f:facet name="footer">  
             <p:commandButton value="Przypisz wybranych do grupy" image="ui-icon ui-icon-search"  
-                        update="form:display" oncomplete="studDialog.show()"/>  
+                        update="form:display" oncomplete="studDialog.show()"/>
+                        <p:commandButton value="Zapisz wybranych na przedmiot" image="ui-icon ui-icon-search"  
+                        update="form:display" oncomplete="studPDialog.show()"/>  
         </f:facet>
                  
                  
                  </p:dataTable>
                  
                  <p:dialog header="Szczegóły wyboru" widgetVar="studDialog"  
-              width="250" showEffect="explode" hideEffect="explode">  
+              width="650" showEffect="explode" hideEffect="explode">  
   
-        <p:dataList id="display"  
-            value="#{tableBean.wybraneStudenty}"  
-            var="selectedStud" type="definition">  
-  
-            Model: #{selectedStud.imie}, Year: #{selectedStud.nazwisko}    
-        </p:dataList>  
         <p:selectOneMenu value="#{grupaBean.wybranaGrupaId}"
 					style="width:500px">
 					 <f:selectItem itemLabel="Select One" itemValue="" />
@@ -81,6 +77,26 @@
                            
                                    
                     <p:commandButton value="Zabierz mnie stąd! (Anuluj)" onclick="studDialog.hide()" type="button" image="ui-icon ui-icon-close"/>  
+  
+				
+    </p:dialog>  
+    
+    
+      <p:dialog header="Szczegóły wyboru" widgetVar="studPDialog"  
+              width="650" showEffect="explode" hideEffect="explode">  
+  
+        <p:selectOneMenu value="#{przedmiotBean.wybranyPrzedmiotId}"
+					style="width:500px">
+					 <f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{przedmiotBean.wszystkiePrzedmioty}"
+						var="rekord" itemLabel="#{rekord.nazwa}"
+						itemValue="#{rekord.id}" />
+				</p:selectOneMenu>
+   				<p:commandButton value="Zapisz na przedmiot" update="mojeZajecia mojeZajeciaPanel growl" actionListener="#{przedmiotBean.zapiszListeNaPrzedmiot}"   
+                                    oncomplete="studPDialog.hide()" image="ui-icon ui-icon-check"/>
+                           
+                                   
+                    <p:commandButton value="Zabierz mnie stąd! (Anuluj)" onclick="studPDialog.hide()" type="button" image="ui-icon ui-icon-close"/>  
   
 				
     </p:dialog>  

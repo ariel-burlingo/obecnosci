@@ -32,6 +32,14 @@
   </navigation-case>  
   </navigation-rule>
   
+   <navigation-rule>  
+  <from-view-id>/prowadzacypf.jsp</from-view-id>  
+  <navigation-case>  
+    <from-outcome>raport</from-outcome>  
+    <to-view-id>/raport.jsp</to-view-id>  
+  </navigation-case>  
+  </navigation-rule>
+  
   <navigation-rule>  
   <from-view-id>/zaloguj.jsf</from-view-id>  
   <navigation-case>  
