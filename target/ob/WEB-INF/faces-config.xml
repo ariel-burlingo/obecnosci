@@ -9,6 +9,14 @@
 
    <!-- Write your navigation rules here. You are encouraged to use CDI for creating @Named managed beans. -->
 
+<navigation-rule>  
+  <from-view-id>/logout.jsp</from-view-id>  
+  <navigation-case>  
+    <from-outcome>zaloguj</from-outcome>  
+    <to-view-id>/zaloguj.jsp</to-view-id>  
+  </navigation-case>  
+  </navigation-rule>
+
    <navigation-rule>  
   <from-view-id>/prowadzacypf.jsp</from-view-id>  
   <navigation-case>  
