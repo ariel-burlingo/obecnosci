@@ -15,7 +15,7 @@
 
 		<p:panel id="dopiszPanel"
 			header="Dopisz przedmiot/Wypisz z przedmiotu" toggleable="true"
-			toggleSpeed="500">
+			toggleSpeed="500" rendered="#{loginBean.menu2}">
 			<h:form>
 				<p:selectOneMenu value="#{prowadzacyBean.przedmiotId}"
 					style="width:400px">
@@ -78,7 +78,7 @@
 
 
 		<p:panel id="mojeZajeciaPanel" header="Aktualnie odbywają się"
-			toggleable="true" toggleSpeed="500">
+			toggleable="true" toggleSpeed="500" rendered="#{loginBean.menu2}">
 			<h:form>
 				<p:dataTable
 					value="#{prowadzacyBean.mojeAktualnieOdbywajaceSieZajecia}"
@@ -125,7 +125,7 @@
 
 
 		<p:panel id="studenci" header="Studenci z moich zajęć (usprawiedliwianie)" toggleable="true"
-			toggleSpeed="500">
+			toggleSpeed="500" rendered="#{loginBean.menu2}">
 			<h:form>
 
 				<p:dataTable id="stud" value="#{prowadzacyBean.moiStudenci}" var="student" emptyMessage="No cars found with given criteria">            >  
@@ -168,7 +168,7 @@
 
 
 		<p:panel id="mojeZajecia" header="Wszystkie moje zajęcia" toggleable="true"
-			toggleSpeed="500" Collapsed="true">
+			toggleSpeed="500" Collapsed="true" rendered="#{loginBean.menu2}">
 			<h:form>
 
 				<p:dataTable value="#{prowadzacyBean.mojeZajecia}" var="blabla"
@@ -233,9 +233,6 @@
 			</h:form>
 		</p:panel>
 		
-		
-
-
 
 
 

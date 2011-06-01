@@ -62,6 +62,7 @@
             </ui:insert>
          </div>
          <div id="footer">
+         	<p><h:outputText value="Zaloguj się aby zobaczyć widoki"  rendered="#{!(loginBean.menu1 || loginBean.menu2 || loginBean.menu3)}"/></p>
             <h:graphicImage value="/resources/gfx/weld.png" alt="Weld logo"/>
             <p>
                This project was generated from a Maven archetype maintained by the Weld team.<br/>

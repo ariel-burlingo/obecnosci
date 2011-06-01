@@ -162,7 +162,8 @@ public class ObecnosciManager {
 	
 	
 	public List<Zajecia> pobierzObecnosciDoRaportu(long idStudenta,long idGrupy, long idPrzedmiotu){
-		List<Zajecia> obecnosci = em.createQuery("select o.zajecia from Obecnosci o where o.student.id = :idStudenta and o.zajecia.grupa.id = :grupaId and o.zajecia.przedmiot.id = :przedmiotId")
+		List<Zajecia> obecnosci = new ArrayList<Zajecia>();
+		obecnosci = em.createQuery("select o.zajecia from Obecnosci o where o.student.id = :idStudenta and o.zajecia.grupa.id = :grupaId and o.zajecia.przedmiot.id = :przedmiotId")
 		.setParameter("idStudenta", idStudenta).setParameter("grupaId", idGrupy).setParameter("przedmiotId", idPrzedmiotu).getResultList();
 		return obecnosci;
 	}
