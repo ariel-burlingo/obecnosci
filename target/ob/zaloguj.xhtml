@@ -7,19 +7,22 @@
    template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
    <h:form>
+   <p:growl id="growl" showDetail="true" sticky="false" />
    <h:outputLink value="" rendered="#{loginBean.wyloguj}"></h:outputLink>
-   <h:outputLabel for="typ" value="Rola: " />
-   <h:selectOneMenu id="typ" value="#{loginBean.typ}">
-  <f:selectItem id="Prowadzacy" itemLabel="Prowadzący" itemValue="1" />
-  <f:selectItem id="Student" itemLabel="Student" itemValue="2" />
-  <f:selectItem id="Admin" itemLabel="Admin" itemValue="0" />
-</h:selectOneMenu>
-   <h:outputLabel for="pole1" value="Login: " />
-   <h:inputText id ="pole1" value="#{loginBean.pole1}"></h:inputText>
-   <h:outputLabel for="pole2" value="Hasło: " />
-   <h:inputSecret id="pole2" value="#{loginBean.pole2}"/>   
-   <h:commandButton id="submit" action="#{loginBean.zaloguj}" value=" Zaloguj " /> 
-
+   <h:panelGrid id="panel" columns="6" border="0">
+   <p:selectOneMenu id="typ" value="#{loginBean.typ}" style="width: 150px;">
+    <f:selectItem itemLabel="Wybierz rolę" itemValue="" />
+    <f:selectItem id="Prowadzacy" itemLabel="Prowadzący" itemValue="1" />
+  	<f:selectItem id="Student" itemLabel="Student" itemValue="2" />
+  	<f:selectItem id="Admin" itemLabel="Admin" itemValue="0" />
+   </p:selectOneMenu>
+   <h:outputText value="Login: " />
+   <p:inputText id ="pole1" value="#{loginBean.pole1}" />
+   <h:outputText value="Hasło: " />
+   <p:password value="#{loginBean.pole2}" feedback="false" />
+   <p:commandButton value="Zaloguj" actionListener="#{loginBean.zaloguj}"   
+            ajax="false" />
+	</h:panelGrid>
    </h:form>
    
    </ui:define>

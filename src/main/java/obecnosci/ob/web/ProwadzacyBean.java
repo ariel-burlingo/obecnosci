@@ -12,6 +12,7 @@ import javax.faces.application.NavigationHandler;
 import javax.faces.component.html.HtmlDataTable;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.NoResultException;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
@@ -326,7 +327,7 @@ public class ProwadzacyBean implements Serializable {
 	    }
 	
 	
-	public String zaloguj(){
+	public String zaloguj(String login,String password){		
 		Prowadzacy prowadzacy = prowadzacyManager.zaloguj(login, password);
 		if (prowadzacy.getId()>0){
 			this.id = prowadzacy.getId();

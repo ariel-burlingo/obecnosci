@@ -2,6 +2,8 @@ package obecnosci.ob.web;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -25,7 +27,7 @@ public class AdminBean implements Serializable{
 	private String login="";
 	private String haslo="";
 	
-	public String zaloguj(){
+	public String zaloguj(String login,String haslo){
 		Admin admin = adminManager.zaloguj(login, haslo);
 		if (admin.getId()>0){
 			this.id = admin.getId();
@@ -36,7 +38,7 @@ public class AdminBean implements Serializable{
 			this.haslo = "STFU";
 		}
 		
-		return "kupa";
+		return "null";
 	}
 
 	public long getId() {

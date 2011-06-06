@@ -104,30 +104,79 @@ public class LoginBean implements Serializable{
 	}
 	
 	public String zaloguj(){
+		String whereTo="";
 		menu1=false;
 		menu2=false;
 		menu3=false;
 		if (typ.equalsIgnoreCase("0")){
 			adminBean.setLogin(pole1);
 			adminBean.setHaslo(pole2);
-			adminBean.zaloguj();
-			menu1=true;
-			return "adminHome";
+			adminBean.zaloguj(pole1,pole2);
+			// logika czy zalogowanie sie powiodlo
+			if(adminBean.getId()>0){
+				menu1=true;
+				whereTo="adminHome";
+			} else {
+				menu1=false;
+				FacesContext context = FacesContext.getCurrentInstance();  
+		        context.addMessage(null, new FacesMessage("B³¹d logowania","Podano b³êdny login lub has³o"));
+		        
+		        
+			
+			}
 		}
 		if (typ.equalsIgnoreCase("1")){
 
 			prowadzacyBean.setLogin(pole1);
 			prowadzacyBean.setPassword(pole2);
-			prowadzacyBean.zaloguj();
-			menu2=true;
-			return "prowadzacypf";
+			prowadzacyBean.zaloguj(pole1,pole2);
+			// logika czy zalogowanie sie powiodlo
+			if(prowadzacyBean.getId()>0){
+				menu2=true;
+				whereTo="prowadzacypf";
+				System.out.println("zalogowano");
+			} else {
+				menu2=false;
+				FacesContext context = FacesContext.getCurrentInstance();  
+		        context.addMessage(null, new FacesMessage("B³¹d logowania","Podano b³êdny login lub has³o"));
+		        
+		        
+			}
 		}
 		if (typ.equalsIgnoreCase("2")){
-			studentBean.setIndex(Integer.parseInt(pole1));
-			studentBean.setHaslo(pole2);
-			studentBean.zaloguj();
-			menu3=true;
-			return "studentpf";
+			int nrIdx = 0;
+			try{
+				nrIdx = Integer.parseInt(pole1);
+			}
+			catch(NumberFormatException e){
+				nrIdx=-1;
+			}
+			if(nrIdx>0){
+				studentBean.setIndex(nrIdx);
+				studentBean.setHaslo(pole2);			
+				studentBean.zaloguj(nrIdx,pole2);
+				if(studentBean.getId()>0){
+					menu3=true;
+					whereTo="studentpf";
+
+				} else {
+					menu3=false;
+					FacesContext context = FacesContext.getCurrentInstance();  
+			        context.addMessage(null, new FacesMessage("B³¹d logowania","Podano b³êdny login lub has³o"));
+
+				}
+			} else {
+				FacesContext context = FacesContext.getCurrentInstance();  
+		        context.addMessage(null, new FacesMessage("B³¹d logowania","Zaloguj siê u¿ywaj¹c numeru indeksu!"));			
+			}
+		}
+		
+		// redirection bo PF
+		if(!whereTo.equalsIgnoreCase("")){
+			System.out.println("Proba nawigacji");
+			FacesContext context = FacesContext.getCurrentInstance();
+		    NavigationHandler navHandler = context.getApplication().getNavigationHandler();
+		    navHandler.handleNavigation(context, null, whereTo);
 		}
 		return "Bledne";
 

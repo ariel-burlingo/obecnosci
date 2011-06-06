@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 
@@ -24,7 +25,14 @@ public class ProwadzacyManager {
 	EntityManager em;
 	
 	public Prowadzacy zaloguj(String login, String haslo){
-		Prowadzacy prowadzacy = (Prowadzacy) em.createQuery("select s from Prowadzacy s where s.login = :login and s.password = :password").setParameter("login", login).setParameter("password", haslo).getSingleResult();
+		Prowadzacy prowadzacy = new Prowadzacy();
+		prowadzacy.setId(0);
+		try{
+			prowadzacy = (Prowadzacy) em.createQuery("select s from Prowadzacy s where s.login = :login and s.password = :password").setParameter("login", login).setParameter("password", haslo).getSingleResult();
+		}
+		catch(NoResultException e){
+			// niezalogowany
+		}
 		return prowadzacy;
 	}
 	

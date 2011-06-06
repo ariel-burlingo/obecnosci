@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import obecnosci.ob.domain.Przedmiot;
@@ -29,7 +30,14 @@ public class StudentManager {
 	EntityManager em;
 	
 	public Student zaloguj(int index, String haslo){
-		Student student = (Student) em.createQuery("select s from Student s where s.index = :index and s.haslo = :haslo").setParameter("index", index).setParameter("haslo", haslo).getSingleResult();
+		Student student = new Student();
+		student.setId(0);
+		try{
+			student = (Student) em.createQuery("select s from Student s where s.index = :index and s.haslo = :haslo").setParameter("index", index).setParameter("haslo", haslo).getSingleResult();
+		}
+		catch(NoResultException e){
+			// niezalogowany!
+		}
 		return student;
 	}
 	

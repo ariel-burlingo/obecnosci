@@ -184,7 +184,7 @@ public class StudentBean implements Serializable{
 		return "";
 	}
 	
-	public String zaloguj(){
+	public String zaloguj(int index,String haslo){
 		Student student = studentManager.zaloguj(index, haslo);
 		if (student.getId()>0){
 			this.id = student.getId();
