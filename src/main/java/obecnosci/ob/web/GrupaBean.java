@@ -133,10 +133,9 @@ public class GrupaBean implements Serializable {
 		
 	}
 	public List<Student> getStudenci(){
-		//w zakomentowanej linijce robi mi NUllPointer
+		//System.out.println(wybranaGrupa.getId());
 		return studentManager.pobierzWszystkich();
-		//System.out.println("Dostalem" + wybranaGrupa.getId());
-		//return grupaManager.pobierzStudentow(wybranaGrupa.getId());
+	//	return grupaManager.pobierzStudentow(wybranaGrupa.getId());
 	}
 	
 

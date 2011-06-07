@@ -61,7 +61,7 @@ public class GrupaManager {
 		// TODO	
 	}
 	
-	public List<Student> pobierzStudentow(long id){
+	public List<Student> pobierzStudentow(){
 		System.out.println("GRUPA MANAGER POBIERZ STUDENTOW");
 		return em.createQuery("from Student").getResultList();
 		
