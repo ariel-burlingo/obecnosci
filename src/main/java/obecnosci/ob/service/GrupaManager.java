@@ -61,21 +61,21 @@ public class GrupaManager {
 		// TODO	
 	}
 	
-	public List<Student> pobierzStudentow(){
-		System.out.println("GRUPA MANAGER POBIERZ STUDENTOW");
-		return em.createQuery("from Student").getResultList();
-		
-		//List<Student> studenci = new ArrayList<Student>();
-	//	List<Student> deep = new ArrayList<Student>();
+	public List<Student> pobierzStudentow(long grupaId){
+		try{
+		List<Student> studenci = new ArrayList<Student>();
+		List<Student> deep = new ArrayList<Student>();
 		// petla ktora kopiuje z referencji do stworzonego obiektu wiersz po wierszu
-//		studenci = em.find(Grupa.class, id).getStudenci();
-//		Iterator<Student> iter = studenci.iterator();
-//		while(iter.hasNext()){
-////			deep.add(iter.next());
-//		}
-//		return deep;
-		//return 
-	}
+		studenci = em.find(Grupa.class, grupaId).getStudenci();
+		Iterator<Student> iter = studenci.iterator();
+		while(iter.hasNext()){
+			deep.add(iter.next());
+		}
+		return deep;
+		}
+		catch(NullPointerException e){}
 	
+		return new ArrayList<Student>();
+	}
 	
 }

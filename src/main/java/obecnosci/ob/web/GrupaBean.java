@@ -49,7 +49,7 @@ public class GrupaBean implements Serializable {
 	
 	private Student[] wybraneStudenty;
 	
-	private Grupa wybranaGrupa;
+	private Grupa wybranaGrupa = new Grupa();
 	
 
 	
@@ -135,12 +135,13 @@ public class GrupaBean implements Serializable {
 	public List<Student> getStudenci(){
 		try{
 		System.out.println(wybranaGrupa.getId());
+		
 		}
 		catch(NullPointerException e){
 			// empty data catch
 		}
-		return studentManager.pobierzWszystkich();
-	//	return grupaManager.pobierzStudentow(wybranaGrupa.getId());
+	
+		return grupaManager.pobierzStudentow(wybranaGrupa.getId());
 	}
 	
 
