@@ -1,5 +1,6 @@
 package obecnosci.ob.service;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -56,5 +57,25 @@ public class GrupaManager {
 			em.merge(grupa);
 		}
 	}
+	public void wypiszStudentaZGrupy(long grupaId, Student student){
+		// TODO	
+	}
+	
+	public List<Student> pobierzStudentow(long id){
+		System.out.println("GRUPA MANAGER POBIERZ STUDENTOW");
+		return em.createQuery("from Student").getResultList();
+		
+		//List<Student> studenci = new ArrayList<Student>();
+	//	List<Student> deep = new ArrayList<Student>();
+		// petla ktora kopiuje z referencji do stworzonego obiektu wiersz po wierszu
+//		studenci = em.find(Grupa.class, id).getStudenci();
+//		Iterator<Student> iter = studenci.iterator();
+//		while(iter.hasNext()){
+////			deep.add(iter.next());
+//		}
+//		return deep;
+		//return 
+	}
+	
 	
 }

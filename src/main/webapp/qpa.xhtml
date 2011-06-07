@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:p="http://primefaces.prime.com.tr/ui"
+   template="/WEB-INF/templates/default.xhtml">   
+   <ui:define name="content">
+ 
+   	<h:form rendered="#{loginBean.menu1}" id="form">
+			<p:dataTable value="#{grupaBean.wszystkieGrupy}"  var="gru"
+			paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15"
+					selection="#{grupaBean.wybranaGrupa}" selectionMode="single"
+					>
+				<p:column  style="width:50px">
+					<f:facet name="header">
+                    ID
+            </f:facet>
+					<h:outputText value="#{gru.id}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+                    INFORMACJE
+            </f:facet>
+					<h:outputText value="#{gru.informacje}" />
+				</p:column>
+				
+				<f:facet name="footer">  
+            <p:commandButton value="View" image="ui-icon ui-icon-search"  
+                    update="form:display" oncomplete="grupaDialog.show()"/>  
+        </f:facet> 
+        
+        
+			</p:dataTable>
+			<p:dialog header="Lista studentow w grupie" widgetVar="grupaDialog" resizable="true"  
+              width="800" showEffect="clip" hideEffect="fold">  
+ <h:form>  
+    <p:dataTable var="car" value="#{grupaBean.wybranaGrupa.studenci}">  
+        
+        <p:column>  
+            <f:facet name="header">  
+                    Nazwisko  
+            </f:facet>  
+            <h:outputText value="#{car.nazwisko}" />  
+        </p:column>  
+        
+        
+        
+  
+     
+    </p:dataTable>  
+</h:form>
+    </p:dialog>  
+		</h:form>
+    
+   </ui:define>
+</ui:composition>

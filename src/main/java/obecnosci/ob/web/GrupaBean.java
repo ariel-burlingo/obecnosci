@@ -48,8 +48,19 @@ public class GrupaBean implements Serializable {
 	private List<Grupa> grupy;
 	
 	private Student[] wybraneStudenty;
+	
+	private Grupa wybranaGrupa;
+	
 
 	
+
+	public Grupa getWybranaGrupa() {
+		return wybranaGrupa;
+	}
+
+	public void setWybranaGrupa(Grupa wybranaGrupa) {
+		this.wybranaGrupa = wybranaGrupa;
+	}
 
 	public Student[] getWybraneStudenty() {
 		return wybraneStudenty;
@@ -121,6 +132,13 @@ public class GrupaBean implements Serializable {
 		return studentManager.pobierzWszystkich();
 		
 	}
+	public List<Student> getStudenci(){
+		//w zakomentowanej linijce robi mi NUllPointer
+		return studentManager.pobierzWszystkich();
+		//System.out.println("Dostalem" + wybranaGrupa.getId());
+		//return grupaManager.pobierzStudentow(wybranaGrupa.getId());
+	}
+	
 
 	// AKCJE
 	public String dodajGrupe() {
