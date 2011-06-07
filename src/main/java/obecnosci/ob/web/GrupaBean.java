@@ -133,7 +133,12 @@ public class GrupaBean implements Serializable {
 		
 	}
 	public List<Student> getStudenci(){
-		//System.out.println(wybranaGrupa.getId());
+		try{
+		System.out.println(wybranaGrupa.getId());
+		}
+		catch(NullPointerException e){
+			// empty data catch
+		}
 		return studentManager.pobierzWszystkich();
 	//	return grupaManager.pobierzStudentow(wybranaGrupa.getId());
 	}
