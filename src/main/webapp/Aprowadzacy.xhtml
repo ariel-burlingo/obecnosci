@@ -35,7 +35,9 @@
     </h:form>
     
     <h:form rendered="#{loginBean.menu1}">
-			<p:dataTable value="#{prowadzacyBean.wszystkichProwadzacych}"  var="prow">
+			<p:dataTable value="#{prowadzacyBean.wszystkichProwadzacych}"  var="prow" paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
 			<p:column  style="width:50px">
 					<f:facet name="header">
                     ID

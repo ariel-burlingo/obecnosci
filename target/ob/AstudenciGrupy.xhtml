@@ -30,7 +30,10 @@
 <h:form id="form" rendered="#{loginBean.menu1}">  
   
     <p:dataTable var="student" value="#{grupaBean.wszyscyStudenci}"  
-                 selection="#{grupaBean.wybraneStudenty}" selectionMode="multiple">
+                 selection="#{grupaBean.wybraneStudenty}" selectionMode="multiple"
+                 paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15,30,50">
                  <p:column>
                   <f:facet name="header">  
                 	<h:outputText value="Index" />  
@@ -105,7 +108,10 @@
 
     
     	<h:form rendered="#{loginBean.menu1}">
-			<p:dataTable value="#{grupaBean.wszystkieGrupy}"  var="gru">
+			<p:dataTable value="#{grupaBean.wszystkieGrupy}"  var="gru"
+			paginator="true" rows="10"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
 				<p:column  style="width:50px">
 					<f:facet name="header">
                     ID
