@@ -7,7 +7,7 @@
    template="/WEB-INF/templates/default.xhtml">   
    <ui:define name="content">
    
-   <h:form>	
+   <h:form rendered="#{loginBean.menu1}">	
 		<p:panel id="panel" header="Nowy Student" style="margin-bottom:10px;">  
         <p:messages />  
         <h:panelGrid columns="2">  
@@ -27,7 +27,7 @@
     
     <p:growl id="growl" showDetail="true" sticky="false" />
 
-<h:form id="form">  
+<h:form id="form" rendered="#{loginBean.menu1}">  
   
     <p:dataTable var="student" value="#{grupaBean.wszyscyStudenci}"  
                  selection="#{grupaBean.wybraneStudenty}" selectionMode="multiple">
@@ -104,7 +104,7 @@
                  </h:form>
 
     
-    	<h:form>
+    	<h:form rendered="#{loginBean.menu1}">
 			<p:dataTable value="#{grupaBean.wszystkieGrupy}"  var="gru">
 				<p:column  style="width:50px">
 					<f:facet name="header">
@@ -121,7 +121,7 @@
 				</p:column>
 			</p:dataTable>
 		</h:form>
-		<h:form>	
+		<h:form rendered="#{loginBean.menu1}">	
 		<p:panel id="panel" header="Nowa Grupa" style="margin-bottom:10px;">  
         <p:messages />  
         <h:panelGrid columns="3">  

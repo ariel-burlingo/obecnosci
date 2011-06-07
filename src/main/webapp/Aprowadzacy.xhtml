@@ -7,7 +7,7 @@
    template="/WEB-INF/templates/default.xhtml">   
    <ui:define name="content">
    
-   <h:form>	
+   <h:form rendered="#{loginBean.menu1}">	
 		<p:panel id="panel" header="Nowy Prowadzacy" style="margin-bottom:10px;">  
         <p:messages />  
         <h:panelGrid columns="2">  
@@ -34,7 +34,7 @@
     </p:panel> 
     </h:form>
     
-    <h:form>
+    <h:form rendered="#{loginBean.menu1}">
 			<p:dataTable value="#{prowadzacyBean.wszystkichProwadzacych}"  var="prow">
 			<p:column  style="width:50px">
 					<f:facet name="header">
