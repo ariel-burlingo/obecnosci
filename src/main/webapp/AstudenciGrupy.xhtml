@@ -34,21 +34,21 @@
                  paginator="true" rows="10"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15,30,50">
-                 <p:column>
+                 <p:column style="width:100px" filterBy="#{student.index}">
                   <f:facet name="header">  
                 	<h:outputText value="Index" />  
             		</f:facet>  
                  <h:outputText value="#{student.index}" />  
                  </p:column>
                  
-                 <p:column>
+                 <p:column style="width:100px" filterBy="#{student.imie}">
                   <f:facet name="header">  
                 	<h:outputText value="Imie" />  
             		</f:facet>  
                  <h:outputText value="#{student.imie}" />  
                  </p:column>
                  
-                 <p:column>
+                 <p:column style="width:100px" filterBy="#{student.nazwisko}">
                   <f:facet name="header">  
                 	<h:outputText value="Nazwisko" />  
             		</f:facet>  
