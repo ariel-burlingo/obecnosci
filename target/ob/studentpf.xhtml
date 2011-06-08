@@ -24,12 +24,15 @@
    		
    		<h:outputText value="Obecności" />
    		<h:form>
-   		<p:dataTable id="mojeOb" value="#{obecnosciBean.mojeObecnosci}"  var="mob">
+   		<p:dataTable value="#{obecnosciBean.mojeObecnosci}" var="rec"
+paginator="true" rows="5"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
 			<p:column  style="width:150px">
 					<f:facet name="header">
                     Data
             </f:facet>
-			  	<h:outputText value="#{mob.zajecia.data}">
+			  	<h:outputText value="#{rec.zajecia.data}">
 					<f:convertDateTime pattern="HH:mm dd-MM-yyyy" />
 				</h:outputText> 
 				</p:column> 
@@ -38,13 +41,13 @@
 					<f:facet name="header">
                     Przedmiot
             </f:facet>
-					<h:outputText value="#{mob.zajecia.przedmiot.nazwa}" />
+					<h:outputText value="#{rec.zajecia.przedmiot.nazwa}" />
 				</p:column>
 				<p:column>
 					<f:facet name="header">
                     Obecnosc
             </f:facet>
-					<h:outputText value="#{mob.typ}" />
+					<h:outputText value="#{rec.typ}" />
 				</p:column>
 				</p:dataTable>  
 				</h:form>
