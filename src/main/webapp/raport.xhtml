@@ -3,19 +3,27 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="/WEB-INF/templates/default.xhtml">
 
 	<ui:define name="content">
-
-<ui:repeat value="#{exportBean.pobierz}" var="studentZaj">
-#{studentZaj.student.imie} #{studentZaj.student.nazwisko}
-<ui:repeat value="#{studentZaj.obecnosci}" var="obecnosc" >
-#{obecnosc}
+<table>
+<tr>
+<td> </td>
+<ui:repeat value="#{exportBean.pobierz}" var="dataZaj">
+<td>#{dataZaj}</td>
 </ui:repeat>
-<br />
+</tr>
+<ui:repeat value="#{exportBean.studentZajecia}" var="studentZaj">
+<tr>
+	<td>#{studentZaj.student.imie} #{studentZaj.student.nazwisko}</td>
+	<ui:repeat value="#{studentZaj.obecnosci}" var="obecnosc" >
+	<td>#{obecnosc}</td>
 </ui:repeat>
 
+</tr>
+</ui:repeat>
 
-
+</table>
 </ui:define>
 </ui:composition>

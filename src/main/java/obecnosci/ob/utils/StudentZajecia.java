@@ -7,6 +7,13 @@ import obecnosci.ob.domain.Student;
 public class StudentZajecia {
 	private Student student;
 	private String obecnosci[];
+	private String daty[];
+	public String[] getDaty() {
+		return daty;
+	}
+	public void setDaty(String[] daty) {
+		this.daty = daty;
+	}
 	public Student getStudent() {
 		return student;
 	}

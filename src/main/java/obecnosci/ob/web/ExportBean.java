@@ -33,10 +33,37 @@ public class ExportBean implements Serializable{
 	@Inject
 	ProwadzacyBean prowadzacyBean;
 	
+	private List<StudentZajecia> studentZajecia;
 	
+	public List<StudentZajecia> getStudentZajecia() {
+		return studentZajecia;
+	}
 
-	public List<StudentZajecia> getPobierz(){
+	public void setStudentZajecia(List<StudentZajecia> studentZajecia) {
+		this.studentZajecia = studentZajecia;
+	}
+
+	private String[] Daty;
+	
+	public String[] getDaty(){
+		return Daty;
+	}
+	
+	public String[] getPobierz(){
 		
+		try{
+			studentZajecia = new ArrayList<StudentZajecia>();
+			System.out.println("WESZLEM DO BEANA");
+			System.out.println("ID PRO : "+prowadzacyBean.getId());
+			System.out.println("PRZEDM : "+prowadzacyBean.getWybranyPrzedmiot());
+			System.out.println("GRUPA  : "+prowadzacyBean.getWybranaGrupaId());
+			studentZajecia = obecnosciManager.daneDoRaportu(prowadzacyBean.getWybranyPrzedmiot().getId(), prowadzacyBean.getId(), prowadzacyBean.getWybranaGrupaId());
+			Daty = studentZajecia.get(0).getDaty();
+		} 
+		catch(NullPointerException e){
+			studentZajecia = new ArrayList<StudentZajecia>();
+			
+		}
 		
 		//List<String>output = new ArrayList<String>();
 		//List<Zajecia> zajU = zajeciaManager.pobierzZajeciaUnikalne(1, 1, 1);
@@ -47,11 +74,8 @@ public class ExportBean implements Serializable{
 			String obecnosci = akt.getObecnosci().toString();
 			output.add(akt.getStudent().getNazwisko()+" "+obecnosci);
 		}*/
-		System.out.println("WESZLEM DO BEANA");
-		System.out.println("ID PRO : "+prowadzacyBean.getId());
-		System.out.println("PRZEDM : "+prowadzacyBean.getWybranyPrzedmiot());
-		System.out.println("GRUPA  : "+prowadzacyBean.getWybranaGrupaId());
-		return obecnosciManager.daneDoRaportu(prowadzacyBean.getWybranyPrzedmiot().getId(), prowadzacyBean.getId(), prowadzacyBean.getWybranaGrupaId());
+		return Daty;
 	}
+
 	
 }

@@ -1,6 +1,8 @@
 package obecnosci.ob.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -107,6 +109,7 @@ public class ObecnosciManager {
 		while(istud.hasNext()){
 				Student aktualny = istud.next();
 				List<String> obecnosci = new ArrayList<String>();
+				List<String> daty = new ArrayList<String>();
 				List<Zajecia> sZajOb =  pobierzObecnosciDoRaportu(aktualny.getId(), grupaId, przedmiotId);
 				List<Zajecia> sZajNOb = pobierzNieObecnosciDoRaportu(aktualny.getId(), grupaId, przedmiotId);
 				// iterowanie po wszystkich zajeciach celem ³uskania nieobecnosi/obecnosci
@@ -134,6 +137,8 @@ public class ObecnosciManager {
 						obecnosci.add("N");
 						System.out.print("N");
 					}
+					String data = String.valueOf(aktZaj.getData().getDate()) +"."+ String.valueOf(aktZaj.getData().getMonth()+1);
+					daty.add(data);
 				}
 				
 				
@@ -141,6 +146,8 @@ public class ObecnosciManager {
 				studZaj.setStudent(aktualny);
 				// zamiana na tablice
 				String wObecnosci[] = new String[obecnosci.size()];
+				String wDaty[] = new String[daty.size()];
+				
 				Iterator<String> obIter = obecnosci.iterator();
 				int i = 0;
 				while(obIter.hasNext()){
@@ -148,7 +155,15 @@ public class ObecnosciManager {
 					i++;
 				}
 				
+				Iterator<String> daIter = daty.iterator();
+				i=0;
+				while(daIter.hasNext()){
+					wDaty[i] = daIter.next();
+					i++;
+				}
+								
 				studZaj.setObecnosci(wObecnosci);
+				studZaj.setDaty(wDaty);
 				
 				// dopisanie do glownej listy
 				
