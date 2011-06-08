@@ -13,7 +13,7 @@
    		<h:outputText value="#{rec.przedmiot.nazwa}" />  
    		</p:column>
    		<p:column>
-   		 <p:commandButton value="Obecny" title="Obecny" update=":mojeOb" action="#{studentBean.zapiszObecnosc}"
+   		 <p:commandButton value="Obecny" title="Obecny" update="studForm:mojeOb" action="#{studentBean.zapiszObecnosc}"
                      actionListener="#{studentBean.loadCurrentRequest}">  
          	<f:setPropertyActionListener value="#{rec}" target="#{studentBean.wybraneZajecia}" />
          	<p:effect type="puff" event="click" />   
@@ -23,8 +23,8 @@
    		</h:form>
    		
    		<h:outputText value="Obecności" />
-   		<h:form>
-   		<p:dataTable value="#{obecnosciBean.mojeObecnosci}" var="rec"
+   		<h:form id="studForm">
+   		<p:dataTable id="mojeOb" value="#{obecnosciBean.mojeObecnosci}" var="rec"
 paginator="true" rows="5"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15">

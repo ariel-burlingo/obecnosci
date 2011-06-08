@@ -15,7 +15,11 @@
 				 selectionMode="single"  
                  rowSelectListener="#{prowadzacyBean.usprawiedliwWybranaNieObecnosc}"  
                  onRowSelectUpdate="dOb growl" 
-                 onRowUnselectUpdate="dOB growl">  
+                 onRowUnselectUpdate="dOB growl"
+                 paginator="true" rows="10"
+				 paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink} {RowsPerPageDropdown}"
+				 rowsPerPageTemplate="5,10,20"
+                 >  
                  
                  
           <p:column>

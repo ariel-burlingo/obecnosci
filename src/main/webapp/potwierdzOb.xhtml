@@ -15,7 +15,10 @@
 				 selectionMode="single"  
                  rowSelectListener="#{prowadzacyBean.potwierdzWybranaObecnosc}"  
                  onRowSelectUpdate="dOb growl" 
-                 onRowUnselectUpdate="dOB growl">  
+                 onRowUnselectUpdate="dOB growl"
+                 paginator="true" rows="10"
+				 paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink} {RowsPerPageDropdown}"
+				 rowsPerPageTemplate="5,10,20"
                  >
         <p:column>
         <f:facet name="header">

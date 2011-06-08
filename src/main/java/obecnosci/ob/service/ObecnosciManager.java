@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import obecnosci.ob.domain.Grupa;
 import obecnosci.ob.domain.Obecnosci;
 import obecnosci.ob.domain.Obecnosci.Typ_Obecnosci;
 import obecnosci.ob.domain.Prowadzacy;
@@ -88,6 +89,7 @@ public class ObecnosciManager {
 		// pobranie moich studentow
 		
 		List<Student> studenty = em.createQuery("from Student").getResultList();
+		List<Student> preWybrancy = new ArrayList<Student>();
 		List<Student> wybrancy = new ArrayList<Student>();
 		Iterator<Student> iter = studenty.iterator();
 				
@@ -96,9 +98,23 @@ public class ObecnosciManager {
 			Student stud = iter.next();
 			Iterator<Przedmiot> p2iter = stud.getPrzedmioty().iterator();
 			while(p2iter.hasNext()){
-				if(p2iter.next().getId()==przedmiotId){
-					wybrancy.add(stud);
+				if(p2iter.next().getId()==przedmiotId){ // 
+					preWybrancy.add(stud);
 					System.out.println("zapisalem gnojka");
+					break;
+				}
+			}
+		}
+		// wymagamy takze zgodnosci grupy
+		iter = preWybrancy.iterator();
+		while(iter.hasNext()){
+			System.out.println("wszedlem do while");
+			Student stud = iter.next();
+			Iterator<Grupa> griter = stud.getGrupy().iterator();
+			while(griter.hasNext()){
+				if(griter.next().getId()==grupaId){ // 
+					wybrancy.add(stud);
+					System.out.println("zapisalem gnojka OSTATECZNIE");
 					break;
 				}
 			}

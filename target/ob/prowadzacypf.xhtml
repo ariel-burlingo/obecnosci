@@ -167,11 +167,11 @@
 <p:spacer width="100%" height="20" />
 
 
-		<p:panel id="mojeZajecia" header="Wszystkie moje zajęcia" toggleable="true"
+		<p:panel header="Wszystkie moje zajęcia" toggleable="true"
 			toggleSpeed="500" Collapsed="true" rendered="#{loginBean.menu2}">
 			<h:form>
 
-				<p:dataTable value="#{prowadzacyBean.mojeZajecia}" var="blabla"
+				<p:dataTable id="mojeZajecia" value="#{prowadzacyBean.mojeZajecia}" var="blabla"
 					paginator="true" rows="10"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15">
