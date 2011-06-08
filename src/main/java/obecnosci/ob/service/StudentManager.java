@@ -107,6 +107,22 @@ public class StudentManager {
 		
 	}
 	
+	public void wypiszZGrupy(long idStudenta,long idGrupy){
+		Student student = em.getReference(Student.class, idStudenta);
+		Grupa grupa = em.getReference(Grupa.class, idGrupy);
+		
+		List<Grupa> grupy = student.getGrupy();
+		grupy.remove(grupa);
+		student.setGrupy(grupy);
+		
+		List<Student> studenci = grupa.getStudenci();
+		studenci.remove(student);
+		grupa.setStudenci(studenci);
+		
+		em.merge(student);
+		em.merge(grupa);
+	}
+	
 	// POBIERANIE SQL
 	
 	public List<Student> pobierzWszystkich(){

@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.html.HtmlDataTable;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -36,6 +38,16 @@ public class GrupaBean implements Serializable {
 	
 	
 	private long wybranaGrupaId = 1;
+	
+	private long wybranyStudentId = 1;
+
+	public long getWybranyStudentId() {
+		return wybranyStudentId;
+	}
+
+	public void setWybranyStudentId(long wybranyStudentId) {
+		this.wybranyStudentId = wybranyStudentId;
+	}
 
 	public long getWybranaGrupaId() {
 		return wybranaGrupaId;
@@ -135,13 +147,12 @@ public class GrupaBean implements Serializable {
 	public List<Student> getStudenci(){
 		try{
 		System.out.println(wybranaGrupa.getId());
-		
+		return grupaManager.pobierzStudentow(wybranaGrupa.getId());
 		}
 		catch(NullPointerException e){
-			// empty data catch
-		}
-	
-		return grupaManager.pobierzStudentow(wybranaGrupa.getId());
+			return new ArrayList<Student>();
+		}	
+		
 	}
 	
 
@@ -166,5 +177,11 @@ public class GrupaBean implements Serializable {
 	public void przypiszListeDoGrupy(){
 		List<Student> lista = Arrays.asList(wybraneStudenty);
 		grupaManager.przypiszListeDoGrupy(wybranaGrupaId, lista);		
+	}
+	
+	public void usunZGrupy(){
+		System.out.println("Usuanie z grupy");
+		System.out.println("ID GNOJA: "+wybranyStudentId);
+		studentManager.wypiszZGrupy(wybranyStudentId, wybranaGrupa.getId());
 	}
 }

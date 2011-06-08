@@ -169,7 +169,18 @@
             </f:facet>
 						<h:outputText value="#{stuzgru.index}" />
 					</p:column>
-
+					<p:column>
+					<f:facet name="header">  
+                    Usuń  
+            </f:facet>
+					<p:commandButton value="" update="form2:display"
+							actionListener="#{grupaBean.usunZGrupy}"
+							ajax="true" image="ui-icon ui-icon-close">
+							<f:setPropertyActionListener value="#{stuzgru.id}"
+								target="#{grupaBean.wybranyStudentId}" />
+						</p:commandButton>
+						
+					</p:column>
 				</p:dataTable>
 
 			</p:dialog>
