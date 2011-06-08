@@ -62,7 +62,9 @@ public class ExportBean implements Serializable{
 		} 
 		catch(NullPointerException e){
 			studentZajecia = new ArrayList<StudentZajecia>();
-			
+		}
+		catch(IndexOutOfBoundsException e){
+			studentZajecia = new ArrayList<StudentZajecia>();
 		}
 		
 		//List<String>output = new ArrayList<String>();
